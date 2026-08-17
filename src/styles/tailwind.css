@@ -1,1 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap");
 @import "tailwindcss";
+
+@theme {
+  --color-brand-cream: #faf6f0;
+  --color-brand-champagne: #f3ede2;
+  --color-brand-gold: #d4af37;
+  --color-brand-bronze: #aa7c11;
+  --color-brand-rose: #e8c5c1;
+  --color-brand-dark: #1e1b18;
+  --color-brand-accent: #a3704c;
+  
+  --font-serif: "Playfair Display", "Didot", "Georgia", serif;
+  --font-sans: "Outfit", "Inter", "Helvetica Neue", sans-serif;
+  
+  --animate-fade-in: fade-in 1s ease-out forwards;
+  --animate-fade-in-up: fade-in-up 0.8s ease-out forwards;
+  --animate-slide-in-right: slide-in-right 0.5s ease-out forwards;
+  
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes slide-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
+
+/* Glassmorphism custom classes */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.glass-panel-dark {
+  background: rgba(30, 27, 24, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Custom background animations */
+.bg-gradient-premium {
+  background: radial-gradient(circle at 0% 0%, #fdfbf7 0%, #f3ede2 50%, #eae0d0 100%);
+}
+
+.bg-gradient-gold-rose {
+  background: linear-gradient(135deg, #f5ede0 0%, #f7dfdb 50%, #e8c5c1 100%);
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #aa7c11 0%, #d4af37 50%, #aa7c11 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #faf6f0;
+}
+::-webkit-scrollbar-thumb {
+  background: #d4af37;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #aa7c11;
+}

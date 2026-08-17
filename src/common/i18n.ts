@@ -2,21 +2,25 @@ import i18n, { type InitOptions } from "i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import Backend, { type HttpBackendOptions } from "i18next-http-backend";
 import { initReactI18next } from "react-i18next";
+import translationDE from "../assets/locales/de/translations.json";
 import translationEN from "../assets/locales/en/translations.json";
-import translationES from "../assets/locales/es/translations.json";
-import { isProduction } from "./utils";
+import translationRU from "../assets/locales/ru/translations.json";
+import translationUK from "../assets/locales/uk/translations.json";
+import { isProduction } from "./utilities";
 
 export const defaultNS = "translations";
 export const resources = {
+	de: { translations: translationDE },
 	en: { translations: translationEN },
-	es: { translations: translationES },
+	ru: { translations: translationRU },
+	uk: { translations: translationUK },
 } as const;
 
 const i18nOptions: InitOptions<HttpBackendOptions> = {
 	defaultNS,
 	ns: [defaultNS],
 	debug: !isProduction,
-	fallbackLng: "en",
+	fallbackLng: "de",
 	interpolation: {
 		escapeValue: false, // not needed for react as it escapes by default
 	},
