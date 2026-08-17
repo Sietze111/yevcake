@@ -1,22 +1,23 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap");
 @import "tailwindcss";
 
 @theme {
-  --color-brand-cream: #faf6f0;
-  --color-brand-champagne: #f3ede2;
-  --color-brand-gold: #d4af37;
-  --color-brand-bronze: #aa7c11;
-  --color-brand-rose: #e8c5c1;
-  --color-brand-dark: #1e1b18;
-  --color-brand-accent: #a3704c;
-  
-  --font-serif: "Playfair Display", "Didot", "Georgia", serif;
-  --font-sans: "Outfit", "Inter", "Helvetica Neue", sans-serif;
-  
-  --animate-fade-in: fade-in 1s ease-out forwards;
-  --animate-fade-in-up: fade-in-up 0.8s ease-out forwards;
-  --animate-slide-in-right: slide-in-right 0.5s ease-out forwards;
-  
+  /* Warm, clean, organic pastel colors for a bespoke boutique bakery vibe */
+  --color-brand-linen: #FAF7F2;      /* Off-white, soft paper-like background */
+  --color-brand-apricot: #F7EBE1;    /* Very soft warm peach cream */
+  --color-brand-blush: #F4E3DC;      /* Delicate blush cream */
+  --color-brand-clay: #DCA58F;       /* Mid-tone warm terracotta */
+  --color-brand-terracotta: #A45C40; /* Accent deep warm rust/clay */
+  --color-brand-dark: #2F2522;       /* Charcoal espresso for soft readable text */
+  --color-brand-gold: #C5A073;       /* Warm bronze gold */
+
+  --font-serif: "Cormorant Garamond", "Didot", "Georgia", serif;
+  --font-sans: "Outfit", "Inter", sans-serif;
+
+  --animate-fade-in: fade-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-fade-in-up: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-scale-in: scale-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
   @keyframes fade-in {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -24,66 +25,65 @@
   @keyframes fade-in-up {
     from {
       opacity: 0;
-      transform: translateY(24px);
+      transform: translateY(16px);
     }
     to {
       opacity: 1;
       transform: translateY(0);
     }
   }
-  @keyframes slide-in-right {
+  @keyframes scale-in {
     from {
       opacity: 0;
-      transform: translateX(30px);
+      transform: scale(0.96);
     }
     to {
       opacity: 1;
-      transform: translateX(0);
+      transform: scale(1);
     }
   }
 }
 
-/* Glassmorphism custom classes */
-.glass-panel {
-  background: rgba(255, 255, 255, 0.65);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+/* Custom premium styles */
+.boutique-card {
+  background-color: #ffffff;
+  border: 1px solid rgba(197, 160, 115, 0.15); /* very light gold border */
+  box-shadow: 0 4px 20px -2px rgba(47, 37, 34, 0.02);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.glass-panel-dark {
-  background: rgba(30, 27, 24, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+.boutique-card:hover {
+  border-color: rgba(164, 92, 64, 0.3); /* brand-terracotta */
+  box-shadow: 0 10px 30px -4px rgba(47, 37, 34, 0.04);
 }
 
-/* Custom background animations */
-.bg-gradient-premium {
-  background: radial-gradient(circle at 0% 0%, #fdfbf7 0%, #f3ede2 50%, #eae0d0 100%);
+.input-boutique {
+  background-color: #ffffff;
+  border: 1px solid rgba(47, 37, 34, 0.12);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  color: #2F2522;
+  transition: all 0.2s ease-in-out;
 }
 
-.bg-gradient-gold-rose {
-  background: linear-gradient(135deg, #f5ede0 0%, #f7dfdb 50%, #e8c5c1 100%);
-}
-
-.text-gradient-gold {
-  background: linear-gradient(135deg, #aa7c11 0%, #d4af37 50%, #aa7c11 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.input-boutique:focus {
+  outline: none;
+  border-color: #A45C40;
+  box-shadow: 0 0 0 2px rgba(164, 92, 64, 0.08);
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #faf6f0;
+  background: #FAF7F2;
 }
 ::-webkit-scrollbar-thumb {
-  background: #d4af37;
-  border-radius: 4px;
+  background: #C5A073;
+  border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #aa7c11;
+  background: #A45C40;
 }
