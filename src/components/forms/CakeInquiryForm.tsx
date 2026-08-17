@@ -1,4 +1,4 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -79,7 +79,6 @@ export const CakeInquiryForm = (): FunctionComponent => {
     } else if (step === 2) {
       fieldsToValidate = ["date", "deliveryType", "timeSlot"];
     }
-
     const isValid = await trigger(fieldsToValidate);
     if (isValid) {
       setStep(step + 1);
@@ -92,16 +91,16 @@ export const CakeInquiryForm = (): FunctionComponent => {
 
   if (isSuccess) {
     return (
-      <div className="flex flex-col items-center justify-center p-8 sm:p-12 text-center boutique-card rounded-[2rem] border border-brand-gold/30 shadow-xl max-w-xl mx-auto animate-fade-in-up">
-        <CheckCircleIcon className="h-16 w-16 text-brand-terracotta mb-4 animate-bounce" />
-        <h3 className="font-serif text-3xl text-brand-dark font-bold mb-3">
+      <div className="flex flex-col items-center justify-center p-10 text-center border-3 border-nb-black shadow-[8px_8px_0px_0px_#0D0D0D] bg-nb-mint max-w-xl mx-auto animate-fade-in-up">
+        <CheckCircleIcon className="h-16 w-16 text-nb-black mb-4 animate-bounce" />
+        <h3 className="font-mono text-3xl text-nb-black font-bold uppercase mb-3">
           {t("order.success")}
         </h3>
-        <p className="font-sans text-sm text-brand-dark/75 mb-8 max-w-sm leading-relaxed">
+        <p className="font-sans text-sm text-nb-black/75 mb-8 max-w-sm leading-relaxed">
           {t("order.successDesc")}
         </p>
         <button
-          className="px-8 py-3.5 rounded-full bg-brand-terracotta text-white hover:bg-brand-dark transition-colors duration-300 font-sans text-xs font-bold tracking-widest uppercase cursor-pointer"
+          className="nb-btn bg-nb-black text-nb-yellow text-xs"
           onClick={() => {
             setIsSuccess(false);
             setUploadedFiles([]);
@@ -115,44 +114,32 @@ export const CakeInquiryForm = (): FunctionComponent => {
   }
 
   return (
-    <div className="w-full max-w-3xl mx-auto boutique-card rounded-[2rem] border border-brand-gold/20 shadow-xl p-6 sm:p-10 transition-all duration-300 bg-white/80 backdrop-blur-md">
-      {/* Wizard Progress Steps */}
-      <div className="flex items-center justify-between mb-10 pb-6 border-b border-brand-gold/10">
-        <div className="flex items-center">
-          <span
-            className={`w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm transition-all duration-300 ${
-              step >= 1 ? "bg-brand-terracotta text-white" : "bg-brand-apricot text-brand-terracotta/40"
-            }`}
-          >
+    <div className="w-full max-w-3xl mx-auto border-3 border-nb-black shadow-[8px_8px_0px_0px_#0D0D0D] bg-nb-white p-8 sm:p-10">
+      {/* Step Progress */}
+      <div className="flex items-center justify-between mb-10 pb-6 border-b-3 border-nb-black">
+        <div className="flex items-center gap-3">
+          <span className={`w-9 h-9 border-2 border-nb-black flex items-center justify-center font-mono font-bold text-sm transition-all ${step >= 1 ? "bg-nb-yellow text-nb-black shadow-[2px_2px_0px_0px_#0D0D0D]" : "bg-nb-white text-nb-black/40"}`}>
             1
           </span>
-          <span className="ml-3 font-sans font-semibold text-xs tracking-wider uppercase text-brand-dark/80 hidden sm:inline">
+          <span className="font-mono font-bold text-xs tracking-wider uppercase text-nb-black hidden sm:inline">
             {t("order.step1")}
           </span>
         </div>
-        <div className={`w-8 sm:w-16 h-px flex-grow mx-4 transition-colors duration-300 ${step >= 2 ? "bg-brand-terracotta" : "bg-brand-gold/20"}`}></div>
-        <div className="flex items-center">
-          <span
-            className={`w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm transition-all duration-300 ${
-              step >= 2 ? "bg-brand-terracotta text-white" : "bg-brand-apricot text-brand-terracotta/40"
-            }`}
-          >
+        <div className={`flex-grow h-1 mx-4 transition-colors ${step >= 2 ? "bg-nb-black" : "bg-nb-black/15"}`} />
+        <div className="flex items-center gap-3">
+          <span className={`w-9 h-9 border-2 border-nb-black flex items-center justify-center font-mono font-bold text-sm transition-all ${step >= 2 ? "bg-nb-yellow text-nb-black shadow-[2px_2px_0px_0px_#0D0D0D]" : "bg-nb-white text-nb-black/40"}`}>
             2
           </span>
-          <span className="ml-3 font-sans font-semibold text-xs tracking-wider uppercase text-brand-dark/80 hidden sm:inline">
+          <span className="font-mono font-bold text-xs tracking-wider uppercase text-nb-black hidden sm:inline">
             {t("order.step2")}
           </span>
         </div>
-        <div className={`w-8 sm:w-16 h-px flex-grow mx-4 transition-colors duration-300 ${step >= 3 ? "bg-brand-terracotta" : "bg-brand-gold/20"}`}></div>
-        <div className="flex items-center">
-          <span
-            className={`w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm transition-all duration-300 ${
-              step >= 3 ? "bg-brand-terracotta text-white" : "bg-brand-apricot text-brand-terracotta/40"
-            }`}
-          >
+        <div className={`flex-grow h-1 mx-4 transition-colors ${step >= 3 ? "bg-nb-black" : "bg-nb-black/15"}`} />
+        <div className="flex items-center gap-3">
+          <span className={`w-9 h-9 border-2 border-nb-black flex items-center justify-center font-mono font-bold text-sm transition-all ${step >= 3 ? "bg-nb-yellow text-nb-black shadow-[2px_2px_0px_0px_#0D0D0D]" : "bg-nb-white text-nb-black/40"}`}>
             3
           </span>
-          <span className="ml-3 font-sans font-semibold text-xs tracking-wider uppercase text-brand-dark/80 hidden sm:inline">
+          <span className="font-mono font-bold text-xs tracking-wider uppercase text-nb-black hidden sm:inline">
             {t("order.step3")}
           </span>
         </div>
@@ -164,99 +151,93 @@ export const CakeInquiryForm = (): FunctionComponent => {
           <div className="space-y-6 animate-fade-in text-left">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
-                <label className="block text-[11px] font-bold uppercase tracking-wider text-brand-dark/85 mb-2">
+                <label className="block font-mono text-[11px] font-bold uppercase tracking-wider text-nb-black mb-2">
                   {t("order.occasion")} *
                 </label>
-                <select
-                  {...register("occasion")}
-                  className="w-full input-boutique focus:outline-none"
-                >
+                <select {...register("occasion")} className="nb-input">
                   <option disabled value="">{t("order.occasionPlaceholder")}</option>
                   <option value="wedding">{t("order.occasionWedding")}</option>
                   <option value="birthday">{t("order.occasionBirthday")}</option>
                   <option value="bento">{t("order.occasionBento")}</option>
                   <option value="other">{t("order.occasionOther")}</option>
                 </select>
-                {errors.occasion && <p className="text-red-600 text-xs mt-1 font-semibold">{errors.occasion.message}</p>}
+                {errors.occasion && <p className="text-red-600 text-xs mt-1 font-mono font-bold">{errors.occasion.message}</p>}
               </div>
 
               <div>
-                <label className="block text-[11px] font-bold uppercase tracking-wider text-brand-dark/85 mb-2">
+                <label className="block font-mono text-[11px] font-bold uppercase tracking-wider text-nb-black mb-2">
                   {t("order.servings")} *
                 </label>
                 <input
+                  min="5"
                   type="number"
                   {...register("servings", { valueAsNumber: true })}
-                  className="w-full input-boutique focus:outline-none"
-                  min="5"
+                  className="nb-input"
                 />
-                {errors.servings && <p className="text-red-600 text-xs mt-1 font-semibold">{errors.servings.message}</p>}
+                {errors.servings && <p className="text-red-600 text-xs mt-1 font-mono font-bold">{errors.servings.message}</p>}
               </div>
             </div>
 
             {selectedOccasion === "other" && (
               <div className="animate-fade-in">
-                <label className="block text-[11px] font-bold uppercase tracking-wider text-brand-dark/85 mb-2">
+                <label className="block font-mono text-[11px] font-bold uppercase tracking-wider text-nb-black mb-2">
                   Describe the Occasion *
                 </label>
                 <input
+                  placeholder="e.g. Baby Shower, Bridal Shower, Anniversary..."
                   type="text"
                   {...register("customOccasion")}
-                  className="w-full input-boutique focus:outline-none"
-                  placeholder="e.g. Baby Shower, Bridal Shower, Anniversary..."
+                  className="nb-input"
                 />
-                {errors.customOccasion && <p className="text-red-600 text-xs mt-1 font-semibold">{errors.customOccasion.message}</p>}
+                {errors.customOccasion && <p className="text-red-600 text-xs mt-1 font-mono font-bold">{errors.customOccasion.message}</p>}
               </div>
             )}
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
-                <label className="block text-[11px] font-bold uppercase tracking-wider text-brand-dark/85 mb-2">
+                <label className="block font-mono text-[11px] font-bold uppercase tracking-wider text-nb-black mb-2">
                   {t("order.flavor")} *
                 </label>
-                <select
-                  {...register("flavor")}
-                  className="w-full input-boutique focus:outline-none text-brand-dark"
-                >
+                <select {...register("flavor")} className="nb-input">
                   <option disabled value="">{t("order.flavorPlaceholder")}</option>
                   <option value="medovyk">{t("flavors.medovyk.name")}</option>
                   <option value="pistachio">{t("flavors.pistachio.name")}</option>
                   <option value="caramel">{t("flavors.caramel.name")}</option>
                   <option value="mango">{t("flavors.mango.name")}</option>
                 </select>
-                {errors.flavor && <p className="text-red-600 text-xs mt-1 font-semibold">{errors.flavor.message}</p>}
+                {errors.flavor && <p className="text-red-600 text-xs mt-1 font-mono font-bold">{errors.flavor.message}</p>}
               </div>
 
               <div>
-                <label className="block text-[11px] font-bold uppercase tracking-wider text-brand-dark/85 mb-2">
+                <label className="block font-mono text-[11px] font-bold uppercase tracking-wider text-nb-black mb-2">
                   {t("order.inscription")}
                 </label>
                 <input
+                  placeholder={t("order.inscriptionPlaceholder") || ""}
                   type="text"
                   {...register("inscription")}
-                  className="w-full input-boutique focus:outline-none"
-                  placeholder={t("order.inscriptionPlaceholder") || ""}
+                  className="nb-input"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-[11px] font-bold uppercase tracking-wider text-brand-dark/85 mb-2">
+              <label className="block font-mono text-[11px] font-bold uppercase tracking-wider text-nb-black mb-2">
                 {t("order.dietary")}
               </label>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 bg-brand-apricot/30 p-4 rounded-xl border border-brand-gold/10">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 p-4 border-2 border-nb-black bg-nb-cream">
                 {[
                   { value: "glutenFree", label: t("order.dietaryGlutenFree") },
                   { value: "lactoseFree", label: t("order.dietaryLactoseFree") },
                   { value: "vegan", label: t("order.dietaryVegan") },
                   { value: "nutFree", label: t("order.dietaryNutFree") },
                 ].map((item) => (
-                  <label key={item.value} className="flex items-center gap-2 font-sans text-xs font-semibold text-brand-dark hover:cursor-pointer">
+                  <label key={item.value} className="flex items-center gap-2 font-mono text-xs font-bold text-nb-black cursor-pointer">
                     <input
                       type="checkbox"
                       value={item.value}
                       {...register("dietary")}
-                      className="rounded text-brand-terracotta focus:ring-brand-terracotta h-4 w-4"
+                      className="h-4 w-4 border-2 border-nb-black accent-nb-black"
                     />
                     <span>{item.label}</span>
                   </label>
@@ -265,26 +246,26 @@ export const CakeInquiryForm = (): FunctionComponent => {
             </div>
 
             <div>
-              <label className="block text-[11px] font-bold uppercase tracking-wider text-brand-dark/85 mb-2">
+              <label className="block font-mono text-[11px] font-bold uppercase tracking-wider text-nb-black mb-2">
                 {t("order.designTheme")} *
               </label>
               <textarea
+                placeholder={t("order.designThemePlaceholder") || ""}
                 rows={3}
                 {...register("designTheme")}
-                className="w-full input-boutique focus:outline-none resize-none"
-                placeholder={t("order.designThemePlaceholder") || ""}
+                className="nb-input resize-none"
               />
-              {errors.designTheme && <p className="text-red-600 text-xs mt-1 font-semibold">{errors.designTheme.message}</p>}
+              {errors.designTheme && <p className="text-red-600 text-xs mt-1 font-mono font-bold">{errors.designTheme.message}</p>}
             </div>
 
             <div className="pt-4 flex justify-end">
               <button
-                className="px-8 py-3.5 rounded-full bg-brand-terracotta text-white hover:bg-brand-dark transition-colors duration-300 font-sans text-xs font-bold tracking-widest uppercase flex items-center gap-2 cursor-pointer shadow-sm"
+                className="nb-btn bg-nb-yellow text-nb-black text-xs flex items-center gap-2"
                 type="button"
                 onClick={nextStep}
               >
                 Continue
-                <ArrowRightIcon className="h-4.5 w-4.5" />
+                <ArrowRightIcon className="h-4 w-4" />
               </button>
             </div>
           </div>
@@ -295,46 +276,28 @@ export const CakeInquiryForm = (): FunctionComponent => {
           <div className="space-y-6 animate-fade-in text-left">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
-                <label className="block text-[11px] font-bold uppercase tracking-wider text-brand-dark/85 mb-2">
+                <label className="block font-mono text-[11px] font-bold uppercase tracking-wider text-nb-black mb-2">
                   {t("order.date")} *
                 </label>
                 <input
                   type="date"
                   {...register("date")}
-                  className="w-full input-boutique focus:outline-none"
+                  className="nb-input"
                 />
-                {errors.date && <p className="text-red-600 text-xs mt-1 font-semibold">{errors.date.message}</p>}
+                {errors.date && <p className="text-red-600 text-xs mt-1 font-mono font-bold">{errors.date.message}</p>}
               </div>
 
               <div>
-                <label className="block text-[11px] font-bold uppercase tracking-wider text-brand-dark/85 mb-2">
+                <label className="block font-mono text-[11px] font-bold uppercase tracking-wider text-nb-black mb-2">
                   {t("order.deliveryType")} *
                 </label>
-                <div className="grid grid-cols-2 gap-4 h-11">
-                  <label className={`flex items-center justify-center border rounded-xl font-sans text-xs font-semibold cursor-pointer transition-all ${
-                    selectedDelivery === "pickup"
-                      ? "border-brand-terracotta bg-brand-blush/25 text-brand-terracotta font-bold"
-                      : "border-brand-gold/20 text-brand-dark/70 hover:bg-brand-apricot/20"
-                  }`}>
-                    <input
-                      type="radio"
-                      value="pickup"
-                      {...register("deliveryType")}
-                      className="sr-only"
-                    />
+                <div className="grid grid-cols-2 gap-3 h-12">
+                  <label className={`flex items-center justify-center border-2 border-nb-black font-mono text-xs font-bold cursor-pointer transition-colors ${selectedDelivery === "pickup" ? "bg-nb-yellow text-nb-black shadow-[2px_2px_0px_0px_#0D0D0D]" : "bg-nb-white text-nb-black/60 hover:bg-nb-yellow/40"}`}>
+                    <input type="radio" value="pickup" {...register("deliveryType")} className="sr-only" />
                     {t("order.pickup")}
                   </label>
-                  <label className={`flex items-center justify-center border rounded-xl font-sans text-xs font-semibold cursor-pointer transition-all ${
-                    selectedDelivery === "delivery"
-                      ? "border-brand-terracotta bg-brand-blush/25 text-brand-terracotta font-bold"
-                      : "border-brand-gold/20 text-brand-dark/70 hover:bg-brand-apricot/20"
-                  }`}>
-                    <input
-                      type="radio"
-                      value="delivery"
-                      {...register("deliveryType")}
-                      className="sr-only"
-                    />
+                  <label className={`flex items-center justify-center border-2 border-nb-black font-mono text-xs font-bold cursor-pointer transition-colors ${selectedDelivery === "delivery" ? "bg-nb-yellow text-nb-black shadow-[2px_2px_0px_0px_#0D0D0D]" : "bg-nb-white text-nb-black/60 hover:bg-nb-yellow/40"}`}>
+                    <input type="radio" value="delivery" {...register("deliveryType")} className="sr-only" />
                     {t("order.delivery")}
                   </label>
                 </div>
@@ -342,28 +305,25 @@ export const CakeInquiryForm = (): FunctionComponent => {
             </div>
 
             <div>
-              <label className="block text-[11px] font-bold uppercase tracking-wider text-brand-dark/85 mb-2">
+              <label className="block font-mono text-[11px] font-bold uppercase tracking-wider text-nb-black mb-2">
                 {t("order.timeSlot")} *
               </label>
-              <select
-                {...register("timeSlot")}
-                className="w-full input-boutique focus:outline-none"
-              >
+              <select {...register("timeSlot")} className="nb-input">
                 <option disabled value="">{t("order.timeSlotPlaceholder")}</option>
                 <option value="morning_09_11">09:00 - 11:00 (Morning)</option>
                 <option value="noon_11_13">11:00 - 13:00 (Lunch)</option>
                 <option value="afternoon_13_15">13:00 - 15:00 (Early Afternoon)</option>
                 <option value="evening_15_18">15:00 - 18:00 (Late Afternoon)</option>
               </select>
-              {errors.timeSlot && <p className="text-red-600 text-xs mt-1 font-semibold">{errors.timeSlot.message}</p>}
+              {errors.timeSlot && <p className="text-red-600 text-xs mt-1 font-mono font-bold">{errors.timeSlot.message}</p>}
             </div>
 
-            {/* Design Inspiration Images Upload block */}
+            {/* File Upload */}
             <div>
-              <label className="block text-[11px] font-bold uppercase tracking-wider text-brand-dark/85 mb-2">
+              <label className="block font-mono text-[11px] font-bold uppercase tracking-wider text-nb-black mb-2">
                 {t("order.referenceImages")}
               </label>
-              <div className="border-2 border-dashed border-brand-gold/30 hover:border-brand-terracotta/40 rounded-2xl p-6 bg-brand-apricot/10 transition-colors flex flex-col items-center justify-center text-center cursor-pointer relative group">
+              <div className="border-3 border-dashed border-nb-black p-6 bg-nb-cream flex flex-col items-center justify-center text-center cursor-pointer relative group hover:bg-nb-yellow/20 transition-colors">
                 <input
                   multiple
                   accept="image/*"
@@ -371,27 +331,26 @@ export const CakeInquiryForm = (): FunctionComponent => {
                   type="file"
                   onChange={handleFileUpload}
                 />
-                <CloudArrowUpIcon className="h-10 w-10 text-brand-gold/60 group-hover:text-brand-terracotta transition-colors mb-2" />
-                <span className="font-sans text-xs font-semibold text-brand-dark/85">
+                <CloudArrowUpIcon className="h-10 w-10 text-nb-black/40 group-hover:text-nb-black transition-colors mb-2" />
+                <span className="font-mono text-xs font-bold text-nb-black uppercase">
                   {t("order.referenceImagesDesc")}
                 </span>
-                <span className="font-sans text-[10px] text-brand-dark/50 mt-1">
+                <span className="font-mono text-[10px] text-nb-black/50 mt-1">
                   Supports JPG, PNG, up to 10MB per image
                 </span>
               </div>
 
-              {/* Uploaded File List */}
               {uploadedFiles.length > 0 && (
                 <div className="mt-4 space-y-2">
                   {uploadedFiles.map((file, index) => (
-                    <div key={index} className="flex items-center justify-between p-3 bg-white border border-brand-gold/15 rounded-xl text-xs font-sans">
+                    <div key={index} className="flex items-center justify-between p-3 border-2 border-nb-black bg-nb-mint text-xs font-mono">
                       <div className="flex items-center gap-2">
-                        <DocumentIcon className="h-4.5 w-4.5 text-brand-gold" />
-                        <span className="font-semibold text-brand-dark truncate max-w-xs">{file.name}</span>
-                        <span className="text-brand-dark/50">({file.size})</span>
+                        <DocumentIcon className="h-4 w-4 text-nb-black" />
+                        <span className="font-bold text-nb-black truncate max-w-xs">{file.name}</span>
+                        <span className="text-nb-black/60">({file.size})</span>
                       </div>
                       <button
-                        className="text-brand-dark/50 hover:text-red-600 transition-colors p-1"
+                        className="text-nb-black/60 hover:text-red-600 transition-colors p-1"
                         type="button"
                         onClick={() => { removeFile(index); }}
                       >
@@ -405,92 +364,92 @@ export const CakeInquiryForm = (): FunctionComponent => {
 
             <div className="pt-4 flex justify-between">
               <button
-                className="px-6 py-3.5 rounded-full border border-brand-gold/30 text-brand-terracotta hover:bg-brand-apricot/30 transition-colors duration-300 font-sans text-xs font-bold tracking-widest uppercase flex items-center gap-2 cursor-pointer"
+                className="nb-btn bg-nb-white text-nb-black text-xs flex items-center gap-2"
                 type="button"
                 onClick={previousStep}
               >
-                <ArrowLeftIcon className="h-4.5 w-4.5" />
+                <ArrowLeftIcon className="h-4 w-4" />
                 Back
               </button>
               <button
-                className="px-8 py-3.5 rounded-full bg-brand-terracotta text-white hover:bg-brand-dark transition-colors duration-300 font-sans text-xs font-bold tracking-widest uppercase flex items-center gap-2 cursor-pointer shadow-sm"
+                className="nb-btn bg-nb-yellow text-nb-black text-xs flex items-center gap-2"
                 type="button"
                 onClick={nextStep}
               >
                 Continue
-                <ArrowRightIcon className="h-4.5 w-4.5" />
+                <ArrowRightIcon className="h-4 w-4" />
               </button>
             </div>
           </div>
         )}
 
-        {/* Step 3: Contact & Comments */}
+        {/* Step 3: Contact */}
         {step === 3 && (
           <div className="space-y-6 animate-fade-in text-left">
             <div>
-              <label className="block text-[11px] font-bold uppercase tracking-wider text-brand-dark/85 mb-2">
+              <label className="block font-mono text-[11px] font-bold uppercase tracking-wider text-nb-black mb-2">
                 {t("order.name")} *
               </label>
               <input
+                placeholder="Sophie Müller"
                 type="text"
                 {...register("name")}
-                className="w-full input-boutique focus:outline-none"
-                placeholder="Sophie Müller"
+                className="nb-input"
               />
-              {errors.name && <p className="text-red-600 text-xs mt-1 font-semibold">{errors.name.message}</p>}
+              {errors.name && <p className="text-red-600 text-xs mt-1 font-mono font-bold">{errors.name.message}</p>}
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
-                <label className="block text-[11px] font-bold uppercase tracking-wider text-brand-dark/85 mb-2">
+                <label className="block font-mono text-[11px] font-bold uppercase tracking-wider text-nb-black mb-2">
                   {t("order.email")} *
                 </label>
                 <input
+                  placeholder="sophie@example.ch"
                   type="email"
                   {...register("email")}
-                  className="w-full input-boutique focus:outline-none"
-                  placeholder="sophie@example.ch"
+                  className="nb-input"
                 />
-                {errors.email && <p className="text-red-600 text-xs mt-1 font-semibold">{errors.email.message}</p>}
+                {errors.email && <p className="text-red-600 text-xs mt-1 font-mono font-bold">{errors.email.message}</p>}
               </div>
 
               <div>
-                <label className="block text-[11px] font-bold uppercase tracking-wider text-brand-dark/85 mb-2">
+                <label className="block font-mono text-[11px] font-bold uppercase tracking-wider text-nb-black mb-2">
                   {t("order.phone")} *
                 </label>
                 <input
+                  placeholder="+41 79 123 45 67"
                   type="tel"
                   {...register("phone")}
-                  className="w-full input-boutique focus:outline-none"
-                  placeholder="+41 79 123 45 67"
+                  className="nb-input"
                 />
-                {errors.phone && <p className="text-red-600 text-xs mt-1 font-semibold">{errors.phone.message}</p>}
+                {errors.phone && <p className="text-red-600 text-xs mt-1 font-mono font-bold">{errors.phone.message}</p>}
               </div>
             </div>
 
             <div>
-              <label className="block text-[11px] font-bold uppercase tracking-wider text-brand-dark/85 mb-2">
+              <label className="block font-mono text-[11px] font-bold uppercase tracking-wider text-nb-black mb-2">
                 {t("order.additionalNotes")}
               </label>
               <textarea
+                placeholder={t("order.additionalNotesPlaceholder") || ""}
                 rows={4}
                 {...register("additionalNotes")}
-                className="w-full input-boutique focus:outline-none resize-none"
-                placeholder={t("order.additionalNotesPlaceholder") || ""}
+                className="nb-input resize-none"
               />
             </div>
 
             <div className="pt-4 flex justify-between">
               <button
-                className="px-6 py-3.5 rounded-full border border-brand-gold/30 text-brand-terracotta hover:bg-brand-apricot/30 transition-colors duration-300 font-sans text-xs font-bold tracking-widest uppercase flex items-center gap-2 cursor-pointer"
+                className="nb-btn bg-nb-white text-nb-black text-xs flex items-center gap-2"
                 type="button"
                 onClick={previousStep}
               >
-                <ArrowLeftIcon className="h-4.5 w-4.5" />
+                <ArrowLeftIcon className="h-4 w-4" />
                 Back
               </button>
               <button
-                className="px-8 py-3.5 rounded-full bg-brand-terracotta text-white hover:bg-brand-dark transition-colors duration-300 font-sans text-xs font-bold tracking-widest uppercase cursor-pointer shadow-md"
+                className="nb-btn bg-nb-black text-nb-yellow text-xs"
                 type="submit"
               >
                 {t("order.submit")}

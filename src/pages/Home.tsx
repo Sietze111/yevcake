@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+﻿import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import type { FunctionComponent } from "../common/types";
 import { Navbar } from "../components/layout/Navbar";
@@ -6,17 +6,15 @@ import { CakeInquiryForm } from "../components/forms/CakeInquiryForm";
 import { PriceGuideSection } from "../components/ui/PriceGuideSection";
 import { FaqSection } from "../components/ui/FaqSection";
 import { ReviewsSection } from "../components/ui/ReviewsSection";
-import { SparklesIcon, MapPinIcon, EnvelopeIcon, PhoneIcon } from "@heroicons/react/24/outline";
+import { MapPinIcon, EnvelopeIcon, PhoneIcon } from "@heroicons/react/24/outline";
 import { faker } from "@faker-js/faker";
 
-// Seed faker to ensure stable, realistic images
 faker.seed(19101993);
 
 export const Home = (): FunctionComponent => {
   const { t } = useTranslation();
   const [activeCategory, setActiveCategory] = useState<string>("all");
 
-  // Generate 9 dynamic premium-looking cake listings using faker
   const galleryItems = useMemo(() => {
     const categories = ["wedding", "birthday", "bento"];
     const keywords = ["wedding cake", "fancy birthday cake", "bento cupcake"];
@@ -29,9 +27,9 @@ export const Home = (): FunctionComponent => {
         category,
         image: faker.image.urlLoremFlickr({ width: 600, height: 600, category: `${keyword}` }),
         title: `${faker.word.adjective()} ${category === "bento" ? "Bento" : category === "wedding" ? "Wedding" : "Celebration"} Cake`,
-        desc: `Artisanal creation featuring fine ${faker.helpers.arrayElement([
-          "chocolate", "vanilla", "hazelnut", "pistachio", "lemon", "raspberry", "salted caramel"
-        ])} notes and premium decorations.`,
+        desc: `Artisanal creation with fine ${faker.helpers.arrayElement([
+          "chocolate", "vanilla", "hazelnut", "pistachio", "lemon", "raspberry", "salted caramel",
+        ])} notes.`,
       };
     });
   }, []);
@@ -42,35 +40,31 @@ export const Home = (): FunctionComponent => {
   }, [activeCategory, galleryItems]);
 
   return (
-    <div className="bg-brand-linen text-brand-dark min-h-screen relative overflow-x-hidden selection:bg-brand-clay/30 selection:text-brand-dark font-sans">
-      {/* Navigation Header */}
+    <div className="bg-nb-cream text-nb-black min-h-screen font-sans overflow-x-hidden">
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="relative pt-36 pb-20 md:pt-48 md:pb-36 flex items-center min-h-[95vh] bg-gradient-to-b from-brand-apricot/30 via-brand-linen to-brand-linen" id="home">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            {/* Left text column */}
-            <div className="lg:col-span-7 space-y-8 text-left animate-fade-in-up">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-blush/40 text-brand-terracotta border border-brand-clay/20 text-[10px] font-bold tracking-widest uppercase">
-                <SparklesIcon className="h-3.5 w-3.5 text-brand-terracotta" />
-                Bespoke Zuckeratelier
-              </div>
-              <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-light leading-[1.08] text-brand-dark tracking-tight">
+      {/* ── HERO ── */}
+      <section className="pt-28 pb-16 md:pt-36 md:pb-24 border-b-4 border-nb-black" id="home">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left text */}
+            <div className="space-y-8 animate-fade-in-up">
+              <div className="nb-tag bg-nb-pink w-fit">🍰 Bespoke Cake Atelier · Bern</div>
+              <h1 className="font-mono text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.05] text-nb-black uppercase">
                 {t("hero.title")}
               </h1>
-              <p className="font-sans text-sm sm:text-base text-brand-dark/75 max-w-lg leading-relaxed font-light">
+              <p className="font-sans text-base text-nb-black/70 max-w-lg leading-relaxed">
                 {t("hero.subtitle")}
               </p>
-              <div className="pt-4 flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-4">
                 <a
-                  className="px-9 py-4 rounded-full bg-brand-terracotta text-white hover:bg-brand-dark transition-all duration-300 font-sans text-xs font-bold tracking-widest uppercase shadow-md hover:shadow-lg cursor-pointer"
+                  className="nb-btn bg-nb-yellow text-nb-black text-sm"
                   href="#inquiry"
                 >
                   {t("hero.cta")}
                 </a>
                 <a
-                  className="px-9 py-4 rounded-full border border-brand-dark/15 text-brand-dark hover:bg-brand-apricot/40 transition-colors duration-300 font-sans text-xs font-bold tracking-widest uppercase cursor-pointer"
+                  className="nb-btn bg-nb-white text-nb-black text-sm"
                   href="#flavors"
                 >
                   {t("nav.flavors")}
@@ -78,79 +72,63 @@ export const Home = (): FunctionComponent => {
               </div>
             </div>
 
-            {/* Right image column */}
-            <div className="lg:col-span-5 relative animate-scale-in">
-              <div className="relative mx-auto max-w-[400px] lg:max-w-none">
-                <div className="absolute inset-0 bg-brand-clay/25 rounded-full filter blur-3xl opacity-20 transform -translate-x-6 -translate-y-6"></div>
-                <div className="relative rounded-[2rem] overflow-hidden border border-brand-gold/15 bg-white p-2.5 shadow-xl transform hover:scale-[1.01] transition-transform duration-500 aspect-[3/2]">
-                  <img
-                    alt="Bespoke handmade cake by Yevheniia in Bern"
-                    className="w-full h-full object-cover rounded-[1.75rem]"
-                    src="/cake_hero.jpg"
-                  />
-                </div>
+            {/* Right image */}
+            <div className="relative">
+              <div className="border-4 border-nb-black shadow-[8px_8px_0px_0px_#0D0D0D] overflow-hidden aspect-[4/3] rotate-1 hover:rotate-0 transition-transform duration-300">
+                <img
+                  alt="Bespoke handmade cake by Yevheniia in Bern"
+                  className="w-full h-full object-cover"
+                  src="/cake_hero.jpg"
+                />
+              </div>
+              <div className="absolute -bottom-4 -left-4 nb-tag bg-nb-mint text-nb-black">
+                ✨ Handmade in Bern
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* About Section */}
-      <section className="py-24 md:py-32 bg-brand-apricot/20 border-y border-brand-gold/10" id="about">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            {/* Polaroid-style image box */}
-            <div className="lg:col-span-5 relative max-w-[360px] lg:max-w-none mx-auto w-full order-2 lg:order-1">
-              <div className="absolute inset-0 bg-brand-blush/40 rounded-[2.5rem] transform rotate-2"></div>
-              <div className="relative rounded-[2.5rem] overflow-hidden border border-brand-gold/25 bg-white p-3 shadow-lg aspect-[3/4]">
+      {/* ── ABOUT ── */}
+      <section className="py-20 md:py-28 bg-nb-lilac border-b-4 border-nb-black" id="about">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Image */}
+            <div className="relative max-w-sm mx-auto lg:max-w-none order-2 lg:order-1">
+              <div className="border-4 border-nb-black shadow-[8px_8px_0px_0px_#0D0D0D] overflow-hidden aspect-[3/4] -rotate-2 hover:rotate-0 transition-transform duration-300">
                 <img
                   alt="Yevheniia - Cake Designer in Bern"
-                  className="w-full h-full object-cover rounded-[2rem]"
+                  className="w-full h-full object-cover"
                   src="/cake_wedding.jpg"
                 />
               </div>
+              <div className="absolute -top-4 -right-4 bg-nb-yellow border-3 border-nb-black px-3 py-1 font-mono text-xs font-bold uppercase shadow-[3px_3px_0px_0px_#0D0D0D]">
+                Est. 2020 · Bern
+              </div>
             </div>
 
-            {/* Text description */}
-            <div className="lg:col-span-7 space-y-6 text-left order-1 lg:order-2">
-              <h2 className="font-sans text-[10px] font-bold uppercase tracking-[0.25em] text-brand-terracotta">
-                {t("about.subtitle")}
-              </h2>
-              <h3 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-brand-dark">
+            {/* Text */}
+            <div className="space-y-6 order-1 lg:order-2">
+              <div className="nb-tag bg-nb-yellow w-fit">{t("about.subtitle")}</div>
+              <h2 className="font-mono text-4xl sm:text-5xl font-bold text-nb-black uppercase leading-tight">
                 {t("about.title")}
-              </h3>
-              <div className="w-12 h-px bg-brand-terracotta/40"></div>
-              <p className="font-sans text-sm sm:text-base text-brand-dark/75 leading-relaxed font-light">
+              </h2>
+              <div className="nb-divider" />
+              <p className="font-sans text-base text-nb-black/80 leading-relaxed">
                 {t("about.p1")}
               </p>
-              <p className="font-sans text-sm sm:text-base text-brand-dark/75 leading-relaxed font-light">
+              <p className="font-sans text-base text-nb-black/80 leading-relaxed">
                 {t("about.p2")}
               </p>
-
-              {/* Designer signature badge */}
-              <div className="pt-4 flex items-center justify-between border-t border-brand-gold/10">
-                <div className="flex gap-8">
-                  <div>
-                    <span className="block font-serif text-3xl font-light text-brand-dark">1993</span>
-                    <span className="block font-sans text-[9px] tracking-widest text-brand-dark/50 uppercase mt-1">
-                      Born in Ukraine
-                    </span>
-                  </div>
-                  <div className="border-l border-brand-gold/15 pl-8">
-                    <span className="block font-serif text-3xl font-light text-brand-dark">Bern</span>
-                    <span className="block font-sans text-[9px] tracking-widest text-brand-dark/50 uppercase mt-1">
-                      Bespoke Atelier
-                    </span>
-                  </div>
+              {/* Stats row */}
+              <div className="flex gap-6 pt-4 border-t-3 border-nb-black">
+                <div className="border-3 border-nb-black px-4 py-3 bg-nb-yellow shadow-[3px_3px_0px_0px_#0D0D0D]">
+                  <span className="block font-mono text-3xl font-bold">1993</span>
+                  <span className="block font-mono text-[9px] uppercase tracking-widest mt-0.5">Born in Ukraine</span>
                 </div>
-                {/* Cute cursive styled signature representing bespoke business */}
-                <div className="text-right">
-                  <span className="font-serif italic text-3xl text-brand-terracotta block select-none">
-                    Yevheniia
-                  </span>
-                  <span className="font-sans text-[8px] tracking-widest uppercase text-brand-dark/40 block mt-0.5">
-                    Cake Atelier Owner
-                  </span>
+                <div className="border-3 border-nb-black px-4 py-3 bg-nb-mint shadow-[3px_3px_0px_0px_#0D0D0D]">
+                  <span className="block font-mono text-3xl font-bold">Bern</span>
+                  <span className="block font-mono text-[9px] uppercase tracking-widest mt-0.5">Atelier Location</span>
                 </div>
               </div>
             </div>
@@ -158,63 +136,52 @@ export const Home = (): FunctionComponent => {
         </div>
       </section>
 
-      {/* Flavors Section */}
-      <section className="py-24 md:py-32" id="flavors">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="text-center max-w-2xl mx-auto space-y-4 mb-16">
-            <h2 className="font-sans text-[10px] font-bold uppercase tracking-[0.25em] text-brand-terracotta">
-              {t("flavors.title")}
-            </h2>
-            <h3 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-brand-dark">
+      {/* ── FLAVORS ── */}
+      <section className="py-20 md:py-28 border-b-4 border-nb-black" id="flavors">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="mb-12">
+            <div className="nb-tag bg-nb-yellow w-fit mb-4">{t("flavors.title")}</div>
+            <h2 className="font-mono text-4xl sm:text-5xl font-bold text-nb-black uppercase">
               {t("flavors.subtitle")}
-            </h3>
-            <div className="w-12 h-px bg-brand-terracotta/40 mx-auto"></div>
+            </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Flavor Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
-              { key: "medovyk" as const, icon: "🍯", bg: "bg-white/40" },
-              { key: "pistachio" as const, icon: "🌱", bg: "bg-white/40" },
-              { key: "caramel" as const, icon: "🍫", bg: "bg-white/40" },
-              { key: "mango" as const, icon: "🥭", bg: "bg-white/40" },
+              { key: "medovyk" as const, icon: "🍯", bg: "bg-nb-yellow" },
+              { key: "pistachio" as const, icon: "🌱", bg: "bg-nb-mint" },
+              { key: "caramel" as const, icon: "🍫", bg: "bg-nb-peach" },
+              { key: "mango" as const, icon: "🥭", bg: "bg-nb-pink" },
             ].map((flavor) => (
               <div
                 key={flavor.key}
-                className={`p-8 rounded-[1.75rem] border border-brand-gold/15 shadow-sm hover:shadow-md transition-all duration-300 text-left ${flavor.bg} group flex flex-col justify-between`}
+                className={`p-8 border-3 border-nb-black shadow-[5px_5px_0px_0px_#0D0D0D] text-left hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[7px_7px_0px_0px_#0D0D0D] transition-all duration-150 ${flavor.bg}`}
               >
-                <div>
-                  <span className="text-3xl mb-4 block group-hover:scale-105 transition-transform duration-300 w-fit">
-                    {flavor.icon}
-                  </span>
-                  <h4 className="font-serif text-xl font-bold text-brand-dark mb-2">
-                    {t(`flavors.${flavor.key}.name`)}
-                  </h4>
-                  <p className="font-sans text-xs sm:text-sm text-brand-dark/70 leading-relaxed font-light">
-                    {t(`flavors.${flavor.key}.desc`)}
-                  </p>
-                </div>
+                <span className="text-4xl block mb-4">{flavor.icon}</span>
+                <h3 className="font-mono text-xl font-bold text-nb-black uppercase mb-2">
+                  {t(`flavors.${flavor.key}.name`)}
+                </h3>
+                <p className="font-sans text-sm text-nb-black/75 leading-relaxed">
+                  {t(`flavors.${flavor.key}.desc`)}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Gallery Section */}
-      <section className="py-24 md:py-32 bg-brand-apricot/20 border-y border-brand-gold/10" id="gallery">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="text-center max-w-2xl mx-auto space-y-4 mb-10">
-            <h2 className="font-sans text-[10px] font-bold uppercase tracking-[0.25em] text-brand-terracotta">
-              {t("gallery.title")}
-            </h2>
-            <h3 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-brand-dark">
+      {/* ── GALLERY ── */}
+      <section className="py-20 md:py-28 bg-nb-blue border-b-4 border-nb-black" id="gallery">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="mb-10">
+            <div className="nb-tag bg-nb-black text-nb-yellow w-fit mb-4">{t("gallery.title")}</div>
+            <h2 className="font-mono text-4xl sm:text-5xl font-bold text-nb-black uppercase">
               {t("gallery.subtitle")}
-            </h3>
-            <div className="w-12 h-px bg-brand-terracotta/40 mx-auto"></div>
+            </h2>
           </div>
 
-          {/* Gallery Filter Buttons */}
-          <div className="flex flex-wrap justify-center gap-2 mb-12">
+          {/* Filter tabs */}
+          <div className="flex flex-wrap gap-2 mb-10">
             {[
               { id: "all", label: "All Creations" },
               { id: "wedding", label: t("gallery.wedding") },
@@ -223,10 +190,10 @@ export const Home = (): FunctionComponent => {
             ].map((tab) => (
               <button
                 key={tab.id}
-                className={`px-6 py-2 rounded-full font-sans text-[10px] font-bold tracking-widest uppercase transition-all duration-300 cursor-pointer ${
+                className={`nb-tag cursor-pointer transition-colors duration-100 ${
                   activeCategory === tab.id
-                    ? "bg-brand-terracotta text-white shadow-sm"
-                    : "border border-brand-dark/10 text-brand-dark/70 hover:bg-brand-apricot/40"
+                    ? "bg-nb-black text-nb-yellow"
+                    : "bg-nb-white text-nb-black hover:bg-nb-yellow"
                 }`}
                 onClick={() => { setActiveCategory(tab.id); }}
               >
@@ -235,27 +202,24 @@ export const Home = (): FunctionComponent => {
             ))}
           </div>
 
-          {/* Gallery Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredGallery.map((item) => (
               <div
                 key={item.id}
-                className="group relative overflow-hidden rounded-[1.75rem] border border-brand-gold/15 bg-white shadow-sm hover:shadow-md transition-all duration-300 flex flex-col animate-fade-in"
+                className="nb-card group overflow-hidden animate-fade-in"
               >
-                <div className="overflow-hidden aspect-square relative bg-brand-apricot/20">
+                <div className="overflow-hidden aspect-square border-b-3 border-nb-black">
                   <img
                     alt={item.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     loading="lazy"
                     src={item.image}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
-                <div className="p-6 text-left flex-grow flex flex-col justify-between">
-                  <div>
-                    <h4 className="font-serif text-lg font-bold text-brand-dark">{item.title}</h4>
-                    <p className="font-sans text-xs text-brand-dark/65 mt-1 leading-relaxed font-light">{item.desc}</p>
-                  </div>
+                <div className="p-5 bg-nb-cream">
+                  <h4 className="font-mono text-sm font-bold text-nb-black uppercase">{item.title}</h4>
+                  <p className="font-sans text-xs text-nb-black/60 mt-1 leading-relaxed">{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -263,153 +227,112 @@ export const Home = (): FunctionComponent => {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section className="py-24 md:py-32" id="prices">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="text-center max-w-2xl mx-auto space-y-4 mb-16">
-            <h2 className="font-sans text-[10px] font-bold uppercase tracking-[0.25em] text-brand-terracotta">
-              {t("prices.title")}
-            </h2>
-            <h3 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-brand-dark">
+      {/* ── PRICES ── */}
+      <section className="py-20 md:py-28 border-b-4 border-nb-black" id="prices">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="mb-12">
+            <div className="nb-tag bg-nb-mint w-fit mb-4">{t("prices.title")}</div>
+            <h2 className="font-mono text-4xl sm:text-5xl font-bold text-nb-black uppercase">
               {t("prices.subtitle")}
-            </h3>
-            <div className="w-12 h-px bg-brand-terracotta/40 mx-auto"></div>
+            </h2>
           </div>
-
           <PriceGuideSection />
         </div>
       </section>
 
-      {/* Reviews Section */}
-      <section className="py-24 md:py-32 bg-brand-apricot/20 border-y border-brand-gold/10" id="reviews">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="text-center max-w-2xl mx-auto space-y-4 mb-16">
-            <h2 className="font-sans text-[10px] font-bold uppercase tracking-[0.25em] text-brand-terracotta">
-              {t("reviews.title")}
-            </h2>
-            <h3 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-brand-dark">
+      {/* ── REVIEWS ── */}
+      <section className="py-20 md:py-28 bg-nb-pink border-b-4 border-nb-black" id="reviews">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="mb-12">
+            <div className="nb-tag bg-nb-black text-nb-yellow w-fit mb-4">{t("reviews.title")}</div>
+            <h2 className="font-mono text-4xl sm:text-5xl font-bold text-nb-black uppercase">
               {t("reviews.subtitle")}
-            </h3>
-            <div className="w-12 h-px bg-brand-terracotta/40 mx-auto"></div>
+            </h2>
           </div>
-
           <ReviewsSection />
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-24 md:py-32" id="faq">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="text-center max-w-2xl mx-auto space-y-4 mb-16">
-            <h2 className="font-sans text-[10px] font-bold uppercase tracking-[0.25em] text-brand-terracotta">
-              {t("faq.title")}
-            </h2>
-            <h3 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-brand-dark">
+      {/* ── FAQ ── */}
+      <section className="py-20 md:py-28 border-b-4 border-nb-black" id="faq">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="mb-12">
+            <div className="nb-tag bg-nb-yellow w-fit mb-4">{t("faq.title")}</div>
+            <h2 className="font-mono text-4xl sm:text-5xl font-bold text-nb-black uppercase">
               {t("faq.subtitle")}
-            </h3>
-            <div className="w-12 h-px bg-brand-terracotta/40 mx-auto"></div>
+            </h2>
           </div>
-
           <FaqSection />
         </div>
       </section>
 
-      {/* Inquiry Form Section */}
-      <section className="py-24 md:py-32 bg-brand-apricot/20 border-t border-brand-gold/10" id="inquiry">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="text-center max-w-2xl mx-auto space-y-4 mb-12">
-            <h2 className="font-sans text-[10px] font-bold uppercase tracking-[0.25em] text-brand-terracotta">
-              {t("order.title")}
-            </h2>
-            <h3 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-brand-dark">
+      {/* ── ORDER FORM ── */}
+      <section className="py-20 md:py-28 bg-nb-lilac border-b-4 border-nb-black" id="inquiry">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="mb-12">
+            <div className="nb-tag bg-nb-black text-nb-yellow w-fit mb-4">{t("order.title")}</div>
+            <h2 className="font-mono text-4xl sm:text-5xl font-bold text-nb-black uppercase">
               {t("order.subtitle")}
-            </h3>
-            <div className="w-12 h-px bg-brand-terracotta/40 mx-auto"></div>
+            </h2>
           </div>
-
           <CakeInquiryForm />
         </div>
       </section>
 
-      {/* Footer Section */}
-      <footer className="bg-brand-dark text-brand-linen pt-20 pb-8 border-t border-brand-gold/20">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16 text-left">
-            {/* Brand column */}
-            <div className="space-y-4">
-              <span className="font-serif text-2xl tracking-widest text-brand-linen font-semibold">
-                YEVHENIIA'S
+      {/* ── FOOTER ── */}
+      <footer className="bg-nb-black text-nb-cream pt-16 pb-8">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+            {/* Brand */}
+            <div className="space-y-3">
+              <span className="block font-mono text-2xl font-bold text-nb-yellow uppercase">
+                YEVHENIIA&#39;S
               </span>
-              <p className="font-sans text-[10px] tracking-[0.2em] text-brand-gold uppercase -mt-2 font-bold">
-                Cake Atelier • Bern
-              </p>
-              <p className="font-sans text-xs text-brand-linen/60 leading-relaxed max-w-sm font-light">
+              <span className="block font-mono text-[10px] tracking-[0.2em] text-nb-yellow/70 uppercase">
+                Cake Atelier · Bern
+              </span>
+              <p className="font-sans text-sm text-nb-cream/60 leading-relaxed max-w-sm">
                 {t("footer.tagline")}
               </p>
             </div>
 
-            {/* Contact details */}
+            {/* Contact */}
             <div className="space-y-4">
-              <h4 className="font-serif text-lg font-light tracking-wider text-brand-linen">
-                {t("nav.contact")}
-              </h4>
-              <ul className="space-y-3 font-sans text-xs sm:text-sm text-brand-linen/70 font-light">
+              <h4 className="font-mono text-lg font-bold text-nb-yellow uppercase">{t("nav.contact")}</h4>
+              <ul className="space-y-3 font-sans text-sm text-nb-cream/70">
                 <li className="flex items-center gap-3">
-                  <MapPinIcon className="h-5 w-5 text-brand-gold flex-shrink-0" />
+                  <MapPinIcon className="h-5 w-5 text-nb-yellow flex-shrink-0" />
                   <span>Bern, Switzerland</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <EnvelopeIcon className="h-5 w-5 text-brand-gold flex-shrink-0" />
-                  <a className="hover:text-brand-gold transition-colors" href="mailto:yevheniia@cakeatelier.ch">
+                  <EnvelopeIcon className="h-5 w-5 text-nb-yellow flex-shrink-0" />
+                  <a className="hover:text-nb-yellow transition-colors" href="mailto:yevheniia@cakeatelier.ch">
                     yevheniia@cakeatelier.ch
                   </a>
                 </li>
                 <li className="flex items-center gap-3">
-                  <PhoneIcon className="h-5 w-5 text-brand-gold flex-shrink-0" />
-                  <a className="hover:text-brand-gold transition-colors" href="tel:+41790000000">
+                  <PhoneIcon className="h-5 w-5 text-nb-yellow flex-shrink-0" />
+                  <a className="hover:text-nb-yellow transition-colors" href="tel:+41790000000">
                     +41 79 000 00 00
                   </a>
                 </li>
               </ul>
             </div>
 
-            {/* Custom styled map placeholder representing the premium brand */}
+            {/* Map placeholder */}
             <div className="space-y-4">
-              <h4 className="font-serif text-lg font-light tracking-wider text-brand-linen">
-                Location
-              </h4>
-              <div className="w-full h-36 bg-white/5 rounded-[1.25rem] border border-brand-gold/10 overflow-hidden relative group">
-                {/* Clean minimalist abstract map background */}
-                <div className="absolute inset-0 bg-stone-900 flex items-center justify-center">
-                  {/* Decorative map lines */}
-                  <div className="absolute inset-0 opacity-15">
-                    <svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
-                      <line stroke="white" strokeWidth="1" x1="0" x2="300" y1="30" y2="30" />
-                      <line stroke="white" strokeWidth="1" x1="50" x2="50" y1="0" y2="150" />
-                      <line stroke="white" strokeWidth="1" x1="120" x2="120" y1="0" y2="150" />
-                      <line stroke="white" strokeWidth="1" x1="0" x2="300" y1="100" y2="100" />
-                      <circle cx="120" cy="100" fill="none" r="40" stroke="white" strokeWidth="1" />
-                    </svg>
-                  </div>
-                  <div className="relative text-center p-4">
-                    <MapPinIcon className="h-8 w-8 text-brand-gold mx-auto mb-1 animate-bounce" />
-                    <span className="block font-sans text-xs font-semibold text-brand-linen/80 tracking-wider">
-                      Atelier in Bern
-                    </span>
-                    <span className="block font-sans text-[10px] text-brand-linen/50 mt-0.5">
-                      Collection by appointment
-                    </span>
-                  </div>
-                </div>
+              <h4 className="font-mono text-lg font-bold text-nb-yellow uppercase">Location</h4>
+              <div className="border-3 border-nb-yellow bg-nb-black/50 p-6 flex flex-col items-center justify-center gap-2 shadow-[4px_4px_0px_0px_#FFE566]">
+                <MapPinIcon className="h-10 w-10 text-nb-yellow animate-bounce" />
+                <span className="font-mono text-xs font-bold text-nb-yellow uppercase tracking-wider">Atelier in Bern</span>
+                <span className="font-mono text-[10px] text-nb-cream/50">Collection by appointment</span>
               </div>
             </div>
           </div>
 
-          {/* Bottom Copyright */}
-          <div className="pt-8 border-t border-brand-gold/10 text-center font-sans text-xs text-brand-linen/40">
-            <p>
-              &copy; {new Date().getFullYear()} Yevheniia's Cake Atelier. {t("footer.rights")}
-            </p>
+          {/* Copyright */}
+          <div className="pt-8 border-t-2 border-nb-cream/20 text-center font-mono text-xs text-nb-cream/40 uppercase">
+            <p>&copy; {new Date().getFullYear()} Yevheniia&#39;s Cake Atelier. {t("footer.rights")}</p>
           </div>
         </div>
       </footer>

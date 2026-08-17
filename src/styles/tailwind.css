@@ -1,89 +1,120 @@
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Outfit:wght@400;500;600;700;800;900&display=swap");
 @import "tailwindcss";
 
 @theme {
-  /* Warm, clean, organic pastel colors for a bespoke boutique bakery vibe */
-  --color-brand-linen: #FAF7F2;      /* Off-white, soft paper-like background */
-  --color-brand-apricot: #F7EBE1;    /* Very soft warm peach cream */
-  --color-brand-blush: #F4E3DC;      /* Delicate blush cream */
-  --color-brand-clay: #DCA58F;       /* Mid-tone warm terracotta */
-  --color-brand-terracotta: #A45C40; /* Accent deep warm rust/clay */
-  --color-brand-dark: #2F2522;       /* Charcoal espresso for soft readable text */
-  --color-brand-gold: #C5A073;       /* Warm bronze gold */
+  /* Neubrutalist palette */
+  --color-nb-cream:  #FFFBF0;   /* warm parchment background */
+  --color-nb-yellow: #FFE566;   /* punchy sunshine yellow */
+  --color-nb-pink:   #FF9EB5;   /* bubblegum pink */
+  --color-nb-mint:   #A8F0C6;   /* fresh mint green */
+  --color-nb-lilac:  #D4B8F0;   /* soft lavender */
+  --color-nb-peach:  #FFD4B8;   /* soft peach/apricot */
+  --color-nb-blue:   #B8DCFF;   /* sky blue */
+  --color-nb-black:  #0D0D0D;   /* near-pure black for borders/text */
+  --color-nb-white:  #FFFFFF;   /* pure white */
 
-  --font-serif: "Cormorant Garamond", "Didot", "Georgia", serif;
+  --font-mono: "Space Mono", "Courier New", monospace;
   --font-sans: "Outfit", "Inter", sans-serif;
 
-  --animate-fade-in: fade-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  --animate-fade-in-up: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  --animate-scale-in: scale-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-fade-in: fade-in 0.5s ease forwards;
+  --animate-fade-in-up: fade-in-up 0.6s ease forwards;
 
   @keyframes fade-in {
     from { opacity: 0; }
     to { opacity: 1; }
   }
   @keyframes fade-in-up {
-    from {
-      opacity: 0;
-      transform: translateY(16px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  @keyframes scale-in {
-    from {
-      opacity: 0;
-      transform: scale(0.96);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 }
 
-/* Custom premium styles */
-.boutique-card {
-  background-color: #ffffff;
-  border: 1px solid rgba(197, 160, 115, 0.15); /* very light gold border */
-  box-shadow: 0 4px 20px -2px rgba(47, 37, 34, 0.02);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+/* ——— Neubrutalist Utility Classes ——— */
+
+/* Cards: thick border + flat dropshadow */
+.nb-card {
+  background-color: #FFFFFF;
+  border: 3px solid #0D0D0D;
+  box-shadow: 6px 6px 0px 0px #0D0D0D;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.boutique-card:hover {
-  border-color: rgba(164, 92, 64, 0.3); /* brand-terracotta */
-  box-shadow: 0 10px 30px -4px rgba(47, 37, 34, 0.04);
+.nb-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0px 0px #0D0D0D;
 }
 
-.input-boutique {
-  background-color: #ffffff;
-  border: 1px solid rgba(47, 37, 34, 0.12);
-  border-radius: 0.75rem;
+.nb-card:active {
+  transform: translate(2px, 2px);
+  box-shadow: 4px 4px 0px 0px #0D0D0D;
+}
+
+/* Inputs */
+.nb-input {
+  background-color: #FFFFFF;
+  border: 2.5px solid #0D0D0D;
+  border-radius: 0;
   padding: 0.75rem 1rem;
   font-size: 0.875rem;
-  color: #2F2522;
-  transition: all 0.2s ease-in-out;
+  color: #0D0D0D;
+  font-family: "Outfit", sans-serif;
+  transition: box-shadow 0.15s ease;
+  width: 100%;
 }
 
-.input-boutique:focus {
+.nb-input:focus {
   outline: none;
-  border-color: #A45C40;
-  box-shadow: 0 0 0 2px rgba(164, 92, 64, 0.08);
+  box-shadow: 4px 4px 0px 0px #0D0D0D;
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
+/* Buttons */
+.nb-btn {
+  border: 3px solid #0D0D0D;
+  box-shadow: 4px 4px 0px 0px #0D0D0D;
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.75rem 1.75rem;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  display: inline-block;
+  cursor: pointer;
 }
-::-webkit-scrollbar-track {
-  background: #FAF7F2;
+
+.nb-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px 0px #0D0D0D;
 }
-::-webkit-scrollbar-thumb {
-  background: #C5A073;
-  border-radius: 3px;
+
+.nb-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px 0px #0D0D0D;
 }
-::-webkit-scrollbar-thumb:hover {
-  background: #A45C40;
+
+/* Tag / badge chips */
+.nb-tag {
+  border: 2px solid #0D0D0D;
+  font-family: "Space Mono", monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.3rem 0.75rem;
+  display: inline-flex;
+  align-items: center;
 }
+
+/* Section divider */
+.nb-divider {
+  height: 3px;
+  background-color: #0D0D0D;
+  width: 3rem;
+  display: block;
+  margin: 0.75rem 0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #FFFBF0; }
+::-webkit-scrollbar-thumb { background: #0D0D0D; }
+::-webkit-scrollbar-thumb:hover { background: #333; }

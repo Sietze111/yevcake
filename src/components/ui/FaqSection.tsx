@@ -1,10 +1,10 @@
-import { useTranslation } from "react-i18next";
+﻿import { useTranslation } from "react-i18next";
 import {
 	Disclosure,
 	DisclosureButton,
 	DisclosurePanel,
 } from "@headlessui/react";
-import { ChevronDownIcon } from "@heroicons/react/24/outline";
+import { PlusIcon, MinusIcon } from "@heroicons/react/24/outline";
 import type { FunctionComponent } from "../../common/types";
 
 export const FaqSection = (): FunctionComponent => {
@@ -18,24 +18,24 @@ export const FaqSection = (): FunctionComponent => {
 	];
 
 	return (
-		<div className="w-full max-w-3xl mx-auto space-y-4">
+		<div className="w-full max-w-3xl space-y-3">
 			{faqs.map((faq, index) => (
 				<Disclosure
 					key={index}
 					as="div"
-					className="glass-panel rounded-2xl border border-brand-gold/15 overflow-hidden transition-all duration-200"
+					className="border-3 border-nb-black shadow-[4px_4px_0px_0px_#0D0D0D]"
 				>
 					{({ open }) => (
 						<>
-							<DisclosureButton className="flex w-full justify-between items-center px-6 py-5 text-left font-serif text-base sm:text-lg font-semibold text-brand-dark hover:bg-brand-champagne/20 transition-all duration-300 cursor-pointer">
+							<DisclosureButton className={`flex w-full justify-between items-center px-6 py-5 text-left font-mono text-sm font-bold text-nb-black uppercase tracking-wide cursor-pointer transition-colors duration-100 ${open ? "bg-nb-yellow" : "bg-nb-white hover:bg-nb-yellow"}`}>
 								<span>{faq.q}</span>
-								<ChevronDownIcon
-									className={`h-5 w-5 text-brand-accent transition-transform duration-300 ${
-										open ? "transform rotate-180" : ""
-									}`}
-								/>
+								{open ? (
+									<MinusIcon className="h-5 w-5 text-nb-black flex-shrink-0" />
+								) : (
+									<PlusIcon className="h-5 w-5 text-nb-black flex-shrink-0" />
+								)}
 							</DisclosureButton>
-							<DisclosurePanel className="px-6 pb-5 pt-1 font-sans text-sm text-brand-dark/75 leading-relaxed border-t border-brand-gold/5">
+							<DisclosurePanel className="px-6 pb-5 pt-4 font-sans text-sm text-nb-black/80 leading-relaxed border-t-2 border-nb-black bg-nb-cream">
 								{faq.a}
 							</DisclosurePanel>
 						</>

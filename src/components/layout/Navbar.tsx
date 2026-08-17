@@ -22,8 +22,8 @@ export const Navbar = (): FunctionComponent => {
 	const languages = [
 		{ code: "de", label: "Deutsch" },
 		{ code: "en", label: "English" },
-		{ code: "ru", label: "Русский" },
-		{ code: "uk", label: "Українська" },
+		{ code: "ru", label: "\u0420\u0443\u0441\u0441\u043a\u0438\u0439" },
+		{ code: "uk", label: "\u0423\u043a\u0440\u0430\u0457\u043d\u0441\u044c\u043a\u0430" },
 	];
 
 	const currentLanguage = languages.find(
@@ -46,45 +46,41 @@ export const Navbar = (): FunctionComponent => {
 	];
 
 	return (
-		<nav className="fixed top-0 left-0 right-0 z-50 glass-panel shadow-sm transition-all duration-300">
+		<nav className="fixed top-0 left-0 right-0 z-50 bg-nb-yellow border-b-4 border-nb-black shadow-[0_4px_0px_0px_#0D0D0D]">
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-				<div className="flex justify-between h-20">
-					{/* Logo / Branding */}
+				<div className="flex justify-between h-16">
 					<div className="flex-shrink-0 flex items-center">
-						<a className="flex flex-col" href="#home">
-							<span className="font-serif text-2xl tracking-widest text-brand-dark font-semibold">
-								YEVHENIIA'S
+						<a className="flex flex-col leading-none" href="#home">
+							<span className="font-mono text-xl font-bold tracking-tight text-nb-black uppercase">
+								{"YEVHENIIA'S"}
 							</span>
-							<span className="font-sans text-[10px] tracking-[0.25em] text-brand-accent uppercase -mt-1 font-semibold">
-								Cake Atelier • Bern
+							<span className="font-mono text-[9px] tracking-[0.15em] text-nb-black/70 uppercase">
+								Cake Atelier &middot; Bern
 							</span>
 						</a>
 					</div>
 
-					{/* Desktop Navigation */}
-					<div className="hidden md:flex items-center space-x-8">
+					<div className="hidden md:flex items-center gap-1">
 						{navLinks.map((link) => (
 							<a
 								key={link.href}
-								className="font-sans text-sm tracking-wide text-brand-dark/80 hover:text-brand-gold transition-colors duration-200 uppercase font-medium"
+								className="font-mono text-[10px] font-bold tracking-wider text-nb-black uppercase px-3 py-1.5 hover:bg-nb-black hover:text-nb-yellow transition-colors duration-100 border border-transparent hover:border-nb-black"
 								href={link.href}
 							>
 								{link.label}
 							</a>
 						))}
 
-						{/* Language Selector Dropdown */}
-						<Menu as="div" className="relative inline-block text-left">
+						<Menu as="div" className="relative inline-block text-left ml-2">
 							<div>
-								<MenuButton className="inline-flex items-center justify-center gap-x-1.5 rounded-full px-3 py-1.5 text-xs font-semibold text-brand-dark/95 shadow-sm ring-1 ring-brand-gold/30 hover:bg-brand-champagne/40 transition-all duration-200">
+								<MenuButton className="nb-tag bg-nb-pink hover:bg-nb-black hover:text-nb-yellow transition-colors cursor-pointer gap-1.5">
 									<GlobeAltIcon
 										aria-hidden="true"
-										className="-ml-0.5 h-4 w-4 text-brand-accent"
+										className="h-3 w-3"
 									/>
-									{currentLanguage.label}
+									{currentLanguage.code.toUpperCase()}
 								</MenuButton>
 							</div>
-
 							<Transition
 								enter="transition ease-out duration-100"
 								enterFrom="transform opacity-0 scale-95"
@@ -93,17 +89,13 @@ export const Navbar = (): FunctionComponent => {
 								leaveFrom="transform opacity-100 scale-100"
 								leaveTo="transform opacity-0 scale-95"
 							>
-								<MenuItems className="absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-xl bg-white shadow-lg ring-1 ring-black/5 focus:outline-none overflow-hidden">
+								<MenuItems className="absolute right-0 z-10 mt-2 w-40 origin-top-right bg-nb-cream border-2 border-nb-black shadow-[4px_4px_0px_0px_#0D0D0D] focus:outline-none">
 									<div className="py-1">
 										{languages.map((lang) => (
 											<MenuItem key={lang.code}>
 												{({ active }) => (
 													<button
-														className={`${
-															active
-																? "bg-brand-champagne/50 text-brand-accent"
-																: "text-brand-dark"
-														} block w-full text-left px-4 py-2 text-xs font-semibold`}
+														className={active ? "bg-nb-yellow text-nb-black block w-full text-left px-4 py-2 font-mono text-xs font-bold uppercase tracking-wide" : "text-nb-black block w-full text-left px-4 py-2 font-mono text-xs font-bold uppercase tracking-wide"}
 														onClick={() => handleLanguageChange(lang.code)}
 													>
 														{lang.label}
@@ -117,16 +109,12 @@ export const Navbar = (): FunctionComponent => {
 						</Menu>
 					</div>
 
-					{/* Mobile hamburger menu toggle */}
-					<div className="flex items-center md:hidden gap-4">
-						{/* Language Selector in Mobile Header */}
+					<div className="flex items-center md:hidden gap-2">
 						<Menu as="div" className="relative inline-block text-left">
 							<div>
-								<MenuButton className="inline-flex items-center gap-x-1 rounded-full p-1.5 text-xs text-brand-dark shadow-sm ring-1 ring-brand-gold/30">
-									<GlobeAltIcon className="h-4 w-4 text-brand-accent" />
-									<span className="uppercase text-[10px] font-bold">
-										{currentLanguage.code}
-									</span>
+								<MenuButton className="nb-tag bg-nb-pink cursor-pointer gap-1">
+									<GlobeAltIcon className="h-3 w-3" />
+									<span className="uppercase">{currentLanguage.code}</span>
 								</MenuButton>
 							</div>
 							<Transition
@@ -137,17 +125,13 @@ export const Navbar = (): FunctionComponent => {
 								leaveFrom="transform opacity-100 scale-100"
 								leaveTo="transform opacity-0 scale-95"
 							>
-								<MenuItems className="absolute right-0 z-10 mt-2 w-32 origin-top-right rounded-lg bg-white shadow-lg ring-1 ring-black/5 focus:outline-none">
+								<MenuItems className="absolute right-0 z-10 mt-2 w-36 origin-top-right bg-nb-cream border-2 border-nb-black shadow-[4px_4px_0px_0px_#0D0D0D] focus:outline-none">
 									<div className="py-1">
 										{languages.map((lang) => (
 											<MenuItem key={lang.code}>
 												{({ active }) => (
 													<button
-														className={`${
-															active
-																? "bg-brand-champagne/50 text-brand-accent"
-																: "text-brand-dark"
-														} block w-full text-left px-3 py-1.5 text-xs font-semibold`}
+														className={active ? "bg-nb-yellow text-nb-black block w-full text-left px-3 py-2 font-mono text-xs font-bold uppercase" : "text-nb-black block w-full text-left px-3 py-2 font-mono text-xs font-bold uppercase"}
 														onClick={() => handleLanguageChange(lang.code)}
 													>
 														{lang.label}
@@ -161,29 +145,28 @@ export const Navbar = (): FunctionComponent => {
 						</Menu>
 
 						<button
-							className="inline-flex items-center justify-center p-2 rounded-md text-brand-dark hover:bg-brand-champagne/30 focus:outline-none"
+							className="border-2 border-nb-black p-1.5 hover:bg-nb-black hover:text-nb-yellow transition-colors"
 							onClick={() => {
 								setMobileMenuOpen(!mobileMenuOpen);
 							}}
 						>
 							{mobileMenuOpen ? (
-								<XMarkIcon aria-hidden="true" className="block h-6 w-6" />
+								<XMarkIcon aria-hidden="true" className="block h-5 w-5" />
 							) : (
-								<Bars3Icon aria-hidden="true" className="block h-6 w-6" />
+								<Bars3Icon aria-hidden="true" className="block h-5 w-5" />
 							)}
 						</button>
 					</div>
 				</div>
 			</div>
 
-			{/* Mobile Menu Panel */}
 			{mobileMenuOpen && (
-				<div className="md:hidden glass-panel border-t border-brand-gold/20 shadow-md">
-					<div className="px-2 pt-2 pb-4 space-y-1 sm:px-3">
+				<div className="md:hidden bg-nb-yellow border-t-4 border-nb-black">
+					<div className="px-2 pt-2 pb-4 space-y-0.5">
 						{navLinks.map((link) => (
 							<a
 								key={link.href}
-								className="block px-3 py-2.5 rounded-md text-base font-medium text-brand-dark hover:bg-brand-champagne/40 hover:text-brand-gold transition-all"
+								className="block px-4 py-2.5 font-mono text-sm font-bold text-nb-black uppercase tracking-wide hover:bg-nb-black hover:text-nb-yellow transition-colors"
 								href={link.href}
 								onClick={() => {
 									setMobileMenuOpen(false);
