@@ -1,0 +1,157 @@
+{
+  "nav": {
+    "home": "Atelier",
+    "about": "About Yevheniia",
+    "flavors": "Menu",
+    "gallery": "Creations",
+    "prices": "Prices",
+    "faq": "FAQ",
+    "reviews": "Reviews",
+    "order": "Order Inquiry",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Bespoke Cake Artistry in Bern",
+    "subtitle": "Individually handcrafted cakes & fine pastries for your special moments – created with love and care by Yevheniia.",
+    "cta": "Inquire Now"
+  },
+  "about": {
+    "title": "A Love for Baking that Speaks All Languages",
+    "subtitle": "Meet the Baker",
+    "p1": "Hello, I am Yevheniia. Born on October 19, 1993, in Ukraine, my passion for fine pastry and custom baking blossomed early in my family kitchen. To me, baking is not just a profession, but a delicate form of art – a way to craft sweet memories for lifetime milestones.",
+    "p2": "Today, I bake in my warm, aesthetic studio in Bern, Switzerland. Here, I combine my beloved Ukrainian baking heritage and traditional family recipes with modern Swiss quality and the finest organic, local ingredients. Every single cake is an individual masterpiece designed around your theme and flavors.",
+    "experience": "Years of Passion",
+    "cakesCreated": "Cake Dreams"
+  },
+  "flavors": {
+    "title": "Our Signature Flavors",
+    "subtitle": "Carefully selected sponge and filling combinations for ultimate taste",
+    "medovyk": {
+      "name": "Classic Medovyk",
+      "desc": "A traditional Ukrainian specialty. Multi-layered honey biscuit sheets baked to perfection, filled with a light and refreshing sour cream frosting. Delightfully soft."
+    },
+    "pistachio": {
+      "name": "Pistachio & Raspberry",
+      "desc": "Fragrant and moist pistachio sponge, paired with vibrant, tart raspberry coulis and a smooth pistachio mascarpone cream."
+    },
+    "caramel": {
+      "name": "Salted Caramel Crunch",
+      "desc": "Deep chocolate sponge filled with our homemade liquid salted caramel, hazelnut praline crunch, and chocolate mousse."
+    },
+    "mango": {
+      "name": "Mango Passionfruit Dream",
+      "desc": "Fluffy vanilla sponge cake layered with a tropical mango and passionfruit cream, covered with vanilla cream cheese frosting."
+    }
+  },
+  "gallery": {
+    "title": "Creations Gallery",
+    "subtitle": "Browse through our custom cakes created in Bern",
+    "wedding": "Wedding Cakes",
+    "birthday": "Birthdays & Events",
+    "bento": "Bento & Cupcakes"
+  },
+  "prices": {
+    "title": "Pricing Guide",
+    "subtitle": "Average pricing estimates for our custom artisanal creations",
+    "startingFrom": "from",
+    "perPortion": "per serving",
+    "wedding": {
+      "name": "Tiered Wedding Cakes",
+      "desc": "Elegant multi-tiered wedding cakes decorated to match your wedding flowers and theme. Consultation included.",
+      "price": "CHF 12.00"
+    },
+    "celebration": {
+      "name": "Birthday & Celebration Cakes",
+      "desc": "Custom themed cakes for birthdays, anniversaries, or corporate gatherings. Artfully detailed.",
+      "price": "CHF 9.50"
+    },
+    "bento": {
+      "name": "Bento Cakes (Mini Cakes)",
+      "desc": "Cute mini cakes (approx. 10cm) serving 2-3 people. Packed in an eco-box with a wooden spoon and candle.",
+      "price": "CHF 35.00"
+    },
+    "cupcakes": {
+      "name": "Premium Cupcakes & Macarons",
+      "desc": "Beautifully piped cupcakes with gourmet fillings, or authentic handmade French macarons.",
+      "price": "CHF 4.50"
+    },
+    "note": "* Final prices depend entirely on complexity of design and manual sugar-sculpting/flower detail requirements."
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Important info about orders, logistics, and ingredients",
+    "q1": "How far in advance should I place my order?",
+    "a1": "For wedding cakes, we recommend ordering 2-3 months in advance. For standard celebration cakes and bento cakes, please send your request at least 7-14 days prior to your preferred date.",
+    "q2": "Do you deliver your cakes?",
+    "a2": "Yes, we offer delivery for large wedding and corporate cakes in Bern and the surrounding regions (fees depend on distance). Small cakes and bento cakes are to be picked up at our Bern studio.",
+    "q3": "Do you offer gluten-free, lactose-free or vegan options?",
+    "a3": "Yes, most of our flavors can be prepared gluten-free, lactose-free, or vegan. Please note your requirements clearly in our order inquiry form.",
+    "q4": "What is the payment policy?",
+    "a4": "To secure your slot, we require a 50% deposit after design details are finalized. The remaining 50% is due prior to pickup or delivery via Twint or bank transfer."
+  },
+  "reviews": {
+    "title": "Kind Words from Happy Clients",
+    "subtitle": "Reviews from our sweet community in Switzerland",
+    "r1": {
+      "name": "Sarah & Thomas B.",
+      "location": "Köniz, Bern",
+      "text": "Yevheniia made the most beautiful wedding cake for us! It was absolutely stunning and tasted so light and delicious. All our guests complimented it."
+    },
+    "r2": {
+      "name": "Olena L.",
+      "location": "Bern",
+      "text": "The Medovyk honey cake tastes exactly like the ones I had in my childhood back in Ukraine. Incredibly moist and perfectly balanced. Highly recommended!"
+    },
+    "r3": {
+      "name": "Maja V.",
+      "location": "Zollikofen",
+      "text": "Ordered a custom bento cake for my best friend's birthday. The lettering was perfect and the pistachio-raspberry flavor was simply heaven."
+    }
+  },
+  "order": {
+    "title": "Inquire About Your Cake",
+    "subtitle": "Tell us about your event details and we will get back to you with a custom quote",
+    "step1": "Event & Flavors",
+    "step2": "Date & Logistics",
+    "step3": "Contact Details",
+    "occasion": "Occasion / Event Type",
+    "occasionPlaceholder": "Select the occasion",
+    "occasionWedding": "Wedding",
+    "occasionBirthday": "Birthday",
+    "occasionBento": "Bento Cake",
+    "occasionOther": "Other Occasion",
+    "servings": "Number of Servings (Eaters)",
+    "date": "Desired Date",
+    "deliveryType": "Logistics Type",
+    "pickup": "Pickup at Bern Studio",
+    "delivery": "Delivery in Bern Region",
+    "timeSlot": "Preferred Pickup/Delivery Time",
+    "timeSlotPlaceholder": "Select a time slot",
+    "flavor": "Flavor Selection",
+    "flavorPlaceholder": "Choose your filling",
+    "dietary": "Dietary Requirements",
+    "dietaryGlutenFree": "Gluten-Free",
+    "dietaryLactoseFree": "Lactose-Free",
+    "dietaryVegan": "Vegan",
+    "dietaryNutFree": "Nut-Free",
+    "inscription": "Inscription / Cake Writing",
+    "inscriptionPlaceholder": "e.g., 'Happy Birthday Sophie!'",
+    "designTheme": "Color Scheme & Design Vision",
+    "designThemePlaceholder": "e.g., pastel tones, boho theme, fresh eucalyptus...",
+    "referenceImages": "Design Inspiration Images",
+    "referenceImagesDesc": "Drag & drop reference photos here, or click to browse",
+    "name": "Full Name",
+    "email": "Email Address",
+    "phone": "Phone Number",
+    "additionalNotes": "Additional Requests & Comments",
+    "additionalNotesPlaceholder": "Questions, delivery address (if delivery), special requests...",
+    "submit": "Submit Order Inquiry",
+    "success": "Inquiry Submitted Successfully!",
+    "successDesc": "Thank you so much for your trust. Yevheniia will review your cake details and get back to you by email within 24-48 hours."
+  },
+  "footer": {
+    "tagline": "Bespoke cake designer based in Bern.",
+    "address": "Bern, Switzerland",
+    "rights": "All rights reserved."
+  }
+}

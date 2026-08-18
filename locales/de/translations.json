@@ -1,0 +1,157 @@
+{
+  "nav": {
+    "home": "Atelier",
+    "about": "Über Yevheniia",
+    "flavors": "Menü",
+    "gallery": "Kreationen",
+    "prices": "Preise",
+    "faq": "Fragen",
+    "reviews": "Stimmen",
+    "order": "Bestellanfrage",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "title": "Süsse Kunstwerke, handgemacht in Bern",
+    "subtitle": "Einzigartige Torten-Kreationen & edle Desserts für Ihre schönsten Feiern – mit Liebe und Meisterhand gefertigt von Yevheniia.",
+    "cta": "Jetzt anfragen"
+  },
+  "about": {
+    "title": "Liebe zum Backen, die verbindet",
+    "subtitle": "Hinter den Kulissen",
+    "p1": "Hallo, ich bin Yevheniia. Geboren am 19. Oktober 1993 in der Ukraine, habe ich meine Leidenschaft für feine Tortenkunst schon früh in der heimischen Küche entdeckt. Für mich ist das Backen kein reines Handwerk, sondern eine Form der Kunst – die Magie, aus besten Zutaten Erinnerungen zu schaffen.",
+    "p2": "Heute backe ich in meinem gemütlichen Atelier in der wunderschönen Stadt Bern in der Schweiz. Ich kombiniere mit grosser Hingabe meine ukrainischen Backtraditionen und traditionellen Familienrezepte mit moderner Schweizer Präzision und erstklassigen, regionalen Bio-Zutaten. Jede Torte ist ein ganz persönliches Kunstwerk, das individuell auf Ihre Feier abgestimmt wird.",
+    "experience": "Jahre Erfahrung",
+    "cakesCreated": "Torten-Träume"
+  },
+  "flavors": {
+    "title": "Unsere Signature-Füllungen",
+    "subtitle": "Fein abgestimmte Rezepturen für unvergesslichen Genuss",
+    "medovyk": {
+      "name": "Klassischer Medovyk",
+      "desc": "Der traditionelle ukrainische Honigkuchen. Zarte, luftige Honigschichten gefüllt mit einer leichten, erfrischenden Sauerrahm-Creme. Ein echter Seelenschmeichler."
+    },
+    "pistachio": {
+      "name": "Pistazie & Himbeere",
+      "desc": "Saftiger Pistazien-Biskuitboden, kombiniert mit fruchtigem Himbeer-Gelee und einer samtigen Mascarpone-Creme mit echten gemahlenen Pistazien."
+    },
+    "caramel": {
+      "name": "Salted Caramel Crunch",
+      "desc": "Dunkler, schokoladiger Biskuit gefüllt mit unserem hausgemachten, flüssigen gesalzenen Karamell, knackigem Krokant und luftiger Schoko-Mousse."
+    },
+    "mango": {
+      "name": "Mango-Passionsfrucht-Traum",
+      "desc": "Ein heller Vanille-Biskuitboden mit einer erfrischenden, tropischen Füllung aus Mango und Passionsfrucht, umhüllt von einer leichten Frischkäse-Creme."
+    }
+  },
+  "gallery": {
+    "title": "Galerie unserer Kreationen",
+    "subtitle": "Impressionen aus unserem Zuckeratelier in Bern",
+    "wedding": "Hochzeitstorten",
+    "birthday": "Geburtstage & Feste",
+    "bento": "Bento & Cupcakes"
+  },
+  "prices": {
+    "title": "Preise & Portionen",
+    "subtitle": "Eine Übersicht unserer massgeschneiderten Angebote",
+    "startingFrom": "ab",
+    "perPortion": "pro Portion",
+    "wedding": {
+      "name": "Mehrstöckige Hochzeitstorten",
+      "desc": "Filigrane, elegante Hochzeitstorten, komplett auf Ihr Farbkonzept und Ihre Blumen abgestimmt. Inklusive Beratungsgespräch.",
+      "price": "CHF 12.00"
+    },
+    "celebration": {
+      "name": "Geburtstags- & Eventtorten",
+      "desc": "Individuelle Thementorten für Geburtstage, Babypartys oder Firmenjubiläen. Kunstvoll verziert.",
+      "price": "CHF 9.50"
+    },
+    "bento": {
+      "name": "Bento-Torten (Mini-Torten)",
+      "desc": "Kleine, feine Mini-Torten (ca. 10 cm) für 2-3 Personen. Verpackt in einer süssen Box mit Holzlöffel und Kerze.",
+      "price": "CHF 35.00"
+    },
+    "cupcakes": {
+      "name": "Premium Cupcakes & Macarons",
+      "desc": "Liebevoll dekorierte Cupcakes mit feinen Füllungen und Toppings oder handgemachte französische Macarons.",
+      "price": "CHF 4.50"
+    },
+    "note": "* Die finalen Preise variieren je nach Aufwand der Handarbeit (z. B. handmodellierte Figuren, Echtblumen-Deko)."
+  },
+  "faq": {
+    "title": "Fragen & Antworten",
+    "subtitle": "Alles Wichtige rund um Ihre Bestellung",
+    "q1": "Wie weit im Voraus sollte ich meine Torte bestellen?",
+    "a1": "Um sicherzugehen, dass Ihr Wunschtermin noch frei ist, sollten Sie Hochzeitstorten 2-3 Monate im Voraus reservieren. Für Geburtstagstorten und Bento-Torten benötigen wir mindestens 7-14 Tage Vorlaufzeit.",
+    "q2": "Liefern Sie die Torten auch aus?",
+    "a2": "Ja, grosse Hochzeitstorten und Eventtorten liefern wir gerne direkt zur Location in Bern und Umgebung (gegen Aufpreis). Kleinere Torten und Bento-Torten können direkt nach Vereinbarung in unserem Atelier abgeholt werden.",
+    "q3": "Bieten Sie auch vegane oder glutenfreie Torten an?",
+    "a3": "Ja, viele unserer Rezepturen können glutenfrei, laktosefrei oder vegan zubereitet werden. Bitte vermerken Sie diese Wünsche unbedingt in unserem Anfrageformular.",
+    "q4": "Wie läuft der Bestell- und Zahlungsprozess ab?",
+    "a4": "Nachdem Sie das Anfrageformular ausgefüllt haben, melden wir uns per E-Mail bei Ihnen. Nach Bestätigung des Designs ist eine Anzahlung von 50% fällig, um Ihren Termin fest zu reservieren."
+  },
+  "reviews": {
+    "title": "Glückliche Kunden",
+    "subtitle": "Stimmen aus Bern und der ganzen Schweiz",
+    "r1": {
+      "name": "Sarah & Thomas B.",
+      "location": "Köniz, Bern",
+      "text": "Yevheniia hat uns eine wunderschöne Hochzeitstorte kreiert! Sie sah aus wie ein Traum und schmeckte herrlich leicht und fruchtig. Alle Gäste waren begeistert."
+    },
+    "r2": {
+      "name": "Olena L.",
+      "location": "Bern",
+      "text": "Der Medovyk schmeckt exakt so gut, wie ich ihn aus meiner Kindheit kenne. Sehr saftig und perfekt gesüsst. Vielen Dank für dieses Stück Heimat!"
+    },
+    "r3": {
+      "name": "Maja V.",
+      "location": "Zollikofen",
+      "text": "Ich habe eine Bento-Torte für den Geburtstag meiner Freundin bestellt. Das Design war zuckersüss und genau so, wie ich es mir vorgestellt hatte. Geschmacklich top!"
+    }
+  },
+  "order": {
+    "title": "Torte online anfragen",
+    "subtitle": "Erzählen Sie uns von Ihrem Anlass – wir melden uns mit einer Offerte",
+    "step1": "Der Anlass & Geschmack",
+    "step2": "Datum & Übergabe",
+    "step3": "Ihre Kontaktdaten",
+    "occasion": "Anlass / Event",
+    "occasionPlaceholder": "Wählen Sie den Anlass",
+    "occasionWedding": "Hochzeit",
+    "occasionBirthday": "Geburtstag",
+    "occasionBento": "Bento-Torte",
+    "occasionOther": "Anderer Anlass",
+    "servings": "Portionen (Anzahl Esser)",
+    "date": "Gewünschtes Datum",
+    "deliveryType": "Übergabe-Art",
+    "pickup": "Abholung im Atelier (Bern)",
+    "delivery": "Lieferung (in Region Bern)",
+    "timeSlot": "Gewünschte Uhrzeit (Abholung/Lieferung)",
+    "timeSlotPlaceholder": "Wählen Sie ein Zeitfenster",
+    "flavor": "Geschmacksrichtung",
+    "flavorPlaceholder": "Wählen Sie Ihre Füllung",
+    "dietary": "Besondere Ernährungsbedürfnisse",
+    "dietaryGlutenFree": "Glutenfrei",
+    "dietaryLactoseFree": "Laktosefrei",
+    "dietaryVegan": "Vegan",
+    "dietaryNutFree": "Nussfrei",
+    "inscription": "Schriftzug / Text auf der Torte",
+    "inscriptionPlaceholder": "z. B. 'Happy Birthday Sophie!'",
+    "designTheme": "Farbkonzept / Design-Wünsche",
+    "designThemePlaceholder": "z. B. Pastelltöne, Boho-Stil, bestimmte Blumen...",
+    "referenceImages": "Design-Inspirationen (Bilder)",
+    "referenceImagesDesc": "Ziehen Sie Beispielfotos hierher oder klicken Sie zum Auswählen",
+    "name": "Ihr Name",
+    "email": "E-Mail-Adresse",
+    "phone": "Telefonnummer",
+    "additionalNotes": "Weitere Wünsche oder Bemerkungen",
+    "additionalNotesPlaceholder": "Fragen, Lieferadresse bei Lieferung, weitere Details...",
+    "submit": "Bestellanfrage senden",
+    "success": "Anfrage erfolgreich gesendet!",
+    "successDesc": "Liebe Dank für Ihr Vertrauen. Yevheniia prüft Ihre Anfrage und meldet sich innerhalb von 24-48 Stunden per E-Mail bei Ihnen."
+  },
+  "footer": {
+    "tagline": "Bespoke Cake Designerin ansässig in Bern.",
+    "address": "Bern, Schweiz",
+    "rights": "Alle Rechte vorbehalten."
+  }
+}
