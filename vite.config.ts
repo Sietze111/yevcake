@@ -7,7 +7,7 @@ import { defineConfig } from "vitest/config";
 import tailwindcss from "@tailwindcss/vite";
 
 // https://vitejs.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
 	plugins: [
 		react(),
 		tailwindcss(),
@@ -30,5 +30,5 @@ export default defineConfig({
 		setupFiles: ["./vitest.setup.ts"],
 		css: true,
 	},
-	base: "/yevcake/",
-});
+	base: mode === "production" ? "/yevcake/" : "/",
+}));
