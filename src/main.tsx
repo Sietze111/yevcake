@@ -6,7 +6,13 @@ import { routeTree } from "./routeTree.gen.ts";
 import "./styles/tailwind.css";
 import "./common/i18n";
 
-const router = createRouter({ routeTree });
+const router = createRouter({
+	routeTree,
+	basepath:
+		import.meta.env.BASE_URL === "/"
+			? "/"
+			: import.meta.env.BASE_URL.replace(/\/$/, ""),
+});
 
 export type TanstackRouter = typeof router;
 
@@ -18,8 +24,10 @@ declare module "@tanstack/react-router" {
 }
 
 const rootElement = document.querySelector("#root") as Element;
+
 if (!rootElement.innerHTML) {
 	const root = ReactDOM.createRoot(rootElement);
+
 	root.render(
 		<React.StrictMode>
 			<React.Suspense fallback="loading">
