@@ -2,6 +2,7 @@
 import { useTranslation } from "react-i18next";
 import type { FunctionComponent } from "../common/types";
 import { Navbar } from "../components/layout/Navbar";
+import { BackToTopButton } from "../components/layout/BackToTopButton";
 import { CakeInquiryForm } from "../components/forms/CakeInquiryForm";
 import { PriceGuideSection } from "../components/ui/PriceGuideSection";
 import { FaqSection } from "../components/ui/FaqSection";
@@ -110,7 +111,7 @@ export const Home = (): FunctionComponent => {
 								<img
 									alt="Bespoke handmade cake by Yevheniia in Bern"
 									className="w-full h-full object-cover"
-									src="/cake_hero.jpg"
+									src="/cake_mouse.jpg"
 								/>
 							</div>
 							<div className="absolute -bottom-4 -left-4 nb-tag bg-nb-mint text-nb-black">
@@ -431,6 +432,8 @@ export const Home = (): FunctionComponent => {
 					</div>
 				</div>
 			</footer>
+
+			<BackToTopButton />
 		</div>
 	);
 };

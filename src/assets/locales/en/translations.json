@@ -153,5 +153,8 @@
     "tagline": "Bespoke cake designer based in Bern.",
     "address": "Bern, Switzerland",
     "rights": "All rights reserved."
+  },
+  "backToTop": {
+    "label": "Back to top"
   }
 }

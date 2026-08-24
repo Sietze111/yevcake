@@ -153,5 +153,8 @@
     "tagline": "Bespoke Cake Designerin ansässig in Bern.",
     "address": "Bern, Schweiz",
     "rights": "Alle Rechte vorbehalten."
+  },
+  "backToTop": {
+    "label": "Nach oben"
   }
 }
