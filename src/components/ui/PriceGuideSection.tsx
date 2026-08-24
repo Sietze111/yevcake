@@ -3,11 +3,24 @@ import { CheckIcon } from "@heroicons/react/24/solid";
 import type { FunctionComponent } from "../../common/types";
 import { ContentSection } from "./ContentSection";
 import { SectionHeading } from "./SectionHeading";
+import { useInquiryStore, type OccasionValue } from "../../store/inquiryStore";
+
+interface PricingTier {
+	name: string;
+	desc: string;
+	price: string;
+	unit: string;
+	bg: string;
+	features: Array<string>;
+	popular: boolean;
+	occasion: OccasionValue;
+}
 
 export const PriceGuideSection = (): FunctionComponent => {
 	const { t } = useTranslation();
+	const preselectOccasion = useInquiryStore((state) => state.preselectOccasion);
 
-	const pricingTiers = [
+	const pricingTiers: Array<PricingTier> = [
 		{
 			name: t("prices.wedding.name"),
 			desc: t("prices.wedding.desc"),
@@ -21,6 +34,7 @@ export const PriceGuideSection = (): FunctionComponent => {
 				"Handmade sugar florals & custom toppers",
 			],
 			popular: true,
+			occasion: "wedding",
 		},
 		{
 			name: t("prices.celebration.name"),
@@ -35,6 +49,7 @@ export const PriceGuideSection = (): FunctionComponent => {
 				"Optional gluten-free/lactose-free adaptation",
 			],
 			popular: false,
+			occasion: "birthday",
 		},
 		{
 			name: t("prices.bento.name"),
@@ -49,6 +64,7 @@ export const PriceGuideSection = (): FunctionComponent => {
 				"Includes candle & wooden spoon",
 			],
 			popular: false,
+			occasion: "bento",
 		},
 		{
 			name: t("prices.cupcakes.name"),
@@ -63,6 +79,7 @@ export const PriceGuideSection = (): FunctionComponent => {
 				"Stunning gift box packaging",
 			],
 			popular: false,
+			occasion: "other",
 		},
 	];
 
@@ -121,6 +138,9 @@ export const PriceGuideSection = (): FunctionComponent => {
 								<a
 									className="nb-btn bg-nb-black text-nb-yellow w-full block text-center text-xs"
 									href="#inquiry"
+									onClick={() => {
+										preselectOccasion(tier.occasion);
+									}}
 								>
 									Inquire Now
 								</a>

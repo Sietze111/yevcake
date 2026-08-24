@@ -36,9 +36,9 @@ export const FaqSection = (): FunctionComponent => {
 								>
 									<span>{faq.q}</span>
 									{open ? (
-										<MinusIcon className="h-5 w-5 text-nb-black flex-shrink-0" />
+										<MinusIcon className="h-5 w-5 text-nb-black shrink-0" />
 									) : (
-										<PlusIcon className="h-5 w-5 text-nb-black flex-shrink-0" />
+										<PlusIcon className="h-5 w-5 text-nb-black shrink-0" />
 									)}
 								</DisclosureButton>
 								<DisclosurePanel className="px-6 pb-5 pt-4 font-sans text-sm text-nb-black/80 leading-relaxed border-t-2 border-nb-black bg-nb-cream">
