@@ -1,9 +1,21 @@
 import { expect, test } from "@playwright/test";
 
-const futureDate = (): string => {
-	const date = new Date();
-	date.setDate(date.getDate() + 10);
-	return date.toISOString().slice(0, 10);
+const pickTargetDate = (): { iso: string; nextMonth: boolean } => {
+	const today = new Date();
+	const minDate = new Date(today);
+	minDate.setDate(today.getDate() + 7);
+	for (let offset = 10; offset <= 16; offset += 1) {
+		const candidate = new Date(today);
+		candidate.setDate(today.getDate() + offset);
+		if (candidate.getDay() === 0) continue;
+		return {
+			iso: candidate.toISOString().slice(0, 10),
+			nextMonth:
+				candidate.getMonth() !== minDate.getMonth() ||
+				candidate.getFullYear() !== minDate.getFullYear(),
+		};
+	}
+	throw new Error("No bookable date found within two weeks");
 };
 
 test("full inquiry flow submits and shows the success message", async ({
@@ -33,7 +45,11 @@ test("full inquiry flow submits and shows the success message", async ({
 
 	await page.getByRole("button", { name: "Continue" }).click();
 
-	await page.locator("#inquiry-date").fill(futureDate());
+	const target = pickTargetDate();
+	if (target.nextMonth) {
+		await page.getByRole("button", { name: "Next month" }).click();
+	}
+	await page.getByTestId(`day-${target.iso}`).click();
 	await page
 		.locator("#inquiry-timeslot")
 		.selectOption({ label: "09:00 - 11:00" });

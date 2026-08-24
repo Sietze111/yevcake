@@ -19,8 +19,10 @@ import type { FunctionComponent } from "../../common/types";
 import { INQUIRY_ENDPOINT, WEB3FORMS_ACCESS_KEY } from "../../common/constants";
 import { useInquiryStore } from "../../store/inquiryStore";
 import { FROSTING_COLORS, TOPPER_OPTIONS } from "../ui/cakeConfiguratorData";
+import { AvailabilityCalendar } from "./AvailabilityCalendar";
 
 const MIN_LEAD_DAYS = 7;
+const MAX_LEAD_MONTHS = 12;
 const MAX_FILE_SIZE_MB = 10;
 const MAX_FILES = 5;
 const ACCEPTED_IMAGE_TYPES: Array<string> = [
@@ -31,6 +33,10 @@ const ACCEPTED_IMAGE_TYPES: Array<string> = [
 
 const MIN_DATE_ISO: string = dayjs()
 	.add(MIN_LEAD_DAYS, "day")
+	.format("YYYY-MM-DD");
+
+const MAX_DATE_ISO: string = dayjs()
+	.add(MAX_LEAD_MONTHS, "month")
 	.format("YYYY-MM-DD");
 
 interface UploadedFileInfo {
@@ -63,6 +69,13 @@ const createSchema = (t: TFunction) =>
 						dayjs().add(MIN_LEAD_DAYS, "day").startOf("day")
 					),
 				{ message: t("order.errors.dateTooSoon") }
+			)
+			.refine(
+				(value) =>
+					!dayjs(value).isAfter(
+						dayjs().add(MAX_LEAD_MONTHS, "month").endOf("day")
+					),
+				{ message: t("order.errors.dateTooLate") }
 			),
 		deliveryType: z.enum(["pickup", "delivery"]),
 		timeSlot: z
@@ -284,6 +297,8 @@ export const CakeInquiryForm = (): FunctionComponent => {
 
 	// eslint-disable-next-line react-hooks/incompatible-library
 	const selectedOccasion = watch("occasion");
+	 
+	const watchedDate = watch("date");
 	const selectedDelivery = watch("deliveryType");
 
 	const preselectedOccasion = useInquiryStore((state) => state.occasion);
@@ -704,28 +719,26 @@ export const CakeInquiryForm = (): FunctionComponent => {
 					<div className="space-y-6 animate-fade-in text-left">
 						<div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
 							<div>
-								<label className={labelClass} htmlFor="inquiry-date">
-									{t("order.date")} *
-								</label>
+								<span className={labelClass} id="inquiry-date-label">
+									{`${t("order.date")} *`}
+								</span>
 								<input
+									aria-hidden="true"
 									id="inquiry-date"
-									min={MIN_DATE_ISO}
-									type="date"
+									tabIndex={-1}
+									type="hidden"
 									{...register("date")}
-									aria-invalid={Boolean(errors.date)}
-									className={inputClass(Boolean(errors.date))}
-									aria-describedby={
-										errors.date
-											? "inquiry-date-error inquiry-date-hint"
-											: "inquiry-date-hint"
-									}
 								/>
-								<p
-									className="font-mono text-[10px] text-nb-black/50 mt-1"
-									id="inquiry-date-hint"
-								>
-									{t("order.date")} ≥ {MIN_DATE_ISO}
-								</p>
+								<div className="mt-2">
+									<AvailabilityCalendar
+										maxISO={MAX_DATE_ISO}
+										minISO={MIN_DATE_ISO}
+										value={watchedDate ?? ""}
+										onChange={(iso: string) => {
+											setValue("date", iso, { shouldValidate: true });
+										}}
+									/>
+								</div>
 								<FieldError
 									id="inquiry-date-error"
 									message={errors.date?.message}

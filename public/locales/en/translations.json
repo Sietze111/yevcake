@@ -200,7 +200,8 @@
 			"designThemeMin": "Please describe your vision in at least 5 characters",
 			"nameMin": "Name must be at least 2 characters",
 			"emailInvalid": "Please enter a valid email address",
-			"phoneMin": "Please enter a valid phone number"
+			"phoneMin": "Please enter a valid phone number",
+			"dateTooLate": "Please choose a date within the next 12 months."
 		},
 		"frostingColor": "Frosting Color",
 		"finishingTouch": "Finishing Touch",
@@ -322,5 +323,11 @@
 			"candles": "Candle Party",
 			"berries": "Fresh Berries"
 		}
+	},
+	"calendar": {
+		"prevMonth": "Previous month",
+		"nextMonth": "Next month",
+		"disabledDay": "Unavailable",
+		"legend": "At least 7 days ahead · Closed on Sundays · Bookable up to 12 months in advance"
 	}
 }
