@@ -44,6 +44,7 @@ export const Navbar = (): FunctionComponent => {
 			{ href: "#about", id: "about", label: t("nav.about") },
 			{ href: "#flavors", id: "flavors", label: t("nav.flavors") },
 			{ href: "#gallery", id: "gallery", label: t("nav.gallery") },
+			{ href: "#configurator", id: "configurator", label: t("nav.designer") },
 			{ href: "#prices", id: "prices", label: t("nav.prices") },
 			{ href: "#faq", id: "faq", label: t("nav.faq") },
 			{ href: "#reviews", id: "reviews", label: t("nav.reviews") },

@@ -73,5 +73,10 @@ export default defineConfig({
 		command: "npm run dev",
 		url: "http://localhost:5173",
 		reuseExistingServer: !process.env.CI,
+		/* Never send real inquiries from tests */
+		env: {
+			VITE_WEB3FORMS_ACCESS_KEY: "",
+			VITE_INQUIRY_ENDPOINT: "",
+		},
 	},
 });

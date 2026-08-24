@@ -3,6 +3,7 @@ import { BackToTopButton } from "../components/layout/BackToTopButton";
 import { WhatsAppButton } from "../components/layout/WhatsAppButton";
 import { Footer } from "../components/layout/Footer";
 import { AboutSection } from "../components/ui/AboutSection";
+import { CakeConfigurator } from "../components/ui/CakeConfigurator";
 import { FaqSection } from "../components/ui/FaqSection";
 import { FlavorsSection } from "../components/ui/FlavorsSection";
 import { GallerySection } from "../components/ui/GallerySection";
@@ -22,6 +23,7 @@ export const Home = (): FunctionComponent => {
 				<AboutSection />
 				<FlavorsSection />
 				<GallerySection />
+				<CakeConfigurator />
 				<PriceGuideSection />
 				<ReviewsSection />
 				<FaqSection />

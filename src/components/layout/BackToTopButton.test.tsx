@@ -10,7 +10,9 @@ const setScrollY = (value: number): void => {
 	});
 };
 
-type MockScrollTo = ReturnType<typeof vi.fn<(options?: ScrollToOptions) => void>>;
+type MockScrollTo = ReturnType<
+	typeof vi.fn<(options?: ScrollToOptions) => void>
+>;
 
 type MediaQueryMock = {
 	addEventListener: ReturnType<typeof vi.fn>;
@@ -23,17 +25,17 @@ type MediaQueryMock = {
 };
 
 const mockMatchMedia = (matchesReduceMotion: boolean): void => {
-		window.matchMedia = vi.fn().mockImplementation(
-			(query: string): MediaQueryMock => ({
-				matches: matchesReduceMotion && query.includes("prefers-reduced-motion"),
-				media: query,
-				addEventListener: vi.fn(),
-				removeEventListener: vi.fn(),
-				addListener: vi.fn(),
-				removeListener: vi.fn(),
-				dispatchEvent: vi.fn(),
-			})
-		);
+	window.matchMedia = vi
+		.fn()
+		.mockImplementation((query: string): MediaQueryMock => ({
+			matches: matchesReduceMotion && query.includes("prefers-reduced-motion"),
+			media: query,
+			addEventListener: vi.fn(),
+			removeEventListener: vi.fn(),
+			addListener: vi.fn(),
+			removeListener: vi.fn(),
+			dispatchEvent: vi.fn(),
+		}));
 };
 
 describe("BackToTopButton", () => {

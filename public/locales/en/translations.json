@@ -10,7 +10,8 @@
 		"order": "Order Inquiry",
 		"contact": "Contact",
 		"impressum": "Legal Notice",
-		"privacy": "Privacy Policy"
+		"privacy": "Privacy Policy",
+		"designer": "Cake Designer"
 	},
 	"hero": {
 		"title": "Bespoke Cake Artistry in Bern",
@@ -273,5 +274,51 @@
 	},
 	"backToTop": {
 		"label": "Back to top"
+	},
+	"configurator": {
+		"title": "Cake Designer",
+		"subtitle": "Stack it, style it, love it – then send your creation straight into your inquiry",
+		"sizeLabel": "Size & Tiers",
+		"flavorLabel": "Flavor",
+		"colorLabel": "Frosting Color",
+		"topperLabel": "Finishing Touch",
+		"messageLabel": "Inscription on the cake",
+		"messagePlaceholder": "e.g., Happy Birthday!",
+		"estimateLabel": "Estimated price",
+		"cta": "Send this cake to my inquiry",
+		"disclaimer": "Indicative price – the final quote is confirmed after consultation.",
+		"sizes": {
+			"bento": {
+				"name": "Bento Mini",
+				"desc": "2–3 servings · flat price"
+			},
+			"single": {
+				"name": "Classic",
+				"desc": "1 tier · approx. 15 servings"
+			},
+			"duo": {
+				"name": "Duo Tower",
+				"desc": "2 tiers · approx. 30 servings"
+			},
+			"wedding": {
+				"name": "Wedding Centerpiece",
+				"desc": "3 tiers · approx. 55 servings"
+			}
+		},
+		"colors": {
+			"cream": "Vanilla Cream",
+			"blush": "Blush Pink",
+			"mint": "Fresh Mint",
+			"sky": "Sky Blue",
+			"lilac": "Lilac Dream",
+			"choco": "Chocolate"
+		},
+		"toppers": {
+			"none": "Clean & Simple",
+			"flowers": "Sugar Flowers",
+			"candles": "Candle Party",
+			"berries": "Fresh Berries",
+			"message": "Personal Message"
+		}
 	}
 }

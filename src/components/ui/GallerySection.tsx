@@ -1,9 +1,4 @@
-import {
-	Fragment,
-	useCallback,
-	useMemo,
-	useState,
-} from "react";
+import { Fragment, useCallback, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
 	Dialog,
@@ -18,6 +13,7 @@ import {
 } from "@heroicons/react/24/outline";
 import type { FunctionComponent } from "../../common/types";
 import { ContentSection } from "./ContentSection";
+import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 import { createGalleryItems, type GalleryFilter } from "./galleryData";
 
@@ -97,32 +93,33 @@ export const GallerySection = (): FunctionComponent => {
 			</div>
 
 			<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-				{filteredGallery.map((item) => (
-					<button
-						key={item.id}
-						className="nb-card group overflow-hidden animate-fade-in cursor-pointer text-left p-0"
-						type="button"
-						onClick={() => {
-							setSelectedId(item.id);
-						}}
-					>
-						<div className="overflow-hidden aspect-square border-b-3 border-nb-black">
-							<img
-								alt={item.title}
-								className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-								loading="lazy"
-								src={item.image}
-							/>
-						</div>
-						<div className="p-5 bg-nb-cream">
-							<h4 className="font-mono text-sm font-bold text-nb-black uppercase">
-								{item.title}
-							</h4>
-							<p className="font-sans text-xs text-nb-black/60 mt-1 leading-relaxed">
-								{item.desc}
-							</p>
-						</div>
-					</button>
+				{filteredGallery.map((item, index) => (
+					<Reveal key={item.id} delay={(index % 3) * 90}>
+						<button
+							className="nb-card group overflow-hidden cursor-pointer text-left p-0 w-full"
+							type="button"
+							onClick={() => {
+								setSelectedId(item.id);
+							}}
+						>
+							<div className="overflow-hidden aspect-square border-b-3 border-nb-black">
+								<img
+									alt={item.title}
+									className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+									loading="lazy"
+									src={item.image}
+								/>
+							</div>
+							<div className="p-5 bg-nb-cream">
+								<h4 className="font-mono text-sm font-bold text-nb-black uppercase">
+									{item.title}
+								</h4>
+								<p className="font-sans text-xs text-nb-black/60 mt-1 leading-relaxed">
+									{item.desc}
+								</p>
+							</div>
+						</button>
+					</Reveal>
 				))}
 			</div>
 

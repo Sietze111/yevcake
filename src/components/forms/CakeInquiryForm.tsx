@@ -16,6 +16,7 @@ import {
 	ExclamationTriangleIcon,
 } from "@heroicons/react/24/outline";
 import type { FunctionComponent } from "../../common/types";
+import { INQUIRY_ENDPOINT, WEB3FORMS_ACCESS_KEY } from "../../common/constants";
 import { useInquiryStore } from "../../store/inquiryStore";
 
 const MIN_LEAD_DAYS = 7;
@@ -98,23 +99,79 @@ const FieldError = ({ id, message }: FieldErrorProps): FunctionComponent => {
 	);
 };
 
-const submitInquiry = async (
+interface InquiryPayload {
+	[key: string]: string | undefined;
+}
+
+const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
+
+const buildInquiryPayload = (
 	data: FormValues,
-	files: Array<File>
+	files: Array<UploadedFileInfo>
+): InquiryPayload => {
+	const occasionLabel =
+		data.occasion === "other" && data.customOccasion
+			? data.customOccasion
+			: data.occasion;
+
+	const referenceImages = files.map((entry) => entry.file.name).join(", ");
+
+	/* eslint-disable camelcase -- snake_case keys required by the Web3Forms API */
+	return {
+		access_key: WEB3FORMS_ACCESS_KEY,
+		subject: `New Cake Inquiry – ${occasionLabel} (${data.servings} servings)`,
+		from_name: "Yevcake Website",
+		name: data.name,
+		email: data.email,
+		replyto: data.email,
+		phone: data.phone,
+		occasion: occasionLabel,
+		servings: String(data.servings),
+		desired_date: data.date,
+		delivery_type: data.deliveryType,
+		time_slot: data.timeSlot,
+		flavor: data.flavor,
+		dietary_requirements: data.dietary.join(", "),
+		inscription: data.inscription,
+		design_theme: data.designTheme,
+		reference_images: referenceImages || undefined,
+		additional_notes: data.additionalNotes,
+		message:
+			`New cake inquiry from ${data.name} for ${data.date}.` +
+			(files.length > 0
+				? ` Reference images (sent by email on request): ${referenceImages}`
+				: ""),
+	};
+	/* eslint-enable camelcase */
+};
+
+const submitToWeb3Forms = async (
+	data: FormValues,
+	files: Array<UploadedFileInfo>
 ): Promise<void> => {
-	const endpoint = import.meta.env.VITE_INQUIRY_ENDPOINT;
+	const response = await fetch(WEB3FORMS_ENDPOINT, {
+		method: "POST",
+		headers: { "Content-Type": "application/json" },
+		body: JSON.stringify(buildInquiryPayload(data, files)),
+	});
 
-	if (!endpoint) {
-		await new Promise<void>((resolve) => {
-			setTimeout(resolve, 800);
-		});
-		console.info(
-			"[inquiry] VITE_INQUIRY_ENDPOINT not set – simulated submission:",
-			{ ...data, imageCount: files.length }
+	const result = (await response.json().catch(() => null)) as {
+		success?: boolean;
+		message?: string;
+	} | null;
+
+	if (!response.ok || !result?.success) {
+		throw new Error(
+			result?.message ?? `Submission failed with status ${response.status}`
 		);
-		return;
 	}
+};
 
+const submitToCustomEndpoint = async (
+	data: FormValues,
+	files: Array<File>,
+	endpoint: string
+): Promise<void> => {
 	const formData = new FormData();
 	formData.append("occasion", data.occasion);
 	if (data.customOccasion)
@@ -145,6 +202,33 @@ const submitInquiry = async (
 	if (!response.ok) {
 		throw new Error(`Submission failed with status ${response.status}`);
 	}
+};
+
+const submitInquiry = async (
+	data: FormValues,
+	files: Array<UploadedFileInfo>
+): Promise<void> => {
+	if (WEB3FORMS_ACCESS_KEY) {
+		await submitToWeb3Forms(data, files);
+		return;
+	}
+
+	if (!INQUIRY_ENDPOINT) {
+		await new Promise<void>((resolve) => {
+			setTimeout(resolve, 800);
+		});
+		console.info("[inquiry] no submission backend configured – simulated:", {
+			...data,
+			imageNames: files.map((entry) => entry.file.name),
+		});
+		return;
+	}
+
+	await submitToCustomEndpoint(
+		data,
+		files.map((entry) => entry.file),
+		INQUIRY_ENDPOINT
+	);
 };
 
 export const CakeInquiryForm = (): FunctionComponent => {
@@ -197,6 +281,8 @@ export const CakeInquiryForm = (): FunctionComponent => {
 
 	const preselectedOccasion = useInquiryStore((state) => state.occasion);
 	const preselectedServings = useInquiryStore((state) => state.servings);
+	const preselectedDesign = useInquiryStore((state) => state.design);
+	const preselectedInscription = useInquiryStore((state) => state.inscription);
 	const preselectionVersion = useInquiryStore((state) => state.version);
 
 	useEffect(() => {
@@ -205,19 +291,24 @@ export const CakeInquiryForm = (): FunctionComponent => {
 		if (preselectedServings !== null) {
 			setValue("servings", preselectedServings);
 		}
+		if (preselectedDesign !== null) {
+			setValue("designTheme", preselectedDesign);
+		}
+		if (preselectedInscription !== null) {
+			setValue("inscription", preselectedInscription);
+		}
 	}, [
 		preselectedOccasion,
 		preselectedServings,
+		preselectedDesign,
+		preselectedInscription,
 		preselectionVersion,
 		setValue,
 	]);
 
 	const mutation = useMutation({
 		mutationFn: async (values: FormValues): Promise<void> =>
-			submitInquiry(
-				values,
-				uploadedFiles.map((entry) => entry.file)
-			),
+			submitInquiry(values, uploadedFiles),
 		onSuccess: () => {
 			setIsSuccess(true);
 			setUploadedFiles([]);

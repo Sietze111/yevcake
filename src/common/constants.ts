@@ -12,4 +12,5 @@ export const CONTACT = {
 	instagramHref: "https://www.instagram.com/",
 } as const;
 
+export const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
 export const INQUIRY_ENDPOINT = import.meta.env.VITE_INQUIRY_ENDPOINT;
