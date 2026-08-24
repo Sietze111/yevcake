@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
 	Menu,
@@ -14,6 +14,7 @@ import {
 } from "@heroicons/react/24/outline";
 
 import type { FunctionComponent } from "../../common/types";
+import { useActiveSection } from "../../hooks/useActiveSection";
 
 export const Navbar = (): FunctionComponent => {
 	const { t, i18n } = useTranslation();
@@ -23,7 +24,10 @@ export const Navbar = (): FunctionComponent => {
 		{ code: "de", label: "Deutsch" },
 		{ code: "en", label: "English" },
 		{ code: "ru", label: "\u0420\u0443\u0441\u0441\u043a\u0438\u0439" },
-		{ code: "uk", label: "\u0423\u043a\u0440\u0430\u0457\u043d\u0441\u044c\u043a\u0430" },
+		{
+			code: "uk",
+			label: "\u0423\u043a\u0440\u0430\u0457\u043d\u0441\u044c\u043a\u0430",
+		},
 	];
 
 	const currentLanguage = languages.find(
@@ -34,16 +38,23 @@ export const Navbar = (): FunctionComponent => {
 		await i18n.changeLanguage(langCode);
 	};
 
-	const navLinks = [
-		{ href: "#home", label: t("nav.home") },
-		{ href: "#about", label: t("nav.about") },
-		{ href: "#flavors", label: t("nav.flavors") },
-		{ href: "#gallery", label: t("nav.gallery") },
-		{ href: "#prices", label: t("nav.prices") },
-		{ href: "#faq", label: t("nav.faq") },
-		{ href: "#reviews", label: t("nav.reviews") },
-		{ href: "#inquiry", label: t("nav.order") },
-	];
+	const navLinks = useMemo(
+		() => [
+			{ href: "#home", id: "home", label: t("nav.home") },
+			{ href: "#about", id: "about", label: t("nav.about") },
+			{ href: "#flavors", id: "flavors", label: t("nav.flavors") },
+			{ href: "#gallery", id: "gallery", label: t("nav.gallery") },
+			{ href: "#prices", id: "prices", label: t("nav.prices") },
+			{ href: "#faq", id: "faq", label: t("nav.faq") },
+			{ href: "#reviews", id: "reviews", label: t("nav.reviews") },
+			{ href: "#inquiry", id: "inquiry", label: t("nav.order") },
+		],
+		[t]
+	);
+
+	const activeSection = useActiveSection(
+		useMemo(() => navLinks.map((link) => link.id), [navLinks])
+	);
 
 	return (
 		<nav className="fixed top-0 left-0 right-0 z-50 bg-nb-yellow border-b-4 border-nb-black shadow-[0_4px_0px_0px_#0D0D0D]">
@@ -64,8 +75,13 @@ export const Navbar = (): FunctionComponent => {
 						{navLinks.map((link) => (
 							<a
 								key={link.href}
-								className="font-mono text-[10px] font-bold tracking-wider text-nb-black uppercase px-3 py-1.5 hover:bg-nb-black hover:text-nb-yellow transition-colors duration-100 border border-transparent hover:border-nb-black"
+								aria-current={activeSection === link.id ? "true" : undefined}
 								href={link.href}
+								className={`font-mono text-[10px] font-bold tracking-wider text-nb-black uppercase px-3 py-1.5 border transition-colors duration-100 ${
+									activeSection === link.id
+										? "bg-nb-black text-nb-yellow border-nb-black"
+										: "bg-transparent border-transparent hover:bg-nb-black hover:text-nb-yellow hover:border-nb-black"
+								}`}
 							>
 								{link.label}
 							</a>
@@ -74,10 +90,7 @@ export const Navbar = (): FunctionComponent => {
 						<Menu as="div" className="relative inline-block text-left ml-2">
 							<div>
 								<MenuButton className="nb-tag bg-nb-pink hover:bg-nb-black hover:text-nb-yellow transition-colors cursor-pointer gap-1.5">
-									<GlobeAltIcon
-										aria-hidden="true"
-										className="h-3 w-3"
-									/>
+									<GlobeAltIcon aria-hidden="true" className="h-3 w-3" />
 									{currentLanguage.code.toUpperCase()}
 								</MenuButton>
 							</div>
@@ -95,7 +108,11 @@ export const Navbar = (): FunctionComponent => {
 											<MenuItem key={lang.code}>
 												{({ active }) => (
 													<button
-														className={active ? "bg-nb-yellow text-nb-black block w-full text-left px-4 py-2 font-mono text-xs font-bold uppercase tracking-wide" : "text-nb-black block w-full text-left px-4 py-2 font-mono text-xs font-bold uppercase tracking-wide"}
+														className={
+															active
+																? "bg-nb-yellow text-nb-black block w-full text-left px-4 py-2 font-mono text-xs font-bold uppercase tracking-wide"
+																: "text-nb-black block w-full text-left px-4 py-2 font-mono text-xs font-bold uppercase tracking-wide"
+														}
 														onClick={() => handleLanguageChange(lang.code)}
 													>
 														{lang.label}
@@ -131,7 +148,11 @@ export const Navbar = (): FunctionComponent => {
 											<MenuItem key={lang.code}>
 												{({ active }) => (
 													<button
-														className={active ? "bg-nb-yellow text-nb-black block w-full text-left px-3 py-2 font-mono text-xs font-bold uppercase" : "text-nb-black block w-full text-left px-3 py-2 font-mono text-xs font-bold uppercase"}
+														className={
+															active
+																? "bg-nb-yellow text-nb-black block w-full text-left px-3 py-2 font-mono text-xs font-bold uppercase"
+																: "text-nb-black block w-full text-left px-3 py-2 font-mono text-xs font-bold uppercase"
+														}
 														onClick={() => handleLanguageChange(lang.code)}
 													>
 														{lang.label}

@@ -2,9 +2,15 @@ import { useTranslation } from "react-i18next";
 import type { FunctionComponent } from "../../common/types";
 import { ContentSection } from "./ContentSection";
 
-const STATS = [
-	{ value: "1993", label: "Born in Ukraine", bg: "bg-nb-yellow" },
-	{ value: "Bern", label: "Atelier Location", bg: "bg-nb-mint" },
+interface AboutStat {
+	value: string;
+	labelKey: "common.bornInUkraine" | "common.atelierLocation";
+	bg: string;
+}
+
+const STATS: Array<AboutStat> = [
+	{ value: "1993", labelKey: "common.bornInUkraine", bg: "bg-nb-yellow" },
+	{ value: "Bern", labelKey: "common.atelierLocation", bg: "bg-nb-mint" },
 ];
 
 export const AboutSection = (): FunctionComponent => {
@@ -22,7 +28,7 @@ export const AboutSection = (): FunctionComponent => {
 						/>
 					</div>
 					<div className="absolute -top-4 -right-4 bg-nb-yellow border-3 border-nb-black px-3 py-1 font-mono text-xs font-bold uppercase shadow-[3px_3px_0px_0px_#0D0D0D]">
-						Est. 2020 · Bern
+						{t("common.estBern")}
 					</div>
 				</div>
 
@@ -42,14 +48,14 @@ export const AboutSection = (): FunctionComponent => {
 					<div className="flex gap-6 pt-4 border-t-3 border-nb-black">
 						{STATS.map((stat) => (
 							<div
-								key={stat.label}
+								key={stat.labelKey}
 								className={`border-3 border-nb-black px-4 py-3 ${stat.bg} shadow-[3px_3px_0px_0px_#0D0D0D]`}
 							>
 								<span className="block font-mono text-3xl font-bold">
 									{stat.value}
 								</span>
 								<span className="block font-mono text-[9px] uppercase tracking-widest mt-0.5">
-									{stat.label}
+									{t(stat.labelKey)}
 								</span>
 							</div>
 						))}

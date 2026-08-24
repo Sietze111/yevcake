@@ -42,11 +42,12 @@ export const HeroSection = (): FunctionComponent => {
 							<img
 								alt="Bespoke handmade cake by Yevheniia in Bern"
 								className="w-full h-full object-cover"
+								fetchPriority="high"
 								src="/cake_mouse.jpg"
 							/>
 						</div>
 						<div className="absolute -bottom-4 -left-4 nb-tag bg-nb-mint text-nb-black">
-							✨ Handmade in Bern
+							{t("common.handmadeInBern")}
 						</div>
 					</div>
 				</div>

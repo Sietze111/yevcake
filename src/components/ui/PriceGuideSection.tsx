@@ -4,84 +4,59 @@ import type { FunctionComponent } from "../../common/types";
 import { ContentSection } from "./ContentSection";
 import { SectionHeading } from "./SectionHeading";
 import { useInquiryStore, type OccasionValue } from "../../store/inquiryStore";
+import { PriceEstimator } from "./PriceEstimator";
+
+type TierKey = "wedding" | "celebration" | "bento" | "cupcakes";
 
 interface PricingTier {
-	name: string;
-	desc: string;
-	price: string;
-	unit: string;
+	key: TierKey;
 	bg: string;
-	features: Array<string>;
+	unitKey: "prices.perPortion" | "common.perCake" | "common.perPiece";
 	popular: boolean;
 	occasion: OccasionValue;
 }
 
+const TIERS: Array<PricingTier> = [
+	{
+		key: "wedding",
+		bg: "bg-nb-yellow",
+		unitKey: "prices.perPortion",
+		popular: true,
+		occasion: "wedding",
+	},
+	{
+		key: "celebration",
+		bg: "bg-nb-mint",
+		unitKey: "prices.perPortion",
+		popular: false,
+		occasion: "birthday",
+	},
+	{
+		key: "bento",
+		bg: "bg-nb-pink",
+		unitKey: "common.perCake",
+		popular: false,
+		occasion: "bento",
+	},
+	{
+		key: "cupcakes",
+		bg: "bg-nb-peach",
+		unitKey: "common.perPiece",
+		popular: false,
+		occasion: "other",
+	},
+];
+
+const FEATURE_SLOTS: Array<"f1" | "f2" | "f3" | "f4"> = [
+	"f1",
+	"f2",
+	"f3",
+	"f4",
+];
+
 export const PriceGuideSection = (): FunctionComponent => {
 	const { t } = useTranslation();
 	const preselectOccasion = useInquiryStore((state) => state.preselectOccasion);
-
-	const pricingTiers: Array<PricingTier> = [
-		{
-			name: t("prices.wedding.name"),
-			desc: t("prices.wedding.desc"),
-			price: t("prices.wedding.price"),
-			unit: t("prices.perPortion"),
-			bg: "bg-nb-yellow",
-			features: [
-				"Personal consultation & design sketch",
-				"Cake tasting box included",
-				"Delivery & setup at wedding venue in Bern",
-				"Handmade sugar florals & custom toppers",
-			],
-			popular: true,
-			occasion: "wedding",
-		},
-		{
-			name: t("prices.celebration.name"),
-			desc: t("prices.celebration.desc"),
-			price: t("prices.celebration.price"),
-			unit: t("prices.perPortion"),
-			bg: "bg-nb-mint",
-			features: [
-				"Custom themed designs & toppers",
-				"All signature flavor selections",
-				"Pickup or delivery options",
-				"Optional gluten-free/lactose-free adaptation",
-			],
-			popular: false,
-			occasion: "birthday",
-		},
-		{
-			name: t("prices.bento.name"),
-			desc: t("prices.bento.desc"),
-			price: t("prices.bento.price"),
-			unit: "per cake",
-			bg: "bg-nb-pink",
-			features: [
-				"Perfect 2-3 portions mini cake",
-				"Custom frosting message or lettering",
-				"Eco-friendly bento box packaging",
-				"Includes candle & wooden spoon",
-			],
-			popular: false,
-			occasion: "bento",
-		},
-		{
-			name: t("prices.cupcakes.name"),
-			desc: t("prices.cupcakes.desc"),
-			price: t("prices.cupcakes.price"),
-			unit: "per piece",
-			bg: "bg-nb-peach",
-			features: [
-				"Minimum order: 6 pieces",
-				"Decorated to match your event theme",
-				"Premium fillings inside",
-				"Stunning gift box packaging",
-			],
-			popular: false,
-			occasion: "other",
-		},
-	];
 
 	return (
 		<ContentSection id="prices">
@@ -92,23 +67,23 @@ export const PriceGuideSection = (): FunctionComponent => {
 			/>
 			<div className="space-y-8">
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-					{pricingTiers.map((tier, index) => (
+					{TIERS.map((tier) => (
 						<div
-							key={index}
+							key={tier.key}
 							className={`border-3 border-nb-black shadow-[5px_5px_0px_0px_#0D0D0D] flex flex-col justify-between text-left relative hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[7px_7px_0px_0px_#0D0D0D] transition-all duration-150 ${tier.bg}`}
 						>
 							{tier.popular && (
 								<div className="bg-nb-black text-nb-yellow font-mono text-[10px] font-bold uppercase tracking-widest text-center py-1.5 px-3">
-									★ Most Requested
+									{t("common.mostRequested")}
 								</div>
 							)}
 							<div className="p-6 space-y-5 flex-1">
 								<div>
 									<h4 className="font-mono text-lg font-bold text-nb-black uppercase">
-										{tier.name}
+										{t(`prices.${tier.key}.name`)}
 									</h4>
 									<p className="font-sans text-xs text-nb-black/70 mt-2 leading-relaxed">
-										{tier.desc}
+										{t(`prices.${tier.key}.desc`)}
 									</p>
 								</div>
 								<div className="flex items-baseline gap-1 border-y-2 border-nb-black py-3">
@@ -116,20 +91,20 @@ export const PriceGuideSection = (): FunctionComponent => {
 										{t("prices.startingFrom")}
 									</span>
 									<span className="font-mono text-3xl font-bold text-nb-black">
-										{tier.price}
+										{t(`prices.${tier.key}.price`)}
 									</span>
 									<span className="font-mono text-[10px] text-nb-black/60">
-										/ {tier.unit}
+										/ {t(tier.unitKey)}
 									</span>
 								</div>
 								<ul className="space-y-2.5">
-									{tier.features.map((feature, index_) => (
+									{FEATURE_SLOTS.map((slot) => (
 										<li
-											key={index_}
+											key={slot}
 											className="flex gap-2 items-start text-xs font-sans text-nb-black/80"
 										>
 											<CheckIcon className="h-4 w-4 text-nb-black flex-shrink-0 mt-0.5" />
-											<span>{feature}</span>
+											<span>{t(`prices.${tier.key}.${slot}`)}</span>
 										</li>
 									))}
 								</ul>
@@ -142,12 +117,15 @@ export const PriceGuideSection = (): FunctionComponent => {
 										preselectOccasion(tier.occasion);
 									}}
 								>
-									Inquire Now
+									{t("common.inquireNow")}
 								</a>
 							</div>
 						</div>
 					))}
 				</div>
+
+				<PriceEstimator />
+
 				<p className="font-mono text-xs text-nb-black/60 italic text-center max-w-xl mx-auto">
 					{t("prices.note")}
 				</p>

@@ -6,12 +6,23 @@ import { routeTree } from "./routeTree.gen.ts";
 import "./styles/tailwind.css";
 import "./common/i18n";
 
+const plausibleDomain = import.meta.env.VITE_PLAUSIBLE_DOMAIN;
+
+if (plausibleDomain) {
+	const plausibleScript = document.createElement("script");
+	plausibleScript.defer = true;
+	plausibleScript.dataset["domain"] = plausibleDomain;
+	plausibleScript.src = "https://plausible.io/js/script.js";
+	document.head.appendChild(plausibleScript);
+}
+
 const router = createRouter({
 	routeTree,
 	basepath:
 		import.meta.env.BASE_URL === "/"
 			? "/"
 			: import.meta.env.BASE_URL.replace(/\/$/, ""),
+	defaultPreload: "intent",
 });
 
 export type TanstackRouter = typeof router;

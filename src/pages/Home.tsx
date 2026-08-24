@@ -1,5 +1,6 @@
 ﻿import { Navbar } from "../components/layout/Navbar";
 import { BackToTopButton } from "../components/layout/BackToTopButton";
+import { WhatsAppButton } from "../components/layout/WhatsAppButton";
 import { Footer } from "../components/layout/Footer";
 import { AboutSection } from "../components/ui/AboutSection";
 import { FaqSection } from "../components/ui/FaqSection";
@@ -16,7 +17,7 @@ export const Home = (): FunctionComponent => {
 		<div className="bg-nb-cream text-nb-black min-h-screen font-sans overflow-x-hidden">
 			<Navbar />
 
-			<main>
+			<main id="main-content">
 				<HeroSection />
 				<AboutSection />
 				<FlavorsSection />
@@ -29,6 +30,7 @@ export const Home = (): FunctionComponent => {
 
 			<Footer />
 
+			<WhatsAppButton />
 			<BackToTopButton />
 		</div>
 	);

@@ -6,6 +6,8 @@
 
 interface ImportMetaEnv {
 	readonly VITE_APP_TITLE: string;
+	readonly VITE_INQUIRY_ENDPOINT?: string;
+	readonly VITE_PLAUSIBLE_DOMAIN?: string;
 	// more env variables...
 }
 
