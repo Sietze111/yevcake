@@ -4,7 +4,7 @@ export type CakeSizeId = "bento" | "single" | "duo" | "wedding";
 export type FlavorId = "medovyk" | "pistachio" | "caramel" | "mango";
 export type FrostingColorId =
 	"cream" | "blush" | "mint" | "sky" | "lilac" | "choco";
-export type TopperId = "none" | "flowers" | "candles" | "berries" | "message";
+export type TopperId = "none" | "flowers" | "candles" | "berries";
 
 export interface CakeSizeOption {
 	id: CakeSizeId;
@@ -90,7 +90,6 @@ export const TOPPER_OPTIONS: Array<TopperId> = [
 	"flowers",
 	"candles",
 	"berries",
-	"message",
 ];
 
 export const INSCRIPTION_MAX_LENGTH = 24;

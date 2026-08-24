@@ -56,8 +56,8 @@ describe("cakeConfiguratorData", () => {
 		}
 	});
 
-	it("offers a message topper and bounded inscription length", () => {
-		expect(TOPPER_OPTIONS).toContain("message");
+	it("keeps toppers and the inscription as separate concerns", () => {
+		expect(TOPPER_OPTIONS).not.toContain("message");
 		expect(INSCRIPTION_MAX_LENGTH).toBeGreaterThan(4);
 	});
 });

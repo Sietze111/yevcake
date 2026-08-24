@@ -201,7 +201,10 @@
 			"nameMin": "Name must be at least 2 characters",
 			"emailInvalid": "Please enter a valid email address",
 			"phoneMin": "Please enter a valid phone number"
-		}
+		},
+		"frostingColor": "Frosting Color",
+		"finishingTouch": "Finishing Touch",
+		"noPreference": "No preference"
 	},
 	"footer": {
 		"tagline": "Bespoke cake designer based in Bern.",
@@ -317,8 +320,7 @@
 			"none": "Clean & Simple",
 			"flowers": "Sugar Flowers",
 			"candles": "Candle Party",
-			"berries": "Fresh Berries",
-			"message": "Personal Message"
+			"berries": "Fresh Berries"
 		}
 	}
 }

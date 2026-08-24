@@ -18,6 +18,7 @@ import {
 import type { FunctionComponent } from "../../common/types";
 import { INQUIRY_ENDPOINT, WEB3FORMS_ACCESS_KEY } from "../../common/constants";
 import { useInquiryStore } from "../../store/inquiryStore";
+import { FROSTING_COLORS, TOPPER_OPTIONS } from "../ui/cakeConfiguratorData";
 
 const MIN_LEAD_DAYS = 7;
 const MAX_FILE_SIZE_MB = 10;
@@ -68,6 +69,8 @@ const createSchema = (t: TFunction) =>
 			.string()
 			.min(1, { message: t("order.errors.timeSlotRequired") }),
 		flavor: z.string().min(1, { message: t("order.errors.flavorRequired") }),
+		frostingColor: z.string().optional(),
+		topper: z.string().optional(),
 		dietary: z.array(z.string()),
 		inscription: z.string().optional(),
 		designTheme: z
@@ -131,6 +134,8 @@ const buildInquiryPayload = (
 		delivery_type: data.deliveryType,
 		time_slot: data.timeSlot,
 		flavor: data.flavor,
+		frosting_color: data.frostingColor || undefined,
+		finishing_touch: data.topper || undefined,
 		dietary_requirements: data.dietary.join(", "),
 		inscription: data.inscription,
 		design_theme: data.designTheme,
@@ -251,6 +256,8 @@ export const CakeInquiryForm = (): FunctionComponent => {
 			deliveryType: "pickup",
 			timeSlot: "",
 			flavor: "",
+			frostingColor: "",
+			topper: "",
 			dietary: [],
 			inscription: "",
 			designTheme: "",
@@ -283,6 +290,10 @@ export const CakeInquiryForm = (): FunctionComponent => {
 	const preselectedServings = useInquiryStore((state) => state.servings);
 	const preselectedDesign = useInquiryStore((state) => state.design);
 	const preselectedInscription = useInquiryStore((state) => state.inscription);
+	const preselectedFrostingColor = useInquiryStore(
+		(state) => state.frostingColor
+	);
+	const preselectedTopper = useInquiryStore((state) => state.topper);
 	const preselectionVersion = useInquiryStore((state) => state.version);
 
 	useEffect(() => {
@@ -297,11 +308,19 @@ export const CakeInquiryForm = (): FunctionComponent => {
 		if (preselectedInscription !== null) {
 			setValue("inscription", preselectedInscription);
 		}
+		if (preselectedFrostingColor !== null) {
+			setValue("frostingColor", preselectedFrostingColor);
+		}
+		if (preselectedTopper !== null) {
+			setValue("topper", preselectedTopper);
+		}
 	}, [
 		preselectedOccasion,
 		preselectedServings,
 		preselectedDesign,
 		preselectedInscription,
+		preselectedFrostingColor,
+		preselectedTopper,
 		preselectionVersion,
 		setValue,
 	]);
@@ -571,6 +590,44 @@ export const CakeInquiryForm = (): FunctionComponent => {
 									{...register("inscription")}
 									className={inputClass(false)}
 								/>
+							</div>
+						</div>
+
+						<div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+							<div>
+								<label className={labelClass} htmlFor="inquiry-frosting-color">
+									{t("order.frostingColor")}
+								</label>
+								<select
+									id="inquiry-frosting-color"
+									{...register("frostingColor")}
+									className={inputClass(false)}
+								>
+									<option value="">{t("order.noPreference")}</option>
+									{FROSTING_COLORS.map((color) => (
+										<option key={color.id} value={color.id}>
+											{t(`configurator.colors.${color.id}`)}
+										</option>
+									))}
+								</select>
+							</div>
+
+							<div>
+								<label className={labelClass} htmlFor="inquiry-topper">
+									{t("order.finishingTouch")}
+								</label>
+								<select
+									id="inquiry-topper"
+									{...register("topper")}
+									className={inputClass(false)}
+								>
+									<option value="">{t("order.noPreference")}</option>
+									{TOPPER_OPTIONS.map((id) => (
+										<option key={id} value={id}>
+											{t(`configurator.toppers.${id}`)}
+										</option>
+									))}
+								</select>
 							</div>
 						</div>
 

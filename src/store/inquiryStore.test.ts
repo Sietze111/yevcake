@@ -8,6 +8,8 @@ describe("inquiryStore", () => {
 			servings: null,
 			design: null,
 			inscription: null,
+			frostingColor: null,
+			topper: null,
 			version: 0,
 		});
 	});
@@ -18,6 +20,8 @@ describe("inquiryStore", () => {
 		expect(state.servings).toBeNull();
 		expect(state.design).toBeNull();
 		expect(state.inscription).toBeNull();
+		expect(state.frostingColor).toBeNull();
+		expect(state.topper).toBeNull();
 		expect(state.version).toBe(0);
 	});
 
@@ -55,6 +59,8 @@ describe("inquiryStore", () => {
 			servings: 55,
 			design: "3-tier, pistachio, blush pink, sugar flowers",
 			inscription: "Anna & Ben",
+			frostingColor: "blush",
+			topper: "flowers",
 		});
 
 		const state = useInquiryStore.getState();
@@ -62,6 +68,8 @@ describe("inquiryStore", () => {
 		expect(state.servings).toBe(55);
 		expect(state.design).toContain("pistachio");
 		expect(state.inscription).toBe("Anna & Ben");
+		expect(state.frostingColor).toBe("blush");
+		expect(state.topper).toBe("flowers");
 		expect(state.version).toBe(1);
 	});
 

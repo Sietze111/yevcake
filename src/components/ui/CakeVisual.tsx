@@ -114,16 +114,16 @@ export const CakeVisual = ({
 							x={x + 12}
 							y={y + height - 22}
 						/>
-						{isTopTier && topper === "message" && inscription !== "" ? (
+						{isTopTier && inscription !== "" ? (
 							<text
 								fontFamily="monospace"
 								fontWeight="bold"
 								textAnchor="middle"
 								x="150"
-								y={y + height / 2 - 6}
+								y={y + 34}
 								fontSize={Math.min(
-									18,
-									Math.max(9, Math.round(150 / inscription.length))
+									16,
+									Math.max(9, Math.round(140 / inscription.length))
 								)}
 							>
 								{inscription.toUpperCase()}

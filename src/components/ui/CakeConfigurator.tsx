@@ -70,6 +70,8 @@ export const CakeConfigurator = (): FunctionComponent => {
 			servings: size.servings,
 			design: designSummary,
 			inscription: trimmedInscription !== "" ? trimmedInscription : undefined,
+			frostingColor: color.id,
+			topper,
 		});
 	};
 
@@ -85,7 +87,7 @@ export const CakeConfigurator = (): FunctionComponent => {
 					<CakeVisual
 						flavorId={flavorId}
 						frostingColor={color.value}
-						inscription={topper === "message" ? trimmedInscription : ""}
+						inscription={trimmedInscription}
 						tiers={size.tiers}
 						topper={topper}
 					/>
@@ -226,7 +228,7 @@ export const CakeConfigurator = (): FunctionComponent => {
 					</fieldset>
 
 					<label className="block" htmlFor="configurator-inscription">
-						<span className="font-mono text-[10px] font-bold uppercase tracking-wider block mb-2">
+						<span className="font-mono text-[10px] font-bold uppercase tracking-wider mb-2 block">
 							{t("configurator.messageLabel")}
 						</span>
 						<input

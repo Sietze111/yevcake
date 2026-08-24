@@ -29,6 +29,8 @@ test("configurator sends the designed cake into the inquiry form", async ({
 
 	await expect(page.locator("#inquiry-occasion")).toHaveValue("wedding");
 	await expect(page.locator("#inquiry-servings")).toHaveValue("55");
+	await expect(page.locator("#inquiry-frosting-color")).toHaveValue("sky");
+	await expect(page.locator("#inquiry-topper")).toHaveValue("flowers");
 	await expect(page.locator("#inquiry-design-theme")).toHaveValue(
 		/wedding centerpiece.*pistachio & raspberry.*sky blue/isu
 	);
