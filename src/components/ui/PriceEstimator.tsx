@@ -136,7 +136,11 @@ export const PriceEstimator = (): FunctionComponent => {
 						className="nb-btn bg-nb-pink text-nb-black text-xs whitespace-nowrap"
 						href="#inquiry"
 						onClick={() => {
-							preselectOccasion(STORE_OCCASIONS[occasion]);
+							const mappedOccasion = STORE_OCCASIONS[occasion];
+							preselectOccasion(
+								mappedOccasion,
+								isFlat ? undefined : Math.max(servings, 6)
+							);
 						}}
 					>
 						{t("estimator.cta")}

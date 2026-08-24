@@ -196,12 +196,21 @@ export const CakeInquiryForm = (): FunctionComponent => {
 	const selectedDelivery = watch("deliveryType");
 
 	const preselectedOccasion = useInquiryStore((state) => state.occasion);
+	const preselectedServings = useInquiryStore((state) => state.servings);
 	const preselectionVersion = useInquiryStore((state) => state.version);
 
 	useEffect(() => {
 		if (preselectedOccasion === null) return;
 		setValue("occasion", preselectedOccasion);
-	}, [preselectedOccasion, preselectionVersion, setValue]);
+		if (preselectedServings !== null) {
+			setValue("servings", preselectedServings);
+		}
+	}, [
+		preselectedOccasion,
+		preselectedServings,
+		preselectionVersion,
+		setValue,
+	]);
 
 	const mutation = useMutation({
 		mutationFn: async (values: FormValues): Promise<void> =>
