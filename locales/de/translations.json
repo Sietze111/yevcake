@@ -200,8 +200,12 @@
 			"nameMin": "Der Name muss mindestens 2 Zeichen lang sein",
 			"emailInvalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
 			"phoneMin": "Bitte geben Sie eine gültige Telefonnummer ein",
-			"dateTooSoon": "Kuchen benötigen mindestens 7 Tage Vorlauf. Bitte wähle ein späteres Datum."
-		}
+			"dateTooSoon": "Kuchen benötigen mindestens 7 Tage Vorlauf. Bitte wähle ein späteres Datum.",
+			"dateTooLate": "Bitte wähle ein Datum innerhalb der nächsten 12 Monate."
+		},
+		"frostingColor": "Cremefarbe",
+		"finishingTouch": "Feinschliff",
+		"noPreference": "Keine Präferenz"
 	},
 	"footer": {
 		"tagline": "Bespoke Cake Designerin ansässig in Bern.",
@@ -317,8 +321,13 @@
 			"none": "Pur & Elegant",
 			"flowers": "Zuckerblumen",
 			"candles": "Kerzenparty",
-			"berries": "Frische Beeren",
-			"message": "Persönliche Widmung"
+			"berries": "Frische Beeren"
 		}
+	},
+	"calendar": {
+		"prevMonth": "Vorheriger Monat",
+		"nextMonth": "Nächster Monat",
+		"disabledDay": "Nicht verfügbar",
+		"legend": "Mind. 7 Tage im Voraus · Sonntags geschlossen · Bis 12 Monate im Voraus buchbar"
 	}
 }
