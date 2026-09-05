@@ -34,6 +34,10 @@ export const FlavorsSection = (): FunctionComponent => {
 					</Reveal>
 				))}
 			</div>
+
+			<p className="font-mono text-[11px] text-nb-black/60 leading-relaxed max-w-2xl mt-8 mx-auto text-center">
+				{t("flavors.allergenNote")}
+			</p>
 		</ContentSection>
 	);
 };

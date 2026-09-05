@@ -46,7 +46,6 @@ export const Navbar = (): FunctionComponent => {
 			{ href: "#gallery", id: "gallery", label: t("nav.gallery") },
 			{ href: "#configurator", id: "configurator", label: t("nav.designer") },
 			{ href: "#prices", id: "prices", label: t("nav.prices") },
-			{ href: "#faq", id: "faq", label: t("nav.faq") },
 			{ href: "#reviews", id: "reviews", label: t("nav.reviews") },
 			{ href: "#inquiry", id: "inquiry", label: t("nav.order") },
 		],
@@ -167,7 +166,11 @@ export const Navbar = (): FunctionComponent => {
 						</Menu>
 
 						<button
+							aria-expanded={mobileMenuOpen}
 							className="border-2 border-nb-black p-1.5 hover:bg-nb-black hover:text-nb-yellow transition-colors"
+							aria-label={
+								mobileMenuOpen ? t("nav.closeMenu") : t("nav.openMenu")
+							}
 							onClick={() => {
 								setMobileMenuOpen(!mobileMenuOpen);
 							}}

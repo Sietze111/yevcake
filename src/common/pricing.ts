@@ -48,6 +48,10 @@ export const RATE_KEYS: Array<RateKey> = [
 	"cupcakes",
 ];
 
+// Canonical orderable servings band (must match the inquiry form's zod schema).
+export const SERVINGS_MIN = 5;
+export const SERVINGS_MAX = 200;
+
 export type OccasionLabelKey =
 	| "gallery.wedding"
 	| "gallery.birthday"

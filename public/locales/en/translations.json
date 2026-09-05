@@ -11,7 +11,9 @@
 		"contact": "Contact",
 		"impressum": "Legal Notice",
 		"privacy": "Privacy Policy",
-		"designer": "Cake Designer"
+		"designer": "Cake Designer",
+		"openMenu": "Open menu",
+		"closeMenu": "Close menu"
 	},
 	"hero": {
 		"title": "Bespoke Cake Artistry in Bern",
@@ -44,7 +46,8 @@
 		"mango": {
 			"name": "Mango Passionfruit Dream",
 			"desc": "Fluffy vanilla sponge cake layered with a tropical mango and passionfruit cream, covered with vanilla cream cheese frosting."
-		}
+		},
+		"allergenNote": "All cakes are handcrafted in our studio kitchen, which also processes gluten, nuts, dairy and eggs. Please let us know about any allergies in your inquiry."
 	},
 	"gallery": {
 		"title": "Creations Gallery",
@@ -205,7 +208,8 @@
 		},
 		"frostingColor": "Frosting Color",
 		"finishingTouch": "Finishing Touch",
-		"noPreference": "No preference"
+		"noPreference": "No preference",
+		"deliveryNote": "Pickup at the studio is free. Delivery within Bern and the surrounding region – the fee depends on the distance."
 	},
 	"footer": {
 		"tagline": "Bespoke cake designer based in Bern.",
@@ -223,7 +227,7 @@
 		"collectionByAppointment": "Collection by appointment",
 		"bornInUkraine": "Born in Ukraine",
 		"atelierLocation": "Atelier Location",
-		"estBern": "Est. 2020 · Bern",
+		"estBern": "Bern, Switzerland",
 		"handmadeInBern": "✨ Handmade in Bern",
 		"allCreations": "All Creations",
 		"perCake": "per cake",
@@ -322,7 +326,9 @@
 			"flowers": "Sugar Flowers",
 			"candles": "Candle Party",
 			"berries": "Fresh Berries"
-		}
+		},
+		"estimateContext": "Indicative price for {{servings}} servings",
+		"included": "Consultation and design sketch included."
 	},
 	"calendar": {
 		"prevMonth": "Previous month",

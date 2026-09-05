@@ -94,15 +94,27 @@ export const CakeConfigurator = (): FunctionComponent => {
 						aria-live="polite"
 						className="mt-4 flex items-end justify-between border-t-3 border-nb-black pt-4"
 					>
-						<span className="font-mono text-[10px] font-bold uppercase tracking-wider">
-							{t("configurator.estimateLabel")}
-						</span>
+						<div className="space-y-0.5">
+							<span className="font-mono text-[10px] font-bold uppercase tracking-wider block">
+								{t("configurator.estimateLabel")}
+							</span>
+							{size.perServing !== null && (
+								<span className="font-sans text-[11px] text-nb-black/60 block">
+									{t("configurator.estimateContext", {
+										servings: size.servings,
+									})}
+								</span>
+							)}
+						</div>
 						<span className="font-mono text-2xl font-bold">
 							{formattedEstimate}
 						</span>
 					</div>
 					<p className="font-sans text-xs text-nb-black/60 mt-2 leading-relaxed">
 						{t("configurator.disclaimer")}
+					</p>
+					<p className="font-sans text-xs text-nb-black/60 mt-1 leading-relaxed">
+						{t("configurator.included")}
 					</p>
 					<a
 						className="nb-btn bg-nb-pink w-full justify-center mt-4 inline-flex"

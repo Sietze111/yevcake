@@ -16,11 +16,13 @@ import {
 	ExclamationTriangleIcon,
 } from "@heroicons/react/24/outline";
 import type { FunctionComponent } from "../../common/types";
+import { SERVINGS_MAX, SERVINGS_MIN } from "../../common/pricing";
 import { INQUIRY_ENDPOINT, WEB3FORMS_ACCESS_KEY } from "../../common/constants";
 import { useInquiryStore } from "../../store/inquiryStore";
 import {
 	CAKE_FLAVORS,
 	FROSTING_COLORS,
+	INSCRIPTION_MAX_LENGTH,
 	TOPPER_OPTIONS,
 } from "../ui/cakeConfiguratorData";
 import { AvailabilityCalendar } from "./AvailabilityCalendar";
@@ -62,8 +64,8 @@ const createSchema = (t: TFunction) =>
 		customOccasion: z.string().optional(),
 		servings: z
 			.number({ message: t("order.errors.servingsInvalid") })
-			.min(5, { message: t("order.errors.servingsMin") })
-			.max(200, { message: t("order.errors.servingsMax") }),
+			.min(SERVINGS_MIN, { message: t("order.errors.servingsMin") })
+			.max(SERVINGS_MAX, { message: t("order.errors.servingsMax") }),
 		date: z
 			.string()
 			.min(1, { message: t("order.errors.dateRequired") })
@@ -535,7 +537,8 @@ export const CakeInquiryForm = (): FunctionComponent => {
 								</label>
 								<input
 									id="inquiry-servings"
-									min="5"
+									max={SERVINGS_MAX}
+									min={SERVINGS_MIN}
 									step="1"
 									type="number"
 									{...register("servings", { valueAsNumber: true })}
@@ -603,6 +606,7 @@ export const CakeInquiryForm = (): FunctionComponent => {
 								</label>
 								<input
 									id="inquiry-inscription"
+									maxLength={INSCRIPTION_MAX_LENGTH}
 									placeholder={t("order.inscriptionPlaceholder") || ""}
 									type="text"
 									{...register("inscription")}
@@ -776,6 +780,9 @@ export const CakeInquiryForm = (): FunctionComponent => {
 										{t("order.delivery")}
 									</label>
 								</div>
+								<p className="font-mono text-[10px] text-nb-black/60 mt-1.5 leading-relaxed">
+									{t("order.deliveryNote")}
+								</p>
 							</div>
 						</div>
 

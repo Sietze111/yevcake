@@ -11,7 +11,9 @@
 		"contact": "Kontakt",
 		"impressum": "Impressum",
 		"privacy": "Datenschutz",
-		"designer": "Torten-Designer"
+		"designer": "Torten-Designer",
+		"openMenu": "Menü öffnen",
+		"closeMenu": "Menü schliessen"
 	},
 	"hero": {
 		"title": "Süsse Kunstwerke, handgemacht in Bern",
@@ -44,7 +46,8 @@
 		"mango": {
 			"name": "Mango-Passionsfrucht-Traum",
 			"desc": "Ein heller Vanille-Biskuitboden mit einer erfrischenden, tropischen Füllung aus Mango und Passionsfrucht, umhüllt von einer leichten Frischkäse-Creme."
-		}
+		},
+		"allergenNote": "Alle Torten werden in unserer Studio-Küche hergestellt, in der auch Gluten, Nüsse, Milch und Eier verarbeitet werden. Bitte teilen Sie uns Allergien bei Ihrer Anfrage mit."
 	},
 	"gallery": {
 		"title": "Galerie unserer Kreationen",
@@ -205,7 +208,8 @@
 		},
 		"frostingColor": "Cremefarbe",
 		"finishingTouch": "Feinschliff",
-		"noPreference": "Keine Präferenz"
+		"noPreference": "Keine Präferenz",
+		"deliveryNote": "Abholung im Studio ist kostenlos. Lieferung in Bern und Umgebung – die Gebühr richtet sich nach der Distanz."
 	},
 	"footer": {
 		"tagline": "Bespoke Cake Designerin ansässig in Bern.",
@@ -223,7 +227,7 @@
 		"collectionByAppointment": "Abholung nach Vereinbarung",
 		"bornInUkraine": "Geboren in der Ukraine",
 		"atelierLocation": "Atelier-Standort",
-		"estBern": "Seit 2020 · Bern",
+		"estBern": "Bern, Schweiz",
 		"handmadeInBern": "✨ Handgemacht in Bern",
 		"allCreations": "Alle Kreationen",
 		"perCake": "pro Torte",
@@ -322,7 +326,9 @@
 			"flowers": "Zuckerblumen",
 			"candles": "Kerzenparty",
 			"berries": "Frische Beeren"
-		}
+		},
+		"estimateContext": "Indikativer Preis für {{servings}} Portionen",
+		"included": "Inklusive persönlicher Beratung & Design-Skizze."
 	},
 	"calendar": {
 		"prevMonth": "Vorheriger Monat",

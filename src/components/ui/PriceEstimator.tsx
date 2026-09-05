@@ -4,6 +4,8 @@ import type { FunctionComponent } from "../../common/types";
 import {
 	RATES,
 	RATE_KEYS,
+	SERVINGS_MAX,
+	SERVINGS_MIN,
 	OCCASION_LABEL_KEYS,
 	type RateKey,
 } from "../../common/pricing";
@@ -21,7 +23,10 @@ export const PriceEstimator = (): FunctionComponent => {
 	const estimate = ((): number => {
 		if (rate.flat !== null) return rate.flat;
 		const perServing = rate.perServing ?? 0;
-		const effectiveServings = Math.max(servings, rate.servingsMin ?? 1);
+		const effectiveServings = Math.min(
+			Math.max(servings, rate.servingsMin ?? SERVINGS_MIN),
+			SERVINGS_MAX
+		);
 		return Math.round(perServing * effectiveServings);
 	})();
 
@@ -76,13 +81,17 @@ export const PriceEstimator = (): FunctionComponent => {
 							className="border-2 border-nb-black bg-nb-cream px-3 py-2 font-mono text-xs font-bold w-28 focus-visible:bg-nb-yellow disabled:cursor-not-allowed"
 							disabled={isFlat}
 							id="estimator-servings"
-							max={500}
-							min={1}
+							max={SERVINGS_MAX}
+							min={SERVINGS_MIN}
 							type="number"
 							value={servings}
 							onChange={(event_) => {
 								const parsed = Number.parseInt(event_.target.value, 10);
-								setServings(Number.isNaN(parsed) || parsed < 1 ? 1 : parsed);
+								setServings(
+									Number.isNaN(parsed) || parsed < SERVINGS_MIN
+										? SERVINGS_MIN
+										: Math.min(parsed, SERVINGS_MAX)
+								);
 							}}
 						/>
 					</label>
@@ -100,9 +109,13 @@ export const PriceEstimator = (): FunctionComponent => {
 						className="nb-btn bg-nb-pink text-nb-black text-xs whitespace-nowrap"
 						href="#inquiry"
 						onClick={() => {
+							const effectiveServings = Math.min(
+								Math.max(servings, rate.servingsMin ?? SERVINGS_MIN),
+								SERVINGS_MAX
+							);
 							preselectOccasion(
 								rate.occasion,
-								isFlat ? undefined : Math.max(servings, rate.servingsMin ?? 1)
+								isFlat ? undefined : effectiveServings
 							);
 						}}
 					>
