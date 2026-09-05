@@ -42,7 +42,7 @@ export const ReviewsSection = (): FunctionComponent => {
 				{reviews.map((review, index) => (
 					<div
 						key={index}
-						className={`border-3 border-nb-black shadow-[5px_5px_0px_0px_#0D0D0D] p-6 flex flex-col justify-between text-left hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[7px_7px_0px_0px_#0D0D0D] transition-all duration-150 ${review.bg}`}
+						className={`nb-tile p-6 flex flex-col justify-between text-left ${review.bg}`}
 					>
 						<div className="space-y-4">
 							{/* Stars */}

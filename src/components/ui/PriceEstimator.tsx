@@ -1,54 +1,19 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import type { FunctionComponent } from "../../common/types";
-import { useInquiryStore, type OccasionValue } from "../../store/inquiryStore";
-
-type EstimatorKey = "wedding" | "celebration" | "bento" | "cupcakes";
-
-interface Rate {
-	perServing: number | null;
-	flat: number | null;
-}
-
-const RATES: Record<EstimatorKey, Rate> = {
-	wedding: { perServing: 12, flat: null },
-	celebration: { perServing: 9.5, flat: null },
-	bento: { perServing: null, flat: 35 },
-	cupcakes: { perServing: 4.5, flat: null },
-};
-
-type OccasionLabelKey =
-	| "gallery.wedding"
-	| "gallery.birthday"
-	| "gallery.bento"
-	| "prices.cupcakes.name";
-
-const OCCASION_LABEL_KEYS: Record<EstimatorKey, OccasionLabelKey> = {
-	wedding: "gallery.wedding",
-	celebration: "gallery.birthday",
-	bento: "gallery.bento",
-	cupcakes: "prices.cupcakes.name",
-};
-
-const STORE_OCCASIONS: Record<EstimatorKey, OccasionValue> = {
-	wedding: "wedding",
-	celebration: "birthday",
-	bento: "bento",
-	cupcakes: "other",
-};
-
-const ESTIMATOR_KEYS: Array<EstimatorKey> = [
-	"wedding",
-	"celebration",
-	"bento",
-	"cupcakes",
-];
+import {
+	RATES,
+	RATE_KEYS,
+	OCCASION_LABEL_KEYS,
+	type RateKey,
+} from "../../common/pricing";
+import { useInquiryStore } from "../../store/inquiryStore";
 
 export const PriceEstimator = (): FunctionComponent => {
 	const { t, i18n } = useTranslation();
 	const preselectOccasion = useInquiryStore((state) => state.preselectOccasion);
-	const [occasion, setOccasion] = useState<EstimatorKey>("celebration");
-	const [servings, setServings] = useState(20);
+	const [occasion, setOccasion] = useState<RateKey>("celebration");
+	const [servings, setServings] = useState(RATES.celebration.defaultServings);
 
 	const rate = RATES[occasion];
 	const isFlat = rate.flat !== null;
@@ -56,8 +21,7 @@ export const PriceEstimator = (): FunctionComponent => {
 	const estimate = ((): number => {
 		if (rate.flat !== null) return rate.flat;
 		const perServing = rate.perServing ?? 0;
-		const effectiveServings =
-			occasion === "cupcakes" ? Math.max(servings, 6) : servings;
+		const effectiveServings = Math.max(servings, rate.servingsMin ?? 1);
 		return Math.round(perServing * effectiveServings);
 	})();
 
@@ -89,10 +53,10 @@ export const PriceEstimator = (): FunctionComponent => {
 							id="estimator-occasion"
 							value={occasion}
 							onChange={(event_) => {
-								setOccasion(event_.target.value as EstimatorKey);
+								setOccasion(event_.target.value as RateKey);
 							}}
 						>
-							{ESTIMATOR_KEYS.map((key) => (
+							{RATE_KEYS.map((key) => (
 								<option key={key} value={key}>
 									{t(OCCASION_LABEL_KEYS[key])}
 								</option>
@@ -136,10 +100,9 @@ export const PriceEstimator = (): FunctionComponent => {
 						className="nb-btn bg-nb-pink text-nb-black text-xs whitespace-nowrap"
 						href="#inquiry"
 						onClick={() => {
-							const mappedOccasion = STORE_OCCASIONS[occasion];
 							preselectOccasion(
-								mappedOccasion,
-								isFlat ? undefined : Math.max(servings, 6)
+								rate.occasion,
+								isFlat ? undefined : Math.max(servings, rate.servingsMin ?? 1)
 							);
 						}}
 					>

@@ -9,6 +9,7 @@ import {
 	TOPPER_OPTIONS,
 	calculateCakeEstimate,
 } from "./cakeConfiguratorData";
+import { RATES } from "../../common/pricing";
 import type { OccasionValue } from "../../store/inquiryStore";
 
 const VALID_OCCASIONS: Array<OccasionValue> = [
@@ -53,6 +54,14 @@ describe("cakeConfiguratorData", () => {
 		for (const flavor of CAKE_FLAVORS) {
 			expect(SPONGE_COLORS[flavor]).toMatch(/^#/u);
 			expect(FLAVOR_ICONS[flavor].length).toBeGreaterThan(0);
+		}
+	});
+
+	it("shares its pricing with the global rate table (single source of truth)", () => {
+		for (const size of CAKE_SIZES) {
+			const rate = RATES[size.key];
+			expect(size.perServing).toBe(rate.perServing);
+			expect(size.flat).toBe(rate.flat);
 		}
 	});
 

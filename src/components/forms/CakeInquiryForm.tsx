@@ -18,7 +18,11 @@ import {
 import type { FunctionComponent } from "../../common/types";
 import { INQUIRY_ENDPOINT, WEB3FORMS_ACCESS_KEY } from "../../common/constants";
 import { useInquiryStore } from "../../store/inquiryStore";
-import { FROSTING_COLORS, TOPPER_OPTIONS } from "../ui/cakeConfiguratorData";
+import {
+	CAKE_FLAVORS,
+	FROSTING_COLORS,
+	TOPPER_OPTIONS,
+} from "../ui/cakeConfiguratorData";
 import { AvailabilityCalendar } from "./AvailabilityCalendar";
 
 const MIN_LEAD_DAYS = 7;
@@ -297,7 +301,7 @@ export const CakeInquiryForm = (): FunctionComponent => {
 
 	// eslint-disable-next-line react-hooks/incompatible-library
 	const selectedOccasion = watch("occasion");
-	 
+
 	const watchedDate = watch("date");
 	const selectedDelivery = watch("deliveryType");
 
@@ -581,12 +585,11 @@ export const CakeInquiryForm = (): FunctionComponent => {
 									<option disabled value="">
 										{t("order.flavorPlaceholder")}
 									</option>
-									<option value="medovyk">{t("flavors.medovyk.name")}</option>
-									<option value="pistachio">
-										{t("flavors.pistachio.name")}
-									</option>
-									<option value="caramel">{t("flavors.caramel.name")}</option>
-									<option value="mango">{t("flavors.mango.name")}</option>
+									{CAKE_FLAVORS.map((id) => (
+										<option key={id} value={id}>
+											{t(`flavors.${id}.name`)}
+										</option>
+									))}
 								</select>
 								<FieldError
 									id="inquiry-flavor-error"

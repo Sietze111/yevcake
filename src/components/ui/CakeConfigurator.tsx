@@ -5,9 +5,8 @@ import { useInquiryStore } from "../../store/inquiryStore";
 import { ContentSection } from "./ContentSection";
 import { SectionHeading } from "./SectionHeading";
 import {
-	CAKE_FLAVORS,
 	CAKE_SIZES,
-	FLAVOR_ICONS,
+	FLAVOR_OPTIONS,
 	FROSTING_COLORS,
 	INSCRIPTION_MAX_LENGTH,
 	TOPPER_OPTIONS,
@@ -150,25 +149,25 @@ export const CakeConfigurator = (): FunctionComponent => {
 							{t("configurator.flavorLabel")}
 						</legend>
 						<div className="flex flex-wrap gap-3">
-							{CAKE_FLAVORS.map((id) => (
+							{FLAVOR_OPTIONS.map((flavor) => (
 								<button
-									key={id}
-									aria-pressed={id === flavorId}
+									key={flavor.id}
+									aria-pressed={flavor.id === flavorId}
 									type="button"
 									className={`${OPTION_BASE_CLASS} py-2.5 ${
-										id === flavorId
+										flavor.id === flavorId
 											? `bg-nb-mint ${OPTION_SELECTED_CLASS}`
 											: "bg-nb-white"
 									} flex items-center gap-2`}
 									onClick={() => {
-										setFlavorId(id);
+										setFlavorId(flavor.id);
 									}}
 								>
 									<span aria-hidden="true" className="text-lg">
-										{FLAVOR_ICONS[id]}
+										{flavor.icon}
 									</span>
 									<span className="font-mono font-bold uppercase text-xs">
-										{t(`flavors.${id}.name`)}
+										{t(`flavors.${flavor.id}.name`)}
 									</span>
 								</button>
 							))}

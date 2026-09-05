@@ -60,6 +60,20 @@
 	box-shadow: 4px 4px 0px 0px #0d0d0d;
 }
 
+/* Tiles: flat colored cards (background color comes from bg-* utilities) */
+.nb-tile {
+	border: 3px solid #0d0d0d;
+	box-shadow: 5px 5px 0px 0px #0d0d0d;
+	transition:
+		transform 0.15s ease,
+		box-shadow 0.15s ease;
+}
+
+.nb-tile:hover {
+	transform: translate(-2px, -2px);
+	box-shadow: 7px 7px 0px 0px #0d0d0d;
+}
+
 /* Inputs */
 .nb-input {
 	background-color: #ffffff;

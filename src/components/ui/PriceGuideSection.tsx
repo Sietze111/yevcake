@@ -1,20 +1,20 @@
 ﻿import { useTranslation } from "react-i18next";
 import { CheckIcon } from "@heroicons/react/24/solid";
 import type { FunctionComponent } from "../../common/types";
+import { RATES, type RateKey } from "../../common/pricing";
 import { ContentSection } from "./ContentSection";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
-import { useInquiryStore, type OccasionValue } from "../../store/inquiryStore";
+import { useInquiryStore } from "../../store/inquiryStore";
 import { PriceEstimator } from "./PriceEstimator";
 
-type TierKey = "wedding" | "celebration" | "bento" | "cupcakes";
+type TierKey = RateKey;
 
 interface PricingTier {
 	key: TierKey;
 	bg: string;
 	unitKey: "prices.perPortion" | "common.perCake" | "common.perPiece";
 	popular: boolean;
-	occasion: OccasionValue;
 }
 
 const TIERS: Array<PricingTier> = [
@@ -23,28 +23,24 @@ const TIERS: Array<PricingTier> = [
 		bg: "bg-nb-yellow",
 		unitKey: "prices.perPortion",
 		popular: true,
-		occasion: "wedding",
 	},
 	{
 		key: "celebration",
 		bg: "bg-nb-mint",
 		unitKey: "prices.perPortion",
 		popular: false,
-		occasion: "birthday",
 	},
 	{
 		key: "bento",
 		bg: "bg-nb-pink",
 		unitKey: "common.perCake",
 		popular: false,
-		occasion: "bento",
 	},
 	{
 		key: "cupcakes",
 		bg: "bg-nb-peach",
 		unitKey: "common.perPiece",
 		popular: false,
-		occasion: "other",
 	},
 ];
 
@@ -71,7 +67,7 @@ export const PriceGuideSection = (): FunctionComponent => {
 					{TIERS.map((tier, index) => (
 						<Reveal key={tier.key} delay={index * 90}>
 							<div
-								className={`border-3 border-nb-black shadow-[5px_5px_0px_0px_#0D0D0D] flex flex-col justify-between text-left relative hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[7px_7px_0px_0px_#0D0D0D] transition-all duration-150 h-full ${tier.bg}`}
+								className={`nb-tile flex flex-col justify-between text-left relative h-full ${tier.bg}`}
 							>
 								{tier.popular && (
 									<div className="bg-nb-black text-nb-yellow font-mono text-[10px] font-bold uppercase tracking-widest text-center py-1.5 px-3">
@@ -115,7 +111,10 @@ export const PriceGuideSection = (): FunctionComponent => {
 										className="nb-btn bg-nb-black text-nb-yellow w-full block text-center text-xs"
 										href="#inquiry"
 										onClick={() => {
-											preselectOccasion(tier.occasion);
+											preselectOccasion(
+												RATES[tier.key].occasion,
+												RATES[tier.key].defaultServings
+											);
 										}}
 									>
 										{t("common.inquireNow")}

@@ -1,3 +1,4 @@
+import { RATES } from "../../common/pricing";
 import type { OccasionValue } from "../../store/inquiryStore";
 
 export type CakeSizeId = "bento" | "single" | "duo" | "wedding";
@@ -8,6 +9,7 @@ export type TopperId = "none" | "flowers" | "candles" | "berries";
 
 export interface CakeSizeOption {
 	id: CakeSizeId;
+	key: "bento" | "celebration" | "wedding";
 	occasion: OccasionValue;
 	servings: number;
 	perServing: number | null;
@@ -15,37 +17,45 @@ export interface CakeSizeOption {
 	tiers: 1 | 2 | 3;
 }
 
+const CELEBRATION_RATE = RATES.celebration;
+const WEDDING_RATE = RATES.wedding;
+const BENTO_RATE = RATES.bento;
+
 export const CAKE_SIZES: Array<CakeSizeOption> = [
 	{
 		id: "bento",
-		occasion: "bento",
-		servings: 2,
-		perServing: null,
-		flat: 35,
+		key: "bento",
+		occasion: BENTO_RATE.occasion,
+		servings: BENTO_RATE.servingsMin ?? 2,
+		perServing: BENTO_RATE.perServing,
+		flat: BENTO_RATE.flat,
 		tiers: 1,
 	},
 	{
 		id: "single",
-		occasion: "birthday",
+		key: "celebration",
+		occasion: CELEBRATION_RATE.occasion,
 		servings: 15,
-		perServing: 9.5,
-		flat: null,
+		perServing: CELEBRATION_RATE.perServing,
+		flat: CELEBRATION_RATE.flat,
 		tiers: 1,
 	},
 	{
 		id: "duo",
-		occasion: "birthday",
+		key: "celebration",
+		occasion: CELEBRATION_RATE.occasion,
 		servings: 30,
-		perServing: 9.5,
-		flat: null,
+		perServing: CELEBRATION_RATE.perServing,
+		flat: CELEBRATION_RATE.flat,
 		tiers: 2,
 	},
 	{
 		id: "wedding",
-		occasion: "wedding",
+		key: "wedding",
+		occasion: WEDDING_RATE.occasion,
 		servings: 55,
-		perServing: 12,
-		flat: null,
+		perServing: WEDDING_RATE.perServing,
+		flat: WEDDING_RATE.flat,
 		tiers: 3,
 	},
 ];
@@ -84,6 +94,16 @@ export const CAKE_FLAVORS: Array<FlavorId> = [
 	"caramel",
 	"mango",
 ];
+
+export interface FlavorOption {
+	id: FlavorId;
+	icon: string;
+}
+
+export const FLAVOR_OPTIONS: Array<FlavorOption> = CAKE_FLAVORS.map((id) => ({
+	id,
+	icon: FLAVOR_ICONS[id],
+}));
 
 export const TOPPER_OPTIONS: Array<TopperId> = [
 	"none",
