@@ -1,0 +1,1 @@
+import"./index-DVWxLk-f.js";var e=function(){return null};export{e as ReactQueryDevtools};
