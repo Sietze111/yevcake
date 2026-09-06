@@ -9,7 +9,6 @@ import { FlavorsSection } from "../components/ui/FlavorsSection";
 import { GallerySection } from "../components/ui/GallerySection";
 import { HeroSection } from "../components/ui/HeroSection";
 import { OrderSection } from "../components/ui/OrderSection";
-import { PriceGuideSection } from "../components/ui/PriceGuideSection";
 import { ReviewsSection } from "../components/ui/ReviewsSection";
 import type { FunctionComponent } from "../common/types";
 
@@ -24,7 +23,6 @@ export const Home = (): FunctionComponent => {
 				<FlavorsSection />
 				<GallerySection />
 				<CakeConfigurator />
-				<PriceGuideSection />
 				<ReviewsSection />
 				<FaqSection />
 				<OrderSection />

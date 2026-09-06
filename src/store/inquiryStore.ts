@@ -6,8 +6,7 @@ export interface CakePreselection {
 	occasion: OccasionValue;
 	servings: number;
 	design: string;
-	inscription?: string;
-	frostingColor?: string;
+	flavor?: string;
 	topper?: string;
 }
 
@@ -15,8 +14,7 @@ interface InquiryState {
 	occasion: OccasionValue | null;
 	servings: number | null;
 	design: string | null;
-	inscription: string | null;
-	frostingColor: string | null;
+	flavor: string | null;
 	topper: string | null;
 	version: number;
 	preselectOccasion: (occasion: OccasionValue, servings?: number) => void;
@@ -27,8 +25,7 @@ interface InquiryPatch {
 	occasion: OccasionValue;
 	servings?: number | null;
 	design?: string | null;
-	inscription?: string | null;
-	frostingColor?: string | null;
+	flavor?: string | null;
 	topper?: string | null;
 }
 
@@ -36,8 +33,7 @@ export const useInquiryStore = create<InquiryState>()((set) => ({
 	occasion: null,
 	servings: null,
 	design: null,
-	inscription: null,
-	frostingColor: null,
+	flavor: null,
 	topper: null,
 	version: 0,
 	preselectOccasion: (occasion, servings): void => {
@@ -52,8 +48,7 @@ export const useInquiryStore = create<InquiryState>()((set) => ({
 			occasion: cake.occasion,
 			servings: cake.servings,
 			design: cake.design,
-			inscription: cake.inscription ?? null,
-			frostingColor: cake.frostingColor ?? null,
+			flavor: cake.flavor ?? null,
 			topper: cake.topper ?? null,
 		};
 		set((state) => ({ ...patch, version: state.version + 1 }));

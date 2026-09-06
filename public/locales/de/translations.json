@@ -47,7 +47,39 @@
 			"name": "Mango-Passionsfrucht-Traum",
 			"desc": "Ein heller Vanille-Biskuitboden mit einer erfrischenden, tropischen Füllung aus Mango und Passionsfrucht, umhüllt von einer leichten Frischkäse-Creme."
 		},
-		"allergenNote": "Alle Torten werden in unserer Studio-Küche hergestellt, in der auch Gluten, Nüsse, Milch und Eier verarbeitet werden. Bitte teilen Sie uns Allergien bei Ihrer Anfrage mit."
+		"allergenNote": "Alle Torten werden in unserer Studio-Küche hergestellt, in der auch Gluten, Nüsse, Milch und Eier verarbeitet werden. Bitte teilen Sie uns Allergien bei Ihrer Anfrage mit.",
+		"vanilla": {
+			"name": "Vanille-Sahne",
+			"desc": "Zarter Vanille-Biskuit mit luftiger Chantilly-Creme – klassisch und dennoch raffiniert."
+		},
+		"redvelvet": {
+			"name": "Red Velvet",
+			"desc": "Saftiger roter Biskuit mit feiner Frischkäse-Creme – ein zeitloser Klassiker."
+		},
+		"lemon": {
+			"name": "Zitronen-Baiser",
+			"desc": "Leichtes Zitronen-Baiser mit erfrischender Zitronencreme und Karamellisierter Meringue."
+		},
+		"coffee": {
+			"name": "Tiramisu mit Kaffee",
+			"desc": "Espresso-getränkte Biskuitböden mit Mascarpone – wie eine Torte im Tiramisu-Stil."
+		},
+		"chocolate": {
+			"name": "Dunkle Schokolade & Haselnuss",
+			"desc": "Tiefe dunkle Schokolade in Biskuit und Ganache, abgerundet mit Haselnuss-Praline."
+		},
+		"coconut": {
+			"name": "Kokos-Limette",
+			"desc": "Tropisches Kokosnuss-Erlebnis mit einem Hauch Limette und weissem Schokoladen-Schlagsahne."
+		},
+		"matcha": {
+			"name": "Matcha & weisse Schokolade",
+			"desc": "Erdiges Matcha und sanfte weisse Schokolade in einem eleganten, cremigen Biskuit."
+		},
+		"blueberry": {
+			"name": "Heidelbeer-Käsekuchen",
+			"desc": "Blaubeer-geschichtete Käsekuchen-Füllung mit cremigem Biskuitboden."
+		}
 	},
 	"gallery": {
 		"title": "Galerie unserer Kreationen",
@@ -160,20 +192,10 @@
 		"customOccasionPlaceholder": "z. B. Babyparty, Bridal Shower, Jubiläum...",
 		"servings": "Portionen (Anzahl Esser)",
 		"date": "Gewünschtes Datum",
-		"deliveryType": "Übergabe-Art",
-		"pickup": "Abholung im Atelier (Bern)",
-		"delivery": "Lieferung (in Region Bern)",
-		"timeSlot": "Gewünschte Uhrzeit (Abholung/Lieferung)",
+		"timeSlot": "Bevorzugte Abholzeit",
 		"timeSlotPlaceholder": "Wählen Sie ein Zeitfenster",
 		"flavor": "Geschmacksrichtung",
 		"flavorPlaceholder": "Wählen Sie Ihre Füllung",
-		"dietary": "Besondere Ernährungsbedürfnisse",
-		"dietaryGlutenFree": "Glutenfrei",
-		"dietaryLactoseFree": "Laktosefrei",
-		"dietaryVegan": "Vegan",
-		"dietaryNutFree": "Nussfrei",
-		"inscription": "Schriftzug / Text auf der Torte",
-		"inscriptionPlaceholder": "z. B. 'Happy Birthday Sophie!'",
 		"designTheme": "Farbkonzept / Design-Wünsche",
 		"designThemePlaceholder": "z. B. Pastelltöne, Boho-Stil, bestimmte Blumen...",
 		"referenceImages": "Design-Inspirationen (Bilder)",
@@ -181,7 +203,7 @@
 		"uploadFormats": "Unterstützt JPG, PNG, max. 10MB pro Bild",
 		"filesRejected": "Einige Dateien wurden übersprungen (max. 10 MB, nur JPG/PNG/WebP):",
 		"additionalNotes": "Weitere Wünsche oder Bemerkungen",
-		"additionalNotesPlaceholder": "Fragen, Lieferadresse bei Lieferung, weitere Details...",
+		"additionalNotesPlaceholder": "Fragen, besondere Wünsche, weitere Details...",
 		"name": "Ihr Name",
 		"email": "E-Mail-Adresse",
 		"phone": "Telefonnummer",
@@ -206,10 +228,8 @@
 			"dateTooSoon": "Kuchen benötigen mindestens 7 Tage Vorlauf. Bitte wähle ein späteres Datum.",
 			"dateTooLate": "Bitte wähle ein Datum innerhalb der nächsten 12 Monate."
 		},
-		"frostingColor": "Cremefarbe",
 		"finishingTouch": "Feinschliff",
-		"noPreference": "Keine Präferenz",
-		"deliveryNote": "Abholung im Studio ist kostenlos. Lieferung in Bern und Umgebung – die Gebühr richtet sich nach der Distanz."
+		"noPreference": "Keine Präferenz"
 	},
 	"footer": {
 		"tagline": "Bespoke Cake Designerin ansässig in Bern.",
@@ -286,41 +306,11 @@
 	"configurator": {
 		"title": "Torten-Designer",
 		"subtitle": "Stapeln, gestalten, verlieben – und die Kreation direkt in die Anfrage schicken",
-		"sizeLabel": "Grösse & Stockwerke",
 		"flavorLabel": "Geschmack",
-		"colorLabel": "Cremefarbe",
 		"topperLabel": "Feinschliff",
-		"messageLabel": "Inschrift auf der Torte",
-		"messagePlaceholder": "z. B. Alles Gute zum Geburtstag!",
 		"estimateLabel": "Geschätzter Preis",
 		"cta": "Diese Torte in meine Anfrage schicken",
 		"disclaimer": "Richtpreis – das definitive Angebot wird nach der Beratung bestätigt.",
-		"sizes": {
-			"bento": {
-				"name": "Bento-Mini",
-				"desc": "2–3 Portionen · Festpreis"
-			},
-			"single": {
-				"name": "Klassik",
-				"desc": "1 Stock · ca. 15 Portionen"
-			},
-			"duo": {
-				"name": "Duo-Turm",
-				"desc": "2 Stockwerke · ca. 30 Portionen"
-			},
-			"wedding": {
-				"name": "Hochzeits-Highlight",
-				"desc": "3 Stockwerke · ca. 55 Portionen"
-			}
-		},
-		"colors": {
-			"cream": "Vanille-Sahne",
-			"blush": "Rosé",
-			"mint": "Frische Minze",
-			"sky": "Himmelblau",
-			"lilac": "Fliedertraum",
-			"choco": "Schokolade"
-		},
 		"toppers": {
 			"none": "Pur & Elegant",
 			"flowers": "Zuckerblumen",
@@ -328,7 +318,24 @@
 			"berries": "Frische Beeren"
 		},
 		"estimateContext": "Indikativer Preis für {{servings}} Portionen",
-		"included": "Inklusive persönlicher Beratung & Design-Skizze."
+		"included": "Inklusive persönlicher Beratung & Design-Skizze.",
+		"tierLabel": "Stockwerke",
+		"servingsLabel": "Portionen",
+		"servingsHint": "Wähle zwischen {{min}} und {{max}} Portionen für diese Stockwerkszahl.",
+		"tiers": {
+			"1": {
+				"name": "1 Stockwerk",
+				"desc": "{{min}}–{{max}} Portionen"
+			},
+			"2": {
+				"name": "2 Stockwerke",
+				"desc": "{{min}}–{{max}} Portionen"
+			},
+			"3": {
+				"name": "3 Stockwerke",
+				"desc": "{{min}}–{{max}} Portionen"
+			}
+		}
 	},
 	"calendar": {
 		"prevMonth": "Vorheriger Monat",

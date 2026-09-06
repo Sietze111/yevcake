@@ -20,41 +20,41 @@ export const AboutSection = (): FunctionComponent => {
 		<ContentSection background="bg-nb-lilac" id="about">
 			<div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 				<div className="relative max-w-sm mx-auto lg:max-w-none order-2 lg:order-1">
-					<div className="border-4 border-nb-black shadow-[8px_8px_0px_0px_#0D0D0D] overflow-hidden aspect-[3/4] -rotate-2 hover:rotate-0 transition-transform duration-300">
+					<div className="rounded-[1.75rem] border border-nb-line ring-1 ring-nb-white/50 shadow-[0_18px_36px_rgba(61,43,31,0.18)] overflow-hidden aspect-[3/4] -rotate-2 hover:rotate-0 transition-transform duration-500">
 						<img
 							alt="Yevheniia - Cake Designer in Bern"
 							className="w-full h-full object-cover"
 							src="/cake_wedding.jpg"
 						/>
 					</div>
-					<div className="absolute -top-4 -right-4 bg-nb-yellow border-3 border-nb-black px-3 py-1 font-mono text-xs font-bold uppercase shadow-[3px_3px_0px_0px_#0D0D0D]">
-						{t("common.estBern")}
+					<div className="absolute -top-4 -right-4 nb-tag bg-nb-yellow text-nb-black shadow-[0_4px_14px_rgba(61,43,31,0.14)]">
+						<span aria-hidden="true">&hearts;</span>&nbsp;{t("common.estBern")}
 					</div>
 				</div>
 
 				<div className="space-y-6 order-1 lg:order-2">
 					<div className="nb-tag bg-nb-yellow w-fit">{t("about.subtitle")}</div>
-					<h2 className="font-mono text-4xl sm:text-5xl font-bold text-nb-black uppercase leading-tight">
+					<h2 className="font-mono text-4xl sm:text-5xl font-semibold leading-[1.15] text-nb-black [text-wrap:balance]">
 						{t("about.title")}
 					</h2>
 					<div className="nb-divider" />
-					<p className="font-sans text-base text-nb-black/80 leading-relaxed">
+					<p className="font-sans font-light text-base text-nb-black/80 leading-relaxed">
 						{t("about.p1")}
 					</p>
-					<p className="font-sans text-base text-nb-black/80 leading-relaxed">
+					<p className="font-sans font-light text-base text-nb-black/80 leading-relaxed">
 						{t("about.p2")}
 					</p>
 
-					<div className="flex gap-6 pt-4 border-t-3 border-nb-black">
+					<div className="flex gap-6 pt-4 border-t border-nb-line">
 						{STATS.map((stat) => (
 							<div
 								key={stat.labelKey}
-								className={`border-3 border-nb-black px-4 py-3 ${stat.bg} shadow-[3px_3px_0px_0px_#0D0D0D]`}
+								className={`rounded-2xl border border-nb-line px-5 py-3 ${stat.bg} shadow-[0_4px_14px_rgba(61,43,31,0.14)]`}
 							>
 								<span className="block font-mono text-3xl font-bold">
 									{stat.value}
 								</span>
-								<span className="block font-mono text-[9px] uppercase tracking-widest mt-0.5">
+								<span className="block font-sans text-[9px] uppercase tracking-widest mt-0.5">
 									{t(stat.labelKey)}
 								</span>
 							</div>

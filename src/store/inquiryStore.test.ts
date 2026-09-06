@@ -7,8 +7,7 @@ describe("inquiryStore", () => {
 			occasion: null,
 			servings: null,
 			design: null,
-			inscription: null,
-			frostingColor: null,
+			flavor: null,
 			topper: null,
 			version: 0,
 		});
@@ -19,8 +18,7 @@ describe("inquiryStore", () => {
 		expect(state.occasion).toBeNull();
 		expect(state.servings).toBeNull();
 		expect(state.design).toBeNull();
-		expect(state.inscription).toBeNull();
-		expect(state.frostingColor).toBeNull();
+		expect(state.flavor).toBeNull();
 		expect(state.topper).toBeNull();
 		expect(state.version).toBe(0);
 	});
@@ -57,23 +55,21 @@ describe("inquiryStore", () => {
 		useInquiryStore.getState().preselectCake({
 			occasion: "wedding",
 			servings: 55,
-			design: "3-tier, pistachio, blush pink, sugar flowers",
-			inscription: "Anna & Ben",
-			frostingColor: "blush",
+			design: "Three Tiers, dark chocolate & hazelnut, sugar flowers",
+			flavor: "chocolate",
 			topper: "flowers",
 		});
 
 		const state = useInquiryStore.getState();
 		expect(state.occasion).toBe("wedding");
 		expect(state.servings).toBe(55);
-		expect(state.design).toContain("pistachio");
-		expect(state.inscription).toBe("Anna & Ben");
-		expect(state.frostingColor).toBe("blush");
+		expect(state.design).toContain("chocolate");
+		expect(state.flavor).toBe("chocolate");
 		expect(state.topper).toBe("flowers");
 		expect(state.version).toBe(1);
 	});
 
-	it("preselectCake without inscription clears a previous one", () => {
+	it("preselectCake without flavor clears a previous one", () => {
 		useInquiryStore
 			.getState()
 			.preselectCake({ occasion: "bento", servings: 2, design: "mini" });
@@ -82,7 +78,7 @@ describe("inquiryStore", () => {
 			.preselectCake({ occasion: "bento", servings: 3, design: "mini v2" });
 
 		const state = useInquiryStore.getState();
-		expect(state.inscription).toBeNull();
+		expect(state.flavor).toBeNull();
 		expect(state.version).toBe(2);
 	});
 });

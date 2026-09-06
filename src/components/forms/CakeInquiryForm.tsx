@@ -19,12 +19,7 @@ import type { FunctionComponent } from "../../common/types";
 import { SERVINGS_MAX, SERVINGS_MIN } from "../../common/pricing";
 import { INQUIRY_ENDPOINT, WEB3FORMS_ACCESS_KEY } from "../../common/constants";
 import { useInquiryStore } from "../../store/inquiryStore";
-import {
-	CAKE_FLAVORS,
-	FROSTING_COLORS,
-	INSCRIPTION_MAX_LENGTH,
-	TOPPER_OPTIONS,
-} from "../ui/cakeConfiguratorData";
+import { CAKE_FLAVORS, TOPPER_OPTIONS } from "../ui/cakeConfiguratorData";
 import { AvailabilityCalendar } from "./AvailabilityCalendar";
 
 const MIN_LEAD_DAYS = 7;
@@ -83,15 +78,11 @@ const createSchema = (t: TFunction) =>
 					),
 				{ message: t("order.errors.dateTooLate") }
 			),
-		deliveryType: z.enum(["pickup", "delivery"]),
 		timeSlot: z
 			.string()
 			.min(1, { message: t("order.errors.timeSlotRequired") }),
 		flavor: z.string().min(1, { message: t("order.errors.flavorRequired") }),
-		frostingColor: z.string().optional(),
 		topper: z.string().optional(),
-		dietary: z.array(z.string()),
-		inscription: z.string().optional(),
 		designTheme: z
 			.string()
 			.min(5, { message: t("order.errors.designThemeMin") }),
@@ -150,13 +141,9 @@ const buildInquiryPayload = (
 		occasion: occasionLabel,
 		servings: String(data.servings),
 		desired_date: data.date,
-		delivery_type: data.deliveryType,
 		time_slot: data.timeSlot,
 		flavor: data.flavor,
-		frosting_color: data.frostingColor || undefined,
 		finishing_touch: data.topper || undefined,
-		dietary_requirements: data.dietary.join(", "),
-		inscription: data.inscription,
 		design_theme: data.designTheme,
 		reference_images: referenceImages || undefined,
 		additional_notes: data.additionalNotes,
@@ -202,11 +189,9 @@ const submitToCustomEndpoint = async (
 		formData.append("customOccasion", data.customOccasion);
 	formData.append("servings", String(data.servings));
 	formData.append("date", data.date);
-	formData.append("deliveryType", data.deliveryType);
 	formData.append("timeSlot", data.timeSlot);
 	formData.append("flavor", data.flavor);
-	for (const item of data.dietary) formData.append("dietary", item);
-	if (data.inscription) formData.append("inscription", data.inscription);
+	if (data.topper) formData.append("topper", data.topper);
 	formData.append("designTheme", data.designTheme);
 	formData.append("name", data.name);
 	formData.append("email", data.email);
@@ -272,13 +257,9 @@ export const CakeInquiryForm = (): FunctionComponent => {
 			customOccasion: "",
 			servings: 15,
 			date: "",
-			deliveryType: "pickup",
 			timeSlot: "",
 			flavor: "",
-			frostingColor: "",
 			topper: "",
-			dietary: [],
-			inscription: "",
 			designTheme: "",
 			name: "",
 			email: "",
@@ -305,15 +286,11 @@ export const CakeInquiryForm = (): FunctionComponent => {
 	const selectedOccasion = watch("occasion");
 
 	const watchedDate = watch("date");
-	const selectedDelivery = watch("deliveryType");
 
 	const preselectedOccasion = useInquiryStore((state) => state.occasion);
 	const preselectedServings = useInquiryStore((state) => state.servings);
 	const preselectedDesign = useInquiryStore((state) => state.design);
-	const preselectedInscription = useInquiryStore((state) => state.inscription);
-	const preselectedFrostingColor = useInquiryStore(
-		(state) => state.frostingColor
-	);
+	const preselectedFlavor = useInquiryStore((state) => state.flavor);
 	const preselectedTopper = useInquiryStore((state) => state.topper);
 	const preselectionVersion = useInquiryStore((state) => state.version);
 
@@ -326,11 +303,8 @@ export const CakeInquiryForm = (): FunctionComponent => {
 		if (preselectedDesign !== null) {
 			setValue("designTheme", preselectedDesign);
 		}
-		if (preselectedInscription !== null) {
-			setValue("inscription", preselectedInscription);
-		}
-		if (preselectedFrostingColor !== null) {
-			setValue("frostingColor", preselectedFrostingColor);
+		if (preselectedFlavor !== null) {
+			setValue("flavor", preselectedFlavor);
 		}
 		if (preselectedTopper !== null) {
 			setValue("topper", preselectedTopper);
@@ -339,8 +313,7 @@ export const CakeInquiryForm = (): FunctionComponent => {
 		preselectedOccasion,
 		preselectedServings,
 		preselectedDesign,
-		preselectedInscription,
-		preselectedFrostingColor,
+		preselectedFlavor,
 		preselectedTopper,
 		preselectionVersion,
 		setValue,
@@ -411,11 +384,10 @@ export const CakeInquiryForm = (): FunctionComponent => {
 				"customOccasion",
 				"servings",
 				"flavor",
-				"inscription",
 				"designTheme",
 			];
 		} else if (step === 2) {
-			fieldsToValidate = ["date", "deliveryType", "timeSlot"];
+			fieldsToValidate = ["date", "timeSlot"];
 		}
 		const isValid = await trigger(fieldsToValidate);
 		if (isValid) {
@@ -429,16 +401,16 @@ export const CakeInquiryForm = (): FunctionComponent => {
 
 	if (isSuccess) {
 		return (
-			<div className="flex flex-col items-center justify-center p-10 text-center border-3 border-nb-black shadow-[8px_8px_0px_0px_#0D0D0D] bg-nb-mint max-w-xl mx-auto animate-fade-in-up">
-				<CheckCircleIcon className="h-16 w-16 text-nb-black mb-4 animate-bounce" />
-				<h3 className="font-mono text-3xl text-nb-black font-bold uppercase mb-3">
+			<div className="flex flex-col items-center justify-center p-10 text-center rounded-3xl border border-nb-line shadow-[0_18px_36px_rgba(61,43,31,0.18)] bg-nb-mint max-w-xl mx-auto animate-fade-in-up">
+				<CheckCircleIcon className="h-16 w-16 text-nb-pink mb-4 animate-bounce" />
+				<h3 className="font-mono text-3xl text-nb-black font-semibold mb-3">
 					{t("order.success")}
 				</h3>
-				<p className="font-sans text-sm text-nb-black/75 mb-8 max-w-sm leading-relaxed">
+				<p className="font-sans font-light text-sm text-nb-black/75 mb-8 max-w-sm leading-relaxed">
 					{t("order.successDesc")}
 				</p>
 				<button
-					className="nb-btn bg-nb-black text-nb-yellow text-xs"
+					className="nb-btn bg-nb-pink text-nb-cream text-xs"
 					onClick={() => {
 						setIsSuccess(false);
 					}}
@@ -453,15 +425,15 @@ export const CakeInquiryForm = (): FunctionComponent => {
 		hasError ? "nb-input border-red-600" : "nb-input";
 
 	const labelClass =
-		"block font-mono text-[11px] font-bold uppercase tracking-wider text-nb-black mb-2";
+		"block font-sans text-[11px] font-medium uppercase tracking-wider text-nb-black mb-2";
 
 	return (
-		<div className="w-full max-w-3xl mx-auto border-3 border-nb-black shadow-[8px_8px_0px_0px_#0D0D0D] bg-nb-white p-8 sm:p-10">
+		<div className="w-full max-w-3xl mx-auto rounded-3xl border border-nb-line shadow-[0_18px_36px_rgba(61,43,31,0.18)] bg-nb-white p-8 sm:p-10">
 			{/* Step Progress */}
-			<div className="flex items-center justify-between mb-10 pb-6 border-b-3 border-nb-black">
+			<div className="flex items-center justify-between mb-10 pb-6 border-b border-nb-line">
 				<div className="flex items-center gap-3">
 					<span
-						className={`w-9 h-9 border-2 border-nb-black flex items-center justify-center font-mono font-bold text-sm transition-all ${step >= 1 ? "bg-nb-yellow text-nb-black shadow-[2px_2px_0px_0px_#0D0D0D]" : "bg-nb-white text-nb-black/40"}`}
+						className={`w-9 h-9 border border-nb-line flex items-center justify-center font-mono font-bold text-sm transition-all ${step >= 1 ? "bg-nb-yellow text-nb-black shadow-[0_4px_12px_rgba(61,43,31,0.12)]" : "bg-nb-white text-nb-black/40"}`}
 					>
 						1
 					</span>
@@ -474,7 +446,7 @@ export const CakeInquiryForm = (): FunctionComponent => {
 				/>
 				<div className="flex items-center gap-3">
 					<span
-						className={`w-9 h-9 border-2 border-nb-black flex items-center justify-center font-mono font-bold text-sm transition-all ${step >= 2 ? "bg-nb-yellow text-nb-black shadow-[2px_2px_0px_0px_#0D0D0D]" : "bg-nb-white text-nb-black/40"}`}
+						className={`w-9 h-9 border border-nb-line flex items-center justify-center font-mono font-bold text-sm transition-all ${step >= 2 ? "bg-nb-yellow text-nb-black shadow-[0_4px_12px_rgba(61,43,31,0.12)]" : "bg-nb-white text-nb-black/40"}`}
 					>
 						2
 					</span>
@@ -487,7 +459,7 @@ export const CakeInquiryForm = (): FunctionComponent => {
 				/>
 				<div className="flex items-center gap-3">
 					<span
-						className={`w-9 h-9 border-2 border-nb-black flex items-center justify-center font-mono font-bold text-sm transition-all ${step >= 3 ? "bg-nb-yellow text-nb-black shadow-[2px_2px_0px_0px_#0D0D0D]" : "bg-nb-white text-nb-black/40"}`}
+						className={`w-9 h-9 border border-nb-line flex items-center justify-center font-mono font-bold text-sm transition-all ${step >= 3 ? "bg-nb-yellow text-nb-black shadow-[0_4px_12px_rgba(61,43,31,0.12)]" : "bg-nb-white text-nb-black/40"}`}
 					>
 						3
 					</span>
@@ -601,40 +573,6 @@ export const CakeInquiryForm = (): FunctionComponent => {
 							</div>
 
 							<div>
-								<label className={labelClass} htmlFor="inquiry-inscription">
-									{t("order.inscription")}
-								</label>
-								<input
-									id="inquiry-inscription"
-									maxLength={INSCRIPTION_MAX_LENGTH}
-									placeholder={t("order.inscriptionPlaceholder") || ""}
-									type="text"
-									{...register("inscription")}
-									className={inputClass(false)}
-								/>
-							</div>
-						</div>
-
-						<div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-							<div>
-								<label className={labelClass} htmlFor="inquiry-frosting-color">
-									{t("order.frostingColor")}
-								</label>
-								<select
-									id="inquiry-frosting-color"
-									{...register("frostingColor")}
-									className={inputClass(false)}
-								>
-									<option value="">{t("order.noPreference")}</option>
-									{FROSTING_COLORS.map((color) => (
-										<option key={color.id} value={color.id}>
-											{t(`configurator.colors.${color.id}`)}
-										</option>
-									))}
-								</select>
-							</div>
-
-							<div>
 								<label className={labelClass} htmlFor="inquiry-topper">
 									{t("order.finishingTouch")}
 								</label>
@@ -652,38 +590,6 @@ export const CakeInquiryForm = (): FunctionComponent => {
 								</select>
 							</div>
 						</div>
-
-						<fieldset>
-							<legend className={`${labelClass} mb-2`}>
-								{t("order.dietary")}
-							</legend>
-							<div className="grid grid-cols-2 sm:grid-cols-4 gap-3 p-4 border-2 border-nb-black bg-nb-cream">
-								{[
-									{ value: "glutenFree", label: t("order.dietaryGlutenFree") },
-									{
-										value: "lactoseFree",
-										label: t("order.dietaryLactoseFree"),
-									},
-									{ value: "vegan", label: t("order.dietaryVegan") },
-									{ value: "nutFree", label: t("order.dietaryNutFree") },
-								].map((item) => (
-									<label
-										key={item.value}
-										className="flex items-center gap-2 font-mono text-xs font-bold text-nb-black cursor-pointer"
-										htmlFor={`inquiry-dietary-${item.value}`}
-									>
-										<input
-											id={`inquiry-dietary-${item.value}`}
-											type="checkbox"
-											value={item.value}
-											{...register("dietary")}
-											className="h-4 w-4 border-2 border-nb-black accent-nb-black"
-										/>
-										<span>{item.label}</span>
-									</label>
-								))}
-							</div>
-						</fieldset>
 
 						<div>
 							<label className={labelClass} htmlFor="inquiry-design-theme">
@@ -753,64 +659,31 @@ export const CakeInquiryForm = (): FunctionComponent => {
 							</div>
 
 							<div>
-								<label className={labelClass}>
-									{t("order.deliveryType")} *
+								<label className={labelClass} htmlFor="inquiry-timeslot">
+									{t("order.timeSlot")} *
 								</label>
-								<div className="grid grid-cols-2 gap-3 h-12">
-									<label
-										className={`flex items-center justify-center border-2 border-nb-black font-mono text-xs font-bold cursor-pointer transition-colors ${selectedDelivery === "pickup" ? "bg-nb-yellow text-nb-black shadow-[2px_2px_0px_0px_#0D0D0D]" : "bg-nb-white text-nb-black/60 hover:bg-nb-yellow/40"}`}
-									>
-										<input
-											type="radio"
-											value="pickup"
-											{...register("deliveryType")}
-											className="sr-only"
-										/>
-										{t("order.pickup")}
-									</label>
-									<label
-										className={`flex items-center justify-center border-2 border-nb-black font-mono text-xs font-bold cursor-pointer transition-colors ${selectedDelivery === "delivery" ? "bg-nb-yellow text-nb-black shadow-[2px_2px_0px_0px_#0D0D0D]" : "bg-nb-white text-nb-black/60 hover:bg-nb-yellow/40"}`}
-									>
-										<input
-											type="radio"
-											value="delivery"
-											{...register("deliveryType")}
-											className="sr-only"
-										/>
-										{t("order.delivery")}
-									</label>
-								</div>
-								<p className="font-mono text-[10px] text-nb-black/60 mt-1.5 leading-relaxed">
-									{t("order.deliveryNote")}
-								</p>
+								<select
+									id="inquiry-timeslot"
+									{...register("timeSlot")}
+									aria-invalid={Boolean(errors.timeSlot)}
+									className={inputClass(Boolean(errors.timeSlot))}
+									aria-describedby={
+										errors.timeSlot ? "inquiry-timeslot-error" : undefined
+									}
+								>
+									<option disabled value="">
+										{t("order.timeSlotPlaceholder")}
+									</option>
+									<option value="morning_09_11">09:00 - 11:00</option>
+									<option value="noon_11_13">11:00 - 13:00</option>
+									<option value="afternoon_13_15">13:00 - 15:00</option>
+									<option value="evening_15_18">15:00 - 18:00</option>
+								</select>
+								<FieldError
+									id="inquiry-timeslot-error"
+									message={errors.timeSlot?.message}
+								/>
 							</div>
-						</div>
-
-						<div>
-							<label className={labelClass} htmlFor="inquiry-timeslot">
-								{t("order.timeSlot")} *
-							</label>
-							<select
-								id="inquiry-timeslot"
-								{...register("timeSlot")}
-								aria-invalid={Boolean(errors.timeSlot)}
-								className={inputClass(Boolean(errors.timeSlot))}
-								aria-describedby={
-									errors.timeSlot ? "inquiry-timeslot-error" : undefined
-								}
-							>
-								<option disabled value="">
-									{t("order.timeSlotPlaceholder")}
-								</option>
-								<option value="morning_09_11">09:00 - 11:00</option>
-								<option value="noon_11_13">11:00 - 13:00</option>
-								<option value="afternoon_13_15">13:00 - 15:00</option>
-								<option value="evening_15_18">15:00 - 18:00</option>
-							</select>
-							<FieldError
-								id="inquiry-timeslot-error"
-								message={errors.timeSlot?.message}
-							/>
 						</div>
 
 						{/* File Upload */}
@@ -818,7 +691,7 @@ export const CakeInquiryForm = (): FunctionComponent => {
 							<label className={labelClass} htmlFor="inquiry-files">
 								{t("order.referenceImages")}
 							</label>
-							<div className="border-3 border-dashed border-nb-black p-6 bg-nb-cream flex flex-col items-center justify-center text-center cursor-pointer relative group hover:bg-nb-yellow/20 transition-colors">
+							<div className="rounded-2xl border-2 border-dashed border-nb-line p-6 bg-nb-cream flex flex-col items-center justify-center text-center cursor-pointer relative group hover:bg-nb-yellow/20 transition-colors">
 								<input
 									multiple
 									accept="image/jpeg,image/png,image/webp"
@@ -853,7 +726,7 @@ export const CakeInquiryForm = (): FunctionComponent => {
 									{uploadedFiles.map((entry, index) => (
 										<li
 											key={entry.file.name + index}
-											className="flex items-center justify-between p-3 border-2 border-nb-black bg-nb-mint text-xs font-mono"
+											className="flex items-center justify-between p-3 border border-nb-line bg-nb-mint text-xs font-mono"
 										>
 											<div className="flex items-center gap-2">
 												<DocumentIcon
@@ -989,7 +862,7 @@ export const CakeInquiryForm = (): FunctionComponent => {
 
 						{mutation.isError && (
 							<div
-								className="border-3 border-nb-black bg-nb-pink p-4 flex items-start gap-3"
+								className="rounded-xl border border-nb-line bg-nb-pink/10 p-4 flex items-start gap-3"
 								role="alert"
 							>
 								<ExclamationTriangleIcon

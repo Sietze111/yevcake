@@ -15,9 +15,10 @@ export const SectionHeading = ({
 	return (
 		<Reveal className="mb-12">
 			<div className={`nb-tag w-fit mb-4 ${tagClassName}`}>{tag}</div>
-			<h2 className="font-mono text-4xl sm:text-5xl font-bold text-nb-black uppercase">
+			<h2 className="font-mono text-4xl sm:text-5xl font-semibold leading-[1.15] text-nb-black [text-wrap:balance]">
 				{title}
 			</h2>
+			<span aria-hidden="true" className="nb-divider mt-5" />
 		</Reveal>
 	);
 };

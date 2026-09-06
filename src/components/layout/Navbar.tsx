@@ -45,7 +45,6 @@ export const Navbar = (): FunctionComponent => {
 			{ href: "#flavors", id: "flavors", label: t("nav.flavors") },
 			{ href: "#gallery", id: "gallery", label: t("nav.gallery") },
 			{ href: "#configurator", id: "configurator", label: t("nav.designer") },
-			{ href: "#prices", id: "prices", label: t("nav.prices") },
 			{ href: "#reviews", id: "reviews", label: t("nav.reviews") },
 			{ href: "#inquiry", id: "inquiry", label: t("nav.order") },
 		],
@@ -57,15 +56,16 @@ export const Navbar = (): FunctionComponent => {
 	);
 
 	return (
-		<nav className="fixed top-0 left-0 right-0 z-50 bg-nb-yellow border-b-4 border-nb-black shadow-[0_4px_0px_0px_#0D0D0D]">
+		<nav className="fixed top-0 left-0 right-0 z-50 bg-nb-cream/95 backdrop-blur-md border-b border-nb-line shadow-[0_6px_20px_rgba(61,43,31,0.08)]">
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<div className="flex justify-between h-16">
 					<div className="flex-shrink-0 flex items-center">
-						<a className="flex flex-col leading-none" href="#home">
-							<span className="font-mono text-xl font-bold tracking-tight text-nb-black uppercase">
-								{"YEVHENIIA'S"}
+						<a className="flex flex-col leading-none group" href="#home">
+							<span className="font-mono text-2xl font-bold tracking-tight text-nb-black">
+								{"Yevheniia\u2019s"}
+								<span className="text-nb-pink">.</span>
 							</span>
-							<span className="font-mono text-[9px] tracking-[0.15em] text-nb-black/70 uppercase">
+							<span className="font-sans text-[9px] font-medium tracking-[0.32em] text-nb-black/60 uppercase">
 								Cake Atelier &middot; Bern
 							</span>
 						</a>
@@ -77,10 +77,10 @@ export const Navbar = (): FunctionComponent => {
 								key={link.href}
 								aria-current={activeSection === link.id ? "true" : undefined}
 								href={link.href}
-								className={`font-mono text-[10px] font-bold tracking-wider text-nb-black uppercase px-3 py-1.5 border transition-colors duration-100 ${
+								className={`font-sans text-[11px] font-medium tracking-wider text-nb-black uppercase px-3 py-2 rounded-full transition-colors duration-150 ${
 									activeSection === link.id
-										? "bg-nb-black text-nb-yellow border-nb-black"
-										: "bg-transparent border-transparent hover:bg-nb-black hover:text-nb-yellow hover:border-nb-black"
+										? "bg-nb-black text-nb-cream"
+										: "hover:bg-nb-yellow/40"
 								}`}
 							>
 								{link.label}
@@ -89,7 +89,7 @@ export const Navbar = (): FunctionComponent => {
 
 						<Menu as="div" className="relative inline-block text-left ml-2">
 							<div>
-								<MenuButton className="nb-tag bg-nb-pink hover:bg-nb-black hover:text-nb-yellow transition-colors cursor-pointer gap-1.5">
+								<MenuButton className="nb-tag bg-nb-pink hover:bg-nb-black hover:text-nb-cream transition-colors cursor-pointer gap-1.5">
 									<GlobeAltIcon aria-hidden="true" className="h-3 w-3" />
 									{currentLanguage.code.toUpperCase()}
 								</MenuButton>
@@ -102,7 +102,7 @@ export const Navbar = (): FunctionComponent => {
 								leaveFrom="transform opacity-100 scale-100"
 								leaveTo="transform opacity-0 scale-95"
 							>
-								<MenuItems className="absolute right-0 z-10 mt-2 w-40 origin-top-right bg-nb-cream border-2 border-nb-black shadow-[4px_4px_0px_0px_#0D0D0D] focus:outline-none">
+								<MenuItems className="absolute right-0 z-10 mt-2 w-40 origin-top-right bg-nb-cream border border-nb-line rounded-xl shadow-[0_12px_26px_rgba(61,43,31,0.18)] focus:outline-none">
 									<div className="py-1">
 										{languages.map((lang) => (
 											<MenuItem key={lang.code}>
@@ -110,8 +110,8 @@ export const Navbar = (): FunctionComponent => {
 													<button
 														className={
 															active
-																? "bg-nb-yellow text-nb-black block w-full text-left px-4 py-2 font-mono text-xs font-bold uppercase tracking-wide"
-																: "text-nb-black block w-full text-left px-4 py-2 font-mono text-xs font-bold uppercase tracking-wide"
+																? "bg-nb-yellow/70 text-nb-black block w-full text-left px-4 py-2 font-sans text-xs font-medium uppercase tracking-wider"
+																: "text-nb-black block w-full text-left px-4 py-2 font-sans text-xs font-medium uppercase tracking-wider"
 														}
 														onClick={() => handleLanguageChange(lang.code)}
 													>
@@ -142,7 +142,7 @@ export const Navbar = (): FunctionComponent => {
 								leaveFrom="transform opacity-100 scale-100"
 								leaveTo="transform opacity-0 scale-95"
 							>
-								<MenuItems className="absolute right-0 z-10 mt-2 w-36 origin-top-right bg-nb-cream border-2 border-nb-black shadow-[4px_4px_0px_0px_#0D0D0D] focus:outline-none">
+								<MenuItems className="absolute right-0 z-10 mt-2 w-36 origin-top-right bg-nb-cream border border-nb-line rounded-xl shadow-[0_12px_26px_rgba(61,43,31,0.18)] focus:outline-none">
 									<div className="py-1">
 										{languages.map((lang) => (
 											<MenuItem key={lang.code}>
@@ -150,8 +150,8 @@ export const Navbar = (): FunctionComponent => {
 													<button
 														className={
 															active
-																? "bg-nb-yellow text-nb-black block w-full text-left px-3 py-2 font-mono text-xs font-bold uppercase"
-																: "text-nb-black block w-full text-left px-3 py-2 font-mono text-xs font-bold uppercase"
+																? "bg-nb-yellow/70 text-nb-black block w-full text-left px-3 py-2 font-sans text-xs font-medium uppercase"
+																: "text-nb-black block w-full text-left px-3 py-2 font-sans text-xs font-medium uppercase"
 														}
 														onClick={() => handleLanguageChange(lang.code)}
 													>
@@ -167,7 +167,7 @@ export const Navbar = (): FunctionComponent => {
 
 						<button
 							aria-expanded={mobileMenuOpen}
-							className="border-2 border-nb-black p-1.5 hover:bg-nb-black hover:text-nb-yellow transition-colors"
+							className="border border-nb-line rounded-lg p-2 text-nb-black hover:bg-nb-yellow/50 transition-colors"
 							aria-label={
 								mobileMenuOpen ? t("nav.closeMenu") : t("nav.openMenu")
 							}
@@ -186,12 +186,12 @@ export const Navbar = (): FunctionComponent => {
 			</div>
 
 			{mobileMenuOpen && (
-				<div className="md:hidden bg-nb-yellow border-t-4 border-nb-black">
+				<div className="md:hidden bg-nb-cream/95 border-t border-nb-line">
 					<div className="px-2 pt-2 pb-4 space-y-0.5">
 						{navLinks.map((link) => (
 							<a
 								key={link.href}
-								className="block px-4 py-2.5 font-mono text-sm font-bold text-nb-black uppercase tracking-wide hover:bg-nb-black hover:text-nb-yellow transition-colors"
+								className="block px-4 py-2.5 font-sans text-sm font-medium text-nb-black uppercase tracking-wide hover:bg-nb-yellow/40 rounded-lg transition-colors"
 								href={link.href}
 								onClick={() => {
 									setMobileMenuOpen(false);

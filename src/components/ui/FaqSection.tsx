@@ -24,24 +24,24 @@ export const FaqSection = (): FunctionComponent => {
 			<SectionHeading tag={t("faq.title")} title={t("faq.subtitle")} />
 			<div className="w-full max-w-3xl space-y-3">
 				{faqs.map((faq, index) => (
-					<Disclosure
-						key={index}
-						as="div"
-						className="border-3 border-nb-black shadow-[4px_4px_0px_0px_#0D0D0D]"
-					>
+					<Disclosure key={index} as="div" className="nb-card overflow-hidden">
 						{({ open }) => (
 							<>
 								<DisclosureButton
-									className={`flex w-full justify-between items-center px-6 py-5 text-left font-mono text-sm font-bold text-nb-black uppercase tracking-wide cursor-pointer transition-colors duration-100 ${open ? "bg-nb-yellow" : "bg-nb-white hover:bg-nb-yellow"}`}
+									className={`flex w-full justify-between items-center gap-4 px-6 py-5 text-left font-mono text-sm font-semibold text-nb-black cursor-pointer transition-colors duration-100 ${open ? "bg-nb-yellow/30" : "bg-nb-white hover:bg-nb-yellow/20"}`}
 								>
 									<span>{faq.q}</span>
-									{open ? (
-										<MinusIcon className="h-5 w-5 text-nb-black shrink-0" />
-									) : (
-										<PlusIcon className="h-5 w-5 text-nb-black shrink-0" />
-									)}
+									<span
+										className={`rounded-full border border-nb-black p-0.5 shrink-0 transition-transform duration-200 ${open ? "rotate-45 bg-nb-yellow" : "bg-nb-white"}`}
+									>
+										{open ? (
+											<MinusIcon className="h-4 w-4 text-nb-black" />
+										) : (
+											<PlusIcon className="h-4 w-4 text-nb-black" />
+										)}
+									</span>
 								</DisclosureButton>
-								<DisclosurePanel className="px-6 pb-5 pt-4 font-sans text-sm text-nb-black/80 leading-relaxed border-t-2 border-nb-black bg-nb-cream">
+								<DisclosurePanel className="px-6 pb-5 pt-4 font-sans font-light text-sm text-nb-black/80 leading-relaxed border-t border-nb-line bg-nb-cream/50">
 									{faq.a}
 								</DisclosurePanel>
 							</>

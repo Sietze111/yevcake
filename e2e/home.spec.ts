@@ -7,7 +7,7 @@ test.describe("home page", () => {
 		await expect(page).toHaveTitle(/Cake Atelier/i);
 		await expect(page.locator("#home")).toBeVisible();
 		await expect(page.locator("#gallery")).toBeAttached();
-		await expect(page.locator("#prices")).toBeAttached();
+		await expect(page.locator("#configurator")).toBeAttached();
 		await expect(page.locator("#inquiry")).toBeAttached();
 	});
 
@@ -21,21 +21,6 @@ test.describe("home page", () => {
 		await page.getByRole("menuitem", { name: "Deutsch" }).click();
 
 		await expect(page.getByText("Über Yevheniia")).toBeVisible();
-	});
-
-	test("price guide CTA preselects the occasion in the inquiry form", async ({
-		page,
-	}) => {
-		await page.goto("/");
-
-		await page
-			.locator("#prices")
-			.getByRole("link", { name: "Inquire Now" })
-			.first()
-			.click();
-
-		const occasionSelect = page.locator("#inquiry-occasion");
-		await expect(occasionSelect).toHaveValue("wedding");
 	});
 
 	test("servings input blocks scientific notation characters", async ({

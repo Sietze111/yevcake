@@ -8,7 +8,7 @@ export const NotFoundPage = (): FunctionComponent => {
 
 	return (
 		<main className="flex min-h-screen items-center justify-center bg-nb-cream px-6">
-			<div className="max-w-xl border-3 border-nb-black bg-nb-white p-10 text-center shadow-[8px_8px_0px_0px_#0D0D0D]">
+			<div className="max-w-xl rounded-3xl border border-nb-line bg-nb-white p-10 text-center shadow-[0_18px_36px_rgba(61,43,31,0.18)]">
 				<p className="font-mono text-6xl font-bold text-nb-black">404</p>
 				<h1 className="mt-4 font-mono text-2xl font-bold text-nb-black uppercase">
 					{t("common.notFoundTitle")}

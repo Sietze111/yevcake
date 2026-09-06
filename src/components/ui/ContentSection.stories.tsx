@@ -27,7 +27,7 @@ export const BlueBackground: Story = {
 	args: {
 		background: "bg-nb-blue",
 		children: (
-			<div className="border-3 border-nb-black bg-nb-white p-6 shadow-[6px_6px_0px_0px_#0D0D0D]">
+			<div className="border border-nb-line bg-nb-white p-6 shadow-[0_12px_26px_rgba(61,43,31,0.14)]">
 				<p className="font-mono text-sm font-bold uppercase">
 					Card inside a blue section
 				</p>

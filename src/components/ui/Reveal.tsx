@@ -1,9 +1,4 @@
-import {
-	useEffect,
-	useRef,
-	useState,
-	type ReactNode,
-} from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import type { FunctionComponent } from "../../common/types";
 
 interface RevealProps {
@@ -51,9 +46,7 @@ export const Reveal = ({
 			ref={elementRef}
 			style={{ transitionDelay: `${String(delay)}ms` }}
 			className={`transition-all duration-700 ease-out ${
-				isVisible
-					? "opacity-100 translate-y-0"
-					: "opacity-0 translate-y-10"
+				isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
 			} ${className}`}
 		>
 			{children}

@@ -102,7 +102,7 @@ export const GallerySection = (): FunctionComponent => {
 								setSelectedId(item.id);
 							}}
 						>
-							<div className="overflow-hidden aspect-square border-b-3 border-nb-black">
+							<div className="overflow-hidden aspect-square">
 								<img
 									alt={item.title}
 									className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -111,10 +111,10 @@ export const GallerySection = (): FunctionComponent => {
 								/>
 							</div>
 							<div className="p-5 bg-nb-cream">
-								<h4 className="font-mono text-sm font-bold text-nb-black uppercase">
+								<h4 className="font-mono text-sm font-semibold text-nb-black">
 									{item.title}
 								</h4>
-								<p className="font-sans text-xs text-nb-black/60 mt-1 leading-relaxed">
+								<p className="font-sans font-light text-xs text-nb-black/60 mt-1 leading-relaxed">
 									{item.desc}
 								</p>
 							</div>
@@ -161,7 +161,7 @@ export const GallerySection = (): FunctionComponent => {
 							leaveFrom="opacity-100 translate-y-0 scale-100"
 							leaveTo="opacity-0 translate-y-4 scale-95"
 						>
-							<DialogPanel className="max-w-3xl w-full border-3 border-nb-black bg-nb-cream shadow-[10px_10px_0px_0px_#0D0D0D]">
+							<DialogPanel className="max-w-3xl w-full rounded-3xl border border-nb-line bg-nb-cream shadow-[0_24px_48px_rgba(61,43,31,0.2)] overflow-hidden">
 								{selectedItem && (
 									<>
 										<DialogTitle as="h3" className="sr-only">
@@ -169,15 +169,15 @@ export const GallerySection = (): FunctionComponent => {
 										</DialogTitle>
 										<img
 											alt={selectedItem.title}
-											className="w-full aspect-[4/3] object-cover border-b-3 border-nb-black"
+											className="w-full aspect-[4/3] object-cover"
 											src={largeImage(selectedItem.image)}
 										/>
-										<div className="p-5 flex items-start justify-between gap-4">
+										<div className="p-6 flex items-start justify-between gap-4">
 											<div>
-												<h4 className="font-mono text-sm font-bold uppercase">
+												<h4 className="font-mono text-base font-semibold text-nb-black">
 													{selectedItem.title}
 												</h4>
-												<p className="font-sans text-xs text-nb-black/60 mt-1 leading-relaxed">
+												<p className="font-sans font-light text-xs text-nb-black/60 mt-1 leading-relaxed">
 													{t("lightbox.counter", {
 														current:
 															galleryItems.findIndex(
@@ -189,7 +189,7 @@ export const GallerySection = (): FunctionComponent => {
 											</div>
 											<button
 												aria-label={t("lightbox.close")}
-												className="border-2 border-nb-black bg-nb-pink p-1.5 cursor-pointer hover:bg-nb-black hover:text-nb-yellow transition-colors shrink-0"
+												className="rounded-full border border-nb-line bg-nb-pink p-2 cursor-pointer hover:bg-nb-black hover:text-nb-cream transition-colors shrink-0"
 												type="button"
 												onClick={closeLightbox}
 											>

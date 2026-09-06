@@ -74,12 +74,12 @@ export const Footer = (): FunctionComponent => {
 						<h4 className="font-mono text-lg font-bold text-nb-yellow uppercase">
 							{t("common.location")}
 						</h4>
-						<div className="border-3 border-nb-yellow bg-nb-black/50 p-6 flex flex-col items-center justify-center gap-2 shadow-[4px_4px_0px_0px_#FFE566]">
-							<MapPinIcon className="h-10 w-10 text-nb-yellow animate-bounce" />
-							<span className="font-mono text-xs font-bold text-nb-yellow uppercase tracking-wider">
-								Atelier in Bern
+						<div className="border border-nb-yellow/70 bg-nb-black/40 rounded-3xl p-6 flex flex-col items-center justify-center gap-2 shadow-[0_8px_20px_rgba(0,0,0,0.35)]">
+							<MapPinIcon className="h-8 w-8 text-nb-yellow/80" />
+							<span className="font-mono text-sm font-bold text-nb-yellow">
+								Atelier &middot; Bern
 							</span>
-							<span className="font-mono text-[10px] text-nb-cream/50">
+							<span className="font-sans text-[10px] uppercase tracking-widest text-nb-cream/50">
 								{t("common.collectionByAppointment")}
 							</span>
 						</div>

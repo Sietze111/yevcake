@@ -39,7 +39,7 @@ export const BackToTopButton = (): FunctionComponent => {
 			aria-label={t("backToTop.label")}
 			tabIndex={isVisible ? 0 : -1}
 			type="button"
-			className={`fixed right-6 bottom-6 z-50 flex h-12 w-12 cursor-pointer items-center justify-center border-3 border-nb-black bg-nb-yellow text-nb-black shadow-[4px_4px_0px_0px_#0D0D0D] transition-all duration-150 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:bg-nb-black hover:text-nb-yellow hover:shadow-[6px_6px_0px_0px_#0D0D0D] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0px_0px_#0D0D0D] ${
+			className={`fixed right-6 bottom-6 z-50 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border border-nb-line bg-nb-yellow text-nb-black shadow-[0_8px_20px_rgba(61,43,31,0.12)] transition-all duration-150 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:bg-nb-black hover:text-nb-yellow hover:shadow-[0_14px_30px_rgba(61,43,31,0.24)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[0_2px_6px_rgba(61,43,31,0.2)] ${
 				isVisible ? "opacity-100" : "pointer-events-none opacity-0"
 			}`}
 			onClick={scrollToTop}

@@ -5,12 +5,20 @@ import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 import { FLAVOR_OPTIONS } from "./cakeConfiguratorData";
 
-const FLAVOR_BG: Record<string, string> = {
-	medovyk: "bg-nb-yellow",
-	pistachio: "bg-nb-mint",
-	caramel: "bg-nb-peach",
-	mango: "bg-nb-pink",
-};
+const FLAVOR_BG: Array<string> = [
+	"bg-nb-yellow",
+	"bg-nb-mint",
+	"bg-nb-peach",
+	"bg-nb-pink",
+	"bg-nb-white",
+	"bg-nb-blue",
+	"bg-nb-lilac",
+	"bg-nb-yellow",
+	"bg-nb-mint",
+	"bg-nb-peach",
+	"bg-nb-pink",
+	"bg-nb-blue",
+];
 
 export const FlavorsSection = (): FunctionComponent => {
 	const { t } = useTranslation();
@@ -22,12 +30,16 @@ export const FlavorsSection = (): FunctionComponent => {
 			<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 				{FLAVOR_OPTIONS.map((flavor, index) => (
 					<Reveal key={flavor.id} delay={index * 90}>
-						<div className={`nb-tile p-8 text-left ${FLAVOR_BG[flavor.id]}`}>
+						<div
+							className={`nb-tile p-8 text-left ${
+								FLAVOR_BG[index % FLAVOR_BG.length]
+							}`}
+						>
 							<span className="text-4xl block mb-4">{flavor.icon}</span>
-							<h3 className="font-mono text-xl font-bold text-nb-black uppercase mb-2">
+							<h3 className="font-mono text-2xl font-semibold text-nb-black mb-2">
 								{t(`flavors.${flavor.id}.name`)}
 							</h3>
-							<p className="font-sans text-sm text-nb-black/75 leading-relaxed">
+							<p className="font-sans font-light text-sm text-nb-black/75 leading-relaxed">
 								{t(`flavors.${flavor.id}.desc`)}
 							</p>
 						</div>
@@ -35,7 +47,7 @@ export const FlavorsSection = (): FunctionComponent => {
 				))}
 			</div>
 
-			<p className="font-mono text-[11px] text-nb-black/60 leading-relaxed max-w-2xl mt-8 mx-auto text-center">
+			<p className="font-sans text-[11px] font-light text-nb-black/60 leading-relaxed max-w-2xl mt-8 mx-auto text-center">
 				{t("flavors.allergenNote")}
 			</p>
 		</ContentSection>

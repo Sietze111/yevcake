@@ -2,15 +2,15 @@ import type { FunctionComponent } from "../../common/types";
 import {
 	SPONGE_COLORS,
 	type FlavorId,
+	type TierId,
 	type TopperId,
 } from "./cakeConfiguratorData";
 
 interface CakeVisualProps {
-	tiers: 1 | 2 | 3;
+	tier: TierId;
+	flavor: FlavorId;
 	frostingColor: string;
-	flavorId: FlavorId;
 	topper: TopperId;
-	inscription: string;
 }
 
 interface Sprinkle {
@@ -20,172 +20,256 @@ interface Sprinkle {
 	rotate: number;
 }
 
-const TIER_WIDTHS = [220, 170, 120] as const;
+const PLATE_Y = 300;
+const CX = 135;
+const TIER_GAP = 8;
+
+const TIER_WIDTHS: Record<TierId, Array<number>> = {
+	1: [190],
+	2: [190, 148],
+	3: [190, 152, 118],
+};
+
+const TIER_HEIGHTS: Record<TierId, Array<number>> = {
+	1: [64],
+	2: [64, 54],
+	3: [64, 52, 46],
+};
+
+const LID_COLOR = "#FFF3D6";
+const LID_RIM = "rgba(61,43,31,0.22)";
+
+interface TierRect {
+	index: number;
+	x: number;
+	y: number;
+	width: number;
+	height: number;
+}
+
+const layoutTiers = (tier: TierId): Array<TierRect> => {
+	const widths = TIER_WIDTHS[tier];
+	const heights = TIER_HEIGHTS[tier];
+	return heights.map((height, index) => {
+		let bottom = PLATE_Y;
+		for (let previous = 0; previous < index; previous += 1) {
+			bottom -= (heights[previous] ?? 0) + TIER_GAP;
+		}
+		return {
+			index,
+			x: CX - (widths[index] ?? 0) / 2,
+			y: bottom - height,
+			width: widths[index] ?? 0,
+			height,
+		};
+	});
+};
 
 const FLOWER_DOTS: Array<[number, number]> = [
-	[132, 12],
-	[150, -2],
-	[168, 14],
-	[143, 26],
-	[160, 28],
+	[-18, 16],
+	[-2, 4],
+	[16, 14],
+	[4, 28],
+	[20, 30],
 ];
 
 const BERRY_DOTS: Array<[number, number]> = [
-	[134, 2],
-	[152, -6],
-	[166, 4],
+	[-14, 10],
+	[2, 2],
+	[16, 8],
 ];
 
-const CANDLE_XS = [128, 148, 168] as const;
+const CANDLE_XS = [-20, 0, 20] as const;
 
 const SPRINKLES: Array<Sprinkle> = [
-	{ x: 52, y: 96, fill: "#FFC7DE", rotate: -18 },
-	{ x: 246, y: 88, fill: "#A9E8C4", rotate: 24 },
-	{ x: 64, y: 190, fill: "#AFCFFF", rotate: 40 },
-	{ x: 240, y: 196, fill: "#FFD23F", rotate: -32 },
-	{ x: 38, y: 140, fill: "#DCC7FF", rotate: 12 },
-	{ x: 258, y: 146, fill: "#FF6FA5", rotate: -8 },
+	{ x: 62, y: 268, fill: "#F7B74B", rotate: -18 },
+	{ x: 108, y: 254, fill: "#A3C37E", rotate: 24 },
+	{ x: 150, y: 292, fill: "#B9A8C6", rotate: 40 },
+	{ x: 202, y: 262, fill: "#C9A96E", rotate: -32 },
+	{ x: 76, y: 288, fill: "#E27D8D", rotate: 12 },
+	{ x: 188, y: 286, fill: "#86A3A0", rotate: -8 },
 ];
 
-const PLATE_Y = 282;
+interface CrumbDot {
+	x: number;
+	y: number;
+	r: number;
+}
+
+const CRUMBS: Array<CrumbDot> = [
+	{ x: CX - 58, y: PLATE_Y - 4, r: 3 },
+	{ x: CX - 40, y: PLATE_Y - 8, r: 2.2 },
+	{ x: CX - 16, y: PLATE_Y - 4, r: 2.6 },
+	{ x: CX + 24, y: PLATE_Y - 7, r: 2.4 },
+	{ x: CX + 48, y: PLATE_Y - 3, r: 3.4 },
+	{ x: CX + 62, y: PLATE_Y - 9, r: 2.2 },
+];
 
 export const CakeVisual = ({
-	tiers,
+	tier,
+	flavor,
 	frostingColor,
-	flavorId,
 	topper,
-	inscription,
 }: CakeVisualProps): FunctionComponent => {
-	const spongeColor = SPONGE_COLORS[flavorId];
-	const plateWidth = (TIER_WIDTHS[3 - tiers] ?? TIER_WIDTHS[0]) + 60;
+	const rects = layoutTiers(tier);
+	const topRect = rects[rects.length - 1];
+	if (topRect === undefined) return null;
+	const topY = topRect.y;
+	const spongeColor = SPONGE_COLORS[flavor];
 
 	return (
 		<svg
 			aria-hidden="true"
 			className="w-full max-w-sm mx-auto"
-			viewBox="0 0 300 320"
+			viewBox="0 0 300 330"
 			xmlns="http://www.w3.org/2000/svg"
 		>
+			{/* Plate */}
 			<rect
-				fill="#0D0D0D"
+				fill="#D9C3A0"
 				height="10"
 				rx="5"
-				width={plateWidth}
-				x={(300 - plateWidth) / 2 + 6}
-				y={PLATE_Y + 4}
+				width="224"
+				x={CX - 112}
+				y={PLATE_Y + 5}
 			/>
 			<rect
-				fill="#FFFFFF"
+				fill="#FFFDF9"
 				height="10"
 				rx="5"
-				stroke="#0D0D0D"
-				strokeWidth="3"
-				width={plateWidth}
-				x={(300 - plateWidth) / 2}
+				stroke="#CBB18A"
+				strokeWidth="2"
+				width="224"
+				x={CX - 112}
 				y={PLATE_Y}
 			/>
 
-			{Array.from({ length: tiers }, (_, index) => {
-				const tierIndexFromBottom = tiers - 1 - index;
-				const width = TIER_WIDTHS[tierIndexFromBottom] ?? TIER_WIDTHS[0];
-				const height = 64;
-				const y = PLATE_Y - height - tierIndexFromBottom * (height + 8);
-				const x = (300 - width) / 2;
-				const isTopTier = index === 0;
+			{/* Tiers */}
+			{rects.map((rect) => {
+				const sliceTop = rect.y + 10;
+				const sliceBottom = rect.y + rect.height - 10;
+				const sliceHeight = sliceBottom - sliceTop;
+				const isTop = rect.index === rects.length - 1;
 				return (
-					<g key={`tier-${String(tierIndexFromBottom)}`} className="nb-pop">
+					<g key={`tier-${String(rect.index)}`}>
+						{/* Frosted shell */}
 						<rect
 							fill={frostingColor}
-							height={height}
-							rx="8"
-							stroke="#0D0D0D"
-							strokeWidth="3"
-							width={width}
-							x={x}
-							y={y}
+							height={rect.height}
+							rx="12"
+							stroke="rgba(61,43,31,0.35)"
+							strokeWidth="1.5"
+							width={rect.width}
+							x={rect.x}
+							y={rect.y}
 						/>
+						{/* Buttercream dam where the next tier sits */}
+						{!isTop && (
+							<rect
+								fill="#F0D9A6"
+								height="8"
+								rx="4"
+								width={rect.width}
+								x={rect.x}
+								y={rect.y + rect.height - 8}
+							/>
+						)}
+						{/* Flavor cut-away (sponge shown at the front) */}
 						<rect
 							fill={spongeColor}
-							height="14"
-							rx="4"
-							stroke="#0D0D0D"
-							strokeWidth="2.5"
-							width={width - 24}
-							x={x + 12}
-							y={y + height - 22}
+							height={sliceHeight}
+							rx="7"
+							stroke="rgba(61,43,31,0.35)"
+							strokeWidth="1"
+							width="42"
+							x={CX - 21}
+							y={sliceTop}
 						/>
-						{isTopTier && inscription !== "" ? (
-							<text
-								fontFamily="monospace"
-								fontWeight="bold"
-								textAnchor="middle"
-								x="150"
-								y={y + 34}
-								fontSize={Math.min(
-									16,
-									Math.max(9, Math.round(140 / inscription.length))
-								)}
-							>
-								{inscription.toUpperCase()}
-							</text>
-						) : null}
-						{isTopTier ? (
-							<g>
-								{topper === "flowers"
-									? FLOWER_DOTS.map(([cx, dy]) => (
-											<circle
-												key={`${String(cx)}-${String(dy)}`}
-												cx={cx}
-												cy={y - 6 + dy}
-												fill={cx % 2 === 0 ? "#FFC7DE" : "#FFE9B8"}
-												r="7"
-												stroke="#0D0D0D"
-												strokeWidth="2"
-											/>
-										))
-									: null}
-								{topper === "candles"
-									? CANDLE_XS.map((cx) => (
-											<g key={`candle-${String(cx)}`}>
-												<rect
-													fill="#FF6FA5"
-													height="26"
-													stroke="#0D0D0D"
-													strokeWidth="2"
-													width="7"
-													x={cx - 3.5}
-													y={y - 30}
-												/>
-												<ellipse
-													cx={cx}
-													cy={y - 36}
-													fill="#FFD23F"
-													r="4"
-													stroke="#FF8A00"
-													strokeWidth="1.5"
-												/>
-											</g>
-										))
-									: null}
-								{topper === "berries"
-									? BERRY_DOTS.map(([cx, dy]) => (
-											<circle
-												key={`${String(cx)}-${String(dy)}`}
-												cx={cx}
-												cy={y - 4 + dy}
-												fill="#E63E62"
-												r="6"
-												stroke="#0D0D0D"
-												strokeWidth="2"
-											/>
-										))
-									: null}
-							</g>
-						) : null}
+						<line
+							stroke="rgba(255,255,255,0.5)"
+							strokeWidth="3"
+							x1={CX - 21}
+							x2={CX + 21}
+							y1={sliceTop + 8}
+							y2={sliceTop + 8}
+						/>
+						<circle
+							cx={CX - 8}
+							cy={sliceTop + 22}
+							fill="rgba(255,255,255,0.35)"
+							r="2.5"
+						/>
+						<circle
+							cx={CX + 7}
+							cy={sliceTop + 32}
+							fill="rgba(61,43,31,0.14)"
+							r="2"
+						/>
 					</g>
 				);
 			})}
 
+			{/* Top lid */}
+			<ellipse
+				cx={CX}
+				cy={topY + 3}
+				fill={LID_COLOR}
+				rx={topRect.width / 2 - 2}
+				ry="9"
+				stroke={LID_RIM}
+				strokeWidth="1.2"
+			/>
+
+			{/* Topper */}
+			{topper === "flowers" &&
+				FLOWER_DOTS.map(([dx, dy]) => (
+					<circle
+						key={`flowers-${String(dx)}-${String(dy)}`}
+						cx={CX + dx}
+						cy={topY - 8 + dy}
+						fill={Math.abs(dx) % 2 === 0 ? "#E27D8D" : "#F7B74B"}
+						r="6.5"
+						stroke="rgba(61,43,31,0.4)"
+						strokeWidth="1.5"
+					/>
+				))}
+			{topper === "candles" &&
+				CANDLE_XS.map((dx) => (
+					<g key={`candle-${String(dx)}`}>
+						<rect
+							fill="#E27D8D"
+							height="24"
+							rx="3"
+							stroke="rgba(61,43,31,0.4)"
+							strokeWidth="1.5"
+							width="6"
+							x={CX + dx - 3}
+							y={topY - 30}
+						/>
+						<ellipse
+							cx={CX + dx}
+							cy={topY - 36}
+							fill="#C9A96E"
+							r="3.5"
+							stroke="#A8546B"
+							strokeWidth="1"
+						/>
+					</g>
+				))}
+			{topper === "berries" &&
+				BERRY_DOTS.map(([dx, dy]) => (
+					<circle
+						key={`berries-${String(dx)}-${String(dy)}`}
+						cx={CX + dx}
+						cy={topY - 6 + dy}
+						fill="#A8546B"
+						r="5.5"
+						stroke="rgba(61,43,31,0.4)"
+						strokeWidth="1.5"
+					/>
+				))}
+
+			{/* Sprinkles on the bottom tier */}
 			{SPRINKLES.map((sprinkle) => (
 				<g
 					key={`${String(sprinkle.x)}-${String(sprinkle.y)}`}
@@ -193,15 +277,28 @@ export const CakeVisual = ({
 				>
 					<rect
 						fill={sprinkle.fill}
-						height="8"
-						rx="4"
-						stroke="#0D0D0D"
-						strokeWidth="1.5"
-						width="16"
-						x={sprinkle.x - 8}
-						y={sprinkle.y - 4}
+						height="7"
+						rx="3.5"
+						stroke="rgba(255,255,255,0.6)"
+						strokeWidth="1"
+						width="14"
+						x={sprinkle.x - 7}
+						y={sprinkle.y - 3.5}
 					/>
 				</g>
+			))}
+
+			{/* Crumbs in flavor color on the plate */}
+			{CRUMBS.map((crumb) => (
+				<circle
+					key={`crumb-${String(crumb.x)}-${String(crumb.y)}`}
+					cx={crumb.x}
+					cy={crumb.y}
+					fill={spongeColor}
+					r={crumb.r}
+					stroke="rgba(61,43,31,0.12)"
+					strokeWidth="0.5"
+				/>
 			))}
 		</svg>
 	);

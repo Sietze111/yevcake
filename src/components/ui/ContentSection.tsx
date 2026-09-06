@@ -14,7 +14,7 @@ export const ContentSection = ({
 }: ContentSectionProps): FunctionComponent => {
 	return (
 		<section
-			className={`py-20 md:py-28 ${background ?? ""} border-b-4 border-nb-black`}
+			className={`py-20 md:py-28 ${background ?? ""} border-b border-nb-line`}
 			id={id}
 		>
 			<div className="max-w-7xl mx-auto px-6 lg:px-12">{children}</div>

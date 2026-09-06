@@ -10,7 +10,7 @@ export const RootLayout = (): FunctionComponent => {
 	return (
 		<>
 			<a
-				className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:border-3 focus:border-nb-black focus:bg-nb-yellow focus:px-4 focus:py-2 focus:font-mono focus:text-xs focus:font-bold focus:text-nb-black focus:uppercase"
+				className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-nb-yellow focus:px-4 focus:py-2 focus:font-mono focus:text-xs focus:font-bold focus:text-nb-black"
 				href="#main-content"
 			>
 				{t("a11y.skipToContent")}
