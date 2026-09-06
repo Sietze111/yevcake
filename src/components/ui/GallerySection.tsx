@@ -69,7 +69,8 @@ export const GallerySection = (): FunctionComponent => {
 		<ContentSection background="bg-nb-blue" id="gallery">
 			<SectionHeading
 				tag={t("gallery.title")}
-				tagClassName="bg-chocolate-950 text-cream-50"
+				tagClassName="bg-chocolate-950"
+				tagTextClassName="text-cream-50"
 				title={t("gallery.subtitle")}
 			/>
 

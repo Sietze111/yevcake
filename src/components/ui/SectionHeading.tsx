@@ -5,6 +5,7 @@ interface SectionHeadingProps {
 	tag: string;
 	title: string;
 	tagClassName?: string;
+	tagTextClassName?: string;
 	onDark?: boolean;
 }
 
@@ -12,17 +13,21 @@ export const SectionHeading = ({
 	tag,
 	title,
 	tagClassName = "bg-nb-yellow",
+	tagTextClassName = "text-raspberry-800",
 	onDark = false,
 }: SectionHeadingProps): FunctionComponent => {
 	const dividerColor = onDark ? "bg-raspberry-300/60" : "bg-raspberry-800/50";
 	const heartColor = onDark ? "text-raspberry-300" : "text-raspberry-800";
 	const tagBorder = onDark
-		? "border-raspberry-300/40 text-raspberry-300"
-		: "border-raspberry-800/30 text-raspberry-800";
+		? "border-raspberry-300/40"
+		: "border-raspberry-800/30";
+	const tagText = onDark ? "text-raspberry-300" : tagTextClassName;
 
 	return (
 		<Reveal className="mb-12">
-			<div className={`nb-tag w-fit mb-6 ${tagBorder} ${tagClassName}`}>
+			<div
+				className={`nb-tag w-fit mb-6 ${tagBorder} ${tagText} ${tagClassName}`}
+			>
 				{tag}
 			</div>
 			<div aria-hidden="true" className="flex items-center gap-4 mb-6">

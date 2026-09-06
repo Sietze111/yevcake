@@ -9,15 +9,15 @@ const FLAVOR_BG: Array<string> = [
 	"bg-nb-yellow",
 	"bg-nb-mint",
 	"bg-nb-peach",
-	"bg-nb-pink",
-	"bg-nb-white",
 	"bg-nb-blue",
 	"bg-nb-lilac",
+	"bg-nb-white",
 	"bg-nb-yellow",
 	"bg-nb-mint",
 	"bg-nb-peach",
-	"bg-nb-pink",
 	"bg-nb-blue",
+	"bg-nb-lilac",
+	"bg-nb-white",
 ];
 
 export const FlavorsSection = (): FunctionComponent => {
