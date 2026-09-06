@@ -13,7 +13,9 @@
 		"privacy": "Privacy Policy",
 		"designer": "Cake Designer",
 		"openMenu": "Open menu",
-		"closeMenu": "Close menu"
+		"closeMenu": "Close menu",
+		"language": "Change language",
+		"showcase": "Discover"
 	},
 	"hero": {
 		"title": "Bespoke Cake Artistry in Bern",
@@ -47,7 +49,39 @@
 			"name": "Mango Passionfruit Dream",
 			"desc": "Fluffy vanilla sponge cake layered with a tropical mango and passionfruit cream, covered with vanilla cream cheese frosting."
 		},
-		"allergenNote": "All cakes are handcrafted in our studio kitchen, which also processes gluten, nuts, dairy and eggs. Please let us know about any allergies in your inquiry."
+		"allergenNote": "All cakes are handcrafted in our studio kitchen, which also processes gluten, nuts, dairy and eggs. Please let us know about any allergies in your inquiry.",
+		"vanilla": {
+			"name": "Vanilla Chantilly",
+			"desc": "Tender vanilla sponge with an airy Chantilly cream – classic yet refined."
+		},
+		"redvelvet": {
+			"name": "Red Velvet",
+			"desc": "Moist red velvet sponge with a silky cream-cheese frosting – a timeless classic."
+		},
+		"lemon": {
+			"name": "Lemon Meringue",
+			"desc": "Light lemon meringue with a zesty lemon curd and toasted meringue topping."
+		},
+		"coffee": {
+			"name": "Tiramisu / Coffee",
+			"desc": "Espresso-soaked sponge layers with mascarpone – a tiramisu-style indulgence."
+		},
+		"chocolate": {
+			"name": "Dark Chocolate & Hazelnut",
+			"desc": "Deep dark chocolate sponge and ganache, finished with hazelnut praline."
+		},
+		"coconut": {
+			"name": "Coconut Lime",
+			"desc": "A tropical coconut delight lifted by lime and white-chocolate whipped cream."
+		},
+		"matcha": {
+			"name": "Matcha & White Choc",
+			"desc": "Earthy matcha meets silky white chocolate in an elegant, creamy sponge."
+		},
+		"blueberry": {
+			"name": "Blueberry Cheesecake",
+			"desc": "Luscious blueberry cheesecake filling layered over a tender sponge."
+		}
 	},
 	"gallery": {
 		"title": "Creations Gallery",
@@ -160,20 +194,10 @@
 		"customOccasionPlaceholder": "e.g., Baby Shower, Bridal Shower, Anniversary...",
 		"servings": "Number of Servings (Eaters)",
 		"date": "Desired Date",
-		"deliveryType": "Logistics Type",
-		"pickup": "Pickup at Bern Studio",
-		"delivery": "Delivery in Bern Region",
-		"timeSlot": "Preferred Pickup/Delivery Time",
+		"timeSlot": "Preferred Pickup Time",
 		"timeSlotPlaceholder": "Select a time slot",
 		"flavor": "Flavor Selection",
 		"flavorPlaceholder": "Choose your filling",
-		"dietary": "Dietary Requirements",
-		"dietaryGlutenFree": "Gluten-Free",
-		"dietaryLactoseFree": "Lactose-Free",
-		"dietaryVegan": "Vegan",
-		"dietaryNutFree": "Nut-Free",
-		"inscription": "Inscription / Cake Writing",
-		"inscriptionPlaceholder": "e.g., 'Happy Birthday Sophie!'",
 		"designTheme": "Color Scheme & Design Vision",
 		"designThemePlaceholder": "e.g., pastel tones, boho theme, fresh eucalyptus...",
 		"referenceImages": "Design Inspiration Images",
@@ -181,7 +205,7 @@
 		"uploadFormats": "Supports JPG, PNG, up to 10MB per image",
 		"filesRejected": "Some files were skipped (max 10MB, JPG/PNG/WebP only):",
 		"additionalNotes": "Additional Requests & Comments",
-		"additionalNotesPlaceholder": "Questions, delivery address (if delivery), special requests...",
+		"additionalNotesPlaceholder": "Questions, special requests, anything else...",
 		"name": "Full Name",
 		"email": "Email Address",
 		"phone": "Phone Number",
@@ -206,16 +230,17 @@
 			"phoneMin": "Please enter a valid phone number",
 			"dateTooLate": "Please choose a date within the next 12 months."
 		},
-		"frostingColor": "Frosting Color",
 		"finishingTouch": "Finishing Touch",
-		"noPreference": "No preference",
-		"deliveryNote": "Pickup at the studio is free. Delivery within Bern and the surrounding region – the fee depends on the distance."
+		"noPreference": "No preference"
 	},
 	"footer": {
 		"tagline": "Bespoke cake designer based in Bern.",
 		"address": "Bern, Switzerland",
 		"rights": "All rights reserved.",
-		"instagram": "Instagram"
+		"instagram": "Instagram",
+		"followUs": "Follow us",
+		"madeWith": "Made with love",
+		"madeInBern": "in Bern"
 	},
 	"common": {
 		"inquireNow": "Inquire Now",
@@ -286,41 +311,11 @@
 	"configurator": {
 		"title": "Cake Designer",
 		"subtitle": "Stack it, style it, love it – then send your creation straight into your inquiry",
-		"sizeLabel": "Size & Tiers",
 		"flavorLabel": "Flavor",
-		"colorLabel": "Frosting Color",
 		"topperLabel": "Finishing Touch",
-		"messageLabel": "Inscription on the cake",
-		"messagePlaceholder": "e.g., Happy Birthday!",
 		"estimateLabel": "Estimated price",
 		"cta": "Send this cake to my inquiry",
 		"disclaimer": "Indicative price – the final quote is confirmed after consultation.",
-		"sizes": {
-			"bento": {
-				"name": "Bento Mini",
-				"desc": "2–3 servings · flat price"
-			},
-			"single": {
-				"name": "Classic",
-				"desc": "1 tier · approx. 15 servings"
-			},
-			"duo": {
-				"name": "Duo Tower",
-				"desc": "2 tiers · approx. 30 servings"
-			},
-			"wedding": {
-				"name": "Wedding Centerpiece",
-				"desc": "3 tiers · approx. 55 servings"
-			}
-		},
-		"colors": {
-			"cream": "Vanilla Cream",
-			"blush": "Blush Pink",
-			"mint": "Fresh Mint",
-			"sky": "Sky Blue",
-			"lilac": "Lilac Dream",
-			"choco": "Chocolate"
-		},
 		"toppers": {
 			"none": "Clean & Simple",
 			"flowers": "Sugar Flowers",
@@ -329,37 +324,21 @@
 		},
 		"estimateContext": "Indicative price for {{servings}} servings",
 		"included": "Consultation and design sketch included.",
-		"layers": {
-			"title": "Build your layers",
-			"label": "Your layers",
-			"add": "Add a layer",
-			"hint": "Drag the layers to reorder – or use the arrows",
-			"modalTitle": "Choose a layer",
-			"close": "Close",
-			"remove": "Remove layer",
-			"up": "Move layer up",
-			"down": "Move layer down",
-			"maxNote": "A cake rarely needs more than {{max}} layers.",
-			"type": {
-				"sponge": "Biscuit",
-				"mousse": "Mousse",
-				"cream": "Creme",
-				"crunch": "Crunch"
+		"tierLabel": "Tiers",
+		"servingsLabel": "Servings",
+		"servingsHint": "Set the number of servings between {{min}} and {{max}} for this tier.",
+		"tiers": {
+			"1": {
+				"name": "Single Tier",
+				"desc": "{{min}}–{{max}} servings"
 			},
-			"option": {
-				"chocolateSponge": "Chocolate biscuit",
-				"honeySponge": "Honey biscuit",
-				"pistachioSponge": "Pistachio biscuit",
-				"coconutAlmond": "Coconut & almond biscuit",
-				"raspberryMousse": "Raspberry mousse",
-				"pistachioMousse": "Pistachio mousse",
-				"mangoMousse": "Mango mousse",
-				"caramelMousse": "Caramel mousse",
-				"creamCheeseCreme": "Cream-cheese creme",
-				"chocolateCreme": "Chocolate creme",
-				"vanillaCreme": "Vanilla creme",
-				"hazelnutCrunch": "Hazelnut crunch",
-				"kataifiCrunch": "Kataifi crunch"
+			"2": {
+				"name": "Two Tiers",
+				"desc": "{{min}}–{{max}} servings"
+			},
+			"3": {
+				"name": "Three Tiers",
+				"desc": "{{min}}–{{max}} servings"
 			}
 		}
 	},
