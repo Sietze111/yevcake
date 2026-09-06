@@ -28,20 +28,20 @@ export const FaqSection = (): FunctionComponent => {
 						{({ open }) => (
 							<>
 								<DisclosureButton
-									className={`flex w-full justify-between items-center gap-4 px-6 py-5 text-left font-mono text-sm font-semibold text-nb-black cursor-pointer transition-colors duration-100 ${open ? "bg-nb-yellow/30" : "bg-nb-white hover:bg-nb-yellow/20"}`}
+									className={`flex w-full justify-between items-center gap-4 px-6 py-5 text-left font-mono text-lg font-medium text-chocolate-900 cursor-pointer transition-colors duration-100 ${open ? "bg-raspberry-100/60" : "bg-surface hover:bg-raspberry-100/50"}`}
 								>
 									<span>{faq.q}</span>
 									<span
-										className={`rounded-full border border-nb-black p-0.5 shrink-0 transition-transform duration-200 ${open ? "rotate-45 bg-nb-yellow" : "bg-nb-white"}`}
+										className={`rounded-full border p-0.5 shrink-0 transition-transform duration-200 ${open ? "rotate-45 bg-raspberry-800 text-cream-50 border-raspberry-800" : "bg-surface text-chocolate-900 border-chocolate-900"}`}
 									>
 										{open ? (
-											<MinusIcon className="h-4 w-4 text-nb-black" />
+											<MinusIcon className="h-4 w-4 text-current" />
 										) : (
-											<PlusIcon className="h-4 w-4 text-nb-black" />
+											<PlusIcon className="h-4 w-4 text-current" />
 										)}
 									</span>
 								</DisclosureButton>
-								<DisclosurePanel className="px-6 pb-5 pt-4 font-sans font-light text-sm text-nb-black/80 leading-relaxed border-t border-nb-line bg-nb-cream/50">
+								<DisclosurePanel className="px-6 pb-5 pt-4 font-sans font-light text-sm text-chocolate-900/80 leading-relaxed border-t border-nb-line bg-surface/60">
 									{faq.a}
 								</DisclosurePanel>
 							</>

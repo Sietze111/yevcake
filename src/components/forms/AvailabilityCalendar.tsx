@@ -12,7 +12,7 @@ interface AvailabilityCalendarProps {
 }
 
 const NAV_BUTTON_CLASS =
-	"rounded-lg border border-nb-line bg-nb-white p-1.5 cursor-pointer hover:bg-nb-yellow/50 transition-colors disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-nb-white";
+	"rounded-sm border border-nb-line bg-nb-white p-1.5 cursor-pointer hover:bg-raspberry-100 transition-colors disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-nb-white";
 
 export const AvailabilityCalendar = ({
 	maxISO,
@@ -52,7 +52,7 @@ export const AvailabilityCalendar = ({
 	return (
 		<div
 			aria-label={t("order.date")}
-			className="rounded-2xl border border-nb-line bg-nb-white shadow-[0_8px_20px_rgba(61,43,31,0.12)] p-4 w-full max-w-md"
+			className="rounded-lg border border-nb-line bg-nb-white shadow-[0_20px_60px_rgba(50,23,13,0.06)] p-4 w-full max-w-md"
 			id="inquiry-date-calendar"
 			role="group"
 		>
@@ -133,12 +133,12 @@ export const AvailabilityCalendar = ({
 											weekday: "long",
 										}).format(date.toDate())
 							}
-							className={`font-mono text-sm font-medium h-9 rounded-lg border border-nb-line transition-colors ${
+							className={`font-mono text-sm font-medium h-9 rounded-sm border border-nb-line transition-colors ${
 								isSelected
-									? "bg-nb-pink text-nb-cream border-nb-pink"
+									? "bg-raspberry-800 text-cream-50 border-raspberry-800"
 									: isDisabled
 										? "line-through opacity-40 bg-nb-cream/70 cursor-not-allowed"
-										: "bg-nb-white hover:bg-nb-yellow/50 cursor-pointer"
+										: "bg-nb-white hover:bg-raspberry-100 cursor-pointer"
 							}`}
 							onClick={() => {
 								onChange(iso);

@@ -13,7 +13,9 @@
 		"privacy": "Privacy Policy",
 		"designer": "Cake Designer",
 		"openMenu": "Open menu",
-		"closeMenu": "Close menu"
+		"closeMenu": "Close menu",
+		"language": "Change language",
+		"showcase": "Discover"
 	},
 	"hero": {
 		"title": "Bespoke Cake Artistry in Bern",
@@ -235,7 +237,10 @@
 		"tagline": "Bespoke cake designer based in Bern.",
 		"address": "Bern, Switzerland",
 		"rights": "All rights reserved.",
-		"instagram": "Instagram"
+		"instagram": "Instagram",
+		"followUs": "Follow us",
+		"madeWith": "Made with love",
+		"madeInBern": "in Bern"
 	},
 	"common": {
 		"inquireNow": "Inquire Now",

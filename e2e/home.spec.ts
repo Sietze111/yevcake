@@ -20,7 +20,9 @@ test.describe("home page", () => {
 		await languageTrigger.click();
 		await page.getByRole("menuitem", { name: "Deutsch" }).click();
 
-		await expect(page.getByText("Über Yevheniia")).toBeVisible();
+		await expect(
+			page.getByRole("navigation").getByText("Über Yevheniia")
+		).toBeVisible();
 	});
 
 	test("servings input blocks scientific notation characters", async ({

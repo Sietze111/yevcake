@@ -32,11 +32,12 @@ export const ReviewsSection = (): FunctionComponent => {
 	];
 
 	return (
-		<ContentSection background="bg-nb-pink" id="reviews">
+		<ContentSection background="on-dark bg-chocolate-950" id="reviews">
 			<SectionHeading
 				tag={t("reviews.title")}
-				tagClassName="bg-nb-black text-nb-cream"
+				tagClassName="bg-transparent"
 				title={t("reviews.subtitle")}
+				onDark
 			/>
 			<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 				{reviews.map((review, index) => (
@@ -47,23 +48,26 @@ export const ReviewsSection = (): FunctionComponent => {
 						<div className="space-y-4">
 							<div className="flex gap-0.5">
 								{Array.from({ length: review.rating }).map((_, index_) => (
-									<StarIcon key={index_} className="h-5 w-5 text-nb-pink" />
+									<StarIcon
+										key={index_}
+										className="h-5 w-5 text-raspberry-800"
+									/>
 								))}
 							</div>
-							<p className="font-sans font-light text-sm text-nb-black/85 leading-relaxed">
+							<p className="font-sans font-light text-sm text-chocolate-900/85 leading-relaxed">
 								&ldquo;{review.text}&rdquo;
 							</p>
 						</div>
 
 						<div className="pt-5 border-t border-nb-line mt-5 flex items-center gap-3">
-							<div className="w-10 h-10 rounded-full border border-nb-line bg-nb-white text-nb-pink flex items-center justify-center font-mono font-semibold text-lg shadow-[0_4px_12px_rgba(61,43,31,0.12)]">
+							<div className="w-10 h-10 rounded-full border border-almond-300 bg-cream-50 text-raspberry-800 flex items-center justify-center font-mono font-semibold text-lg">
 								{review.name.charAt(0)}
 							</div>
 							<div>
-								<h5 className="font-mono font-semibold text-sm text-nb-black">
+								<h5 className="font-mono font-semibold text-sm text-chocolate-900">
 									{review.name}
 								</h5>
-								<span className="font-sans text-xs text-nb-black/60">
+								<span className="font-sans text-xs text-chocolate-900/60">
 									{review.location}
 								</span>
 							</div>

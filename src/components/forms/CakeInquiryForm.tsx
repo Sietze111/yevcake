@@ -103,7 +103,7 @@ const FieldError = ({ id, message }: FieldErrorProps): FunctionComponent => {
 	if (!message) return null;
 	return (
 		<p
-			className="text-red-600 text-xs mt-1 font-mono font-bold"
+			className="text-error text-xs mt-1 font-sans font-medium"
 			id={id}
 			role="alert"
 		>
@@ -401,16 +401,16 @@ export const CakeInquiryForm = (): FunctionComponent => {
 
 	if (isSuccess) {
 		return (
-			<div className="flex flex-col items-center justify-center p-10 text-center rounded-3xl border border-nb-line shadow-[0_18px_36px_rgba(61,43,31,0.18)] bg-nb-mint max-w-xl mx-auto animate-fade-in-up">
-				<CheckCircleIcon className="h-16 w-16 text-nb-pink mb-4 animate-bounce" />
-				<h3 className="font-mono text-3xl text-nb-black font-semibold mb-3">
+			<div className="flex flex-col items-center justify-center p-10 sm:p-14 text-center rounded-lg border border-raspberry-800/20 shadow-[0_20px_60px_rgba(50,23,13,0.08)] bg-raspberry-100 max-w-xl mx-auto animate-fade-in-up">
+				<CheckCircleIcon className="h-16 w-16 text-raspberry-800 mb-4 animate-bounce" />
+				<h3 className="font-mono text-3xl text-chocolate-900 font-medium mb-3">
 					{t("order.success")}
 				</h3>
-				<p className="font-sans font-light text-sm text-nb-black/75 mb-8 max-w-sm leading-relaxed">
+				<p className="font-sans font-light text-sm text-chocolate-900/75 mb-8 max-w-sm leading-relaxed">
 					{t("order.successDesc")}
 				</p>
 				<button
-					className="nb-btn bg-nb-pink text-nb-cream text-xs"
+					className="nb-btn nb-btn-raspberry text-xs"
 					onClick={() => {
 						setIsSuccess(false);
 					}}
@@ -422,18 +422,18 @@ export const CakeInquiryForm = (): FunctionComponent => {
 	}
 
 	const inputClass = (hasError: boolean): string =>
-		hasError ? "nb-input border-red-600" : "nb-input";
+		hasError ? "nb-input nb-input-error" : "nb-input";
 
 	const labelClass =
-		"block font-sans text-[11px] font-medium uppercase tracking-wider text-nb-black mb-2";
+		"block font-sans text-[11px] font-medium uppercase tracking-[0.18em] text-chocolate-900 mb-2";
 
 	return (
-		<div className="w-full max-w-3xl mx-auto rounded-3xl border border-nb-line shadow-[0_18px_36px_rgba(61,43,31,0.18)] bg-nb-white p-8 sm:p-10">
+		<div className="w-full max-w-3xl mx-auto rounded-lg border border-nb-line shadow-[0_20px_60px_rgba(50,23,13,0.08)] bg-nb-white p-8 sm:p-12">
 			{/* Step Progress */}
 			<div className="flex items-center justify-between mb-10 pb-6 border-b border-nb-line">
 				<div className="flex items-center gap-3">
 					<span
-						className={`w-9 h-9 border border-nb-line flex items-center justify-center font-mono font-bold text-sm transition-all ${step >= 1 ? "bg-nb-yellow text-nb-black shadow-[0_4px_12px_rgba(61,43,31,0.12)]" : "bg-nb-white text-nb-black/40"}`}
+						className={`w-9 h-9 border border-nb-line flex items-center justify-center font-mono font-semibold text-sm transition-all ${step >= 1 ? "bg-chocolate-900 text-cream-50" : "bg-nb-white text-chocolate-900/40"}`}
 					>
 						1
 					</span>
@@ -446,7 +446,7 @@ export const CakeInquiryForm = (): FunctionComponent => {
 				/>
 				<div className="flex items-center gap-3">
 					<span
-						className={`w-9 h-9 border border-nb-line flex items-center justify-center font-mono font-bold text-sm transition-all ${step >= 2 ? "bg-nb-yellow text-nb-black shadow-[0_4px_12px_rgba(61,43,31,0.12)]" : "bg-nb-white text-nb-black/40"}`}
+						className={`w-9 h-9 border border-nb-line flex items-center justify-center font-mono font-semibold text-sm transition-all ${step >= 2 ? "bg-chocolate-900 text-cream-50" : "bg-nb-white text-chocolate-900/40"}`}
 					>
 						2
 					</span>
@@ -459,7 +459,7 @@ export const CakeInquiryForm = (): FunctionComponent => {
 				/>
 				<div className="flex items-center gap-3">
 					<span
-						className={`w-9 h-9 border border-nb-line flex items-center justify-center font-mono font-bold text-sm transition-all ${step >= 3 ? "bg-nb-yellow text-nb-black shadow-[0_4px_12px_rgba(61,43,31,0.12)]" : "bg-nb-white text-nb-black/40"}`}
+						className={`w-9 h-9 border border-nb-line flex items-center justify-center font-mono font-semibold text-sm transition-all ${step >= 3 ? "bg-chocolate-900 text-cream-50" : "bg-nb-white text-chocolate-900/40"}`}
 					>
 						3
 					</span>
@@ -614,7 +614,7 @@ export const CakeInquiryForm = (): FunctionComponent => {
 
 						<div className="pt-4 flex justify-end">
 							<button
-								className="nb-btn bg-nb-yellow text-nb-black text-xs flex items-center gap-2"
+								className="nb-btn nb-btn-primary text-xs flex items-center gap-2"
 								type="button"
 								onClick={() => {
 									void nextStep();
@@ -691,7 +691,7 @@ export const CakeInquiryForm = (): FunctionComponent => {
 							<label className={labelClass} htmlFor="inquiry-files">
 								{t("order.referenceImages")}
 							</label>
-							<div className="rounded-2xl border-2 border-dashed border-nb-line p-6 bg-nb-cream flex flex-col items-center justify-center text-center cursor-pointer relative group hover:bg-nb-yellow/20 transition-colors">
+							<div className="border border-dashed border-almond-300 p-6 bg-transparent flex flex-col items-center justify-center text-center cursor-pointer relative group hover:bg-raspberry-100/40 transition-colors">
 								<input
 									multiple
 									accept="image/jpeg,image/png,image/webp"
@@ -714,7 +714,7 @@ export const CakeInquiryForm = (): FunctionComponent => {
 
 							{fileWarning && (
 								<p
-									className="text-red-600 text-xs mt-2 font-mono font-bold"
+									className="text-error text-xs mt-2 font-sans font-medium"
 									role="alert"
 								>
 									{fileWarning}
@@ -726,7 +726,7 @@ export const CakeInquiryForm = (): FunctionComponent => {
 									{uploadedFiles.map((entry, index) => (
 										<li
 											key={entry.file.name + index}
-											className="flex items-center justify-between p-3 border border-nb-line bg-nb-mint text-xs font-mono"
+											className="flex items-center justify-between p-3 border border-nb-line bg-raspberry-100 text-xs font-sans"
 										>
 											<div className="flex items-center gap-2">
 												<DocumentIcon
@@ -758,7 +758,7 @@ export const CakeInquiryForm = (): FunctionComponent => {
 
 						<div className="pt-4 flex justify-between">
 							<button
-								className="nb-btn bg-nb-white text-nb-black text-xs flex items-center gap-2"
+								className="nb-btn nb-btn-outline text-xs flex items-center gap-2"
 								type="button"
 								onClick={previousStep}
 							>
@@ -766,7 +766,7 @@ export const CakeInquiryForm = (): FunctionComponent => {
 								{t("common.back")}
 							</button>
 							<button
-								className="nb-btn bg-nb-yellow text-nb-black text-xs flex items-center gap-2"
+								className="nb-btn nb-btn-primary text-xs flex items-center gap-2"
 								type="button"
 								onClick={() => {
 									void nextStep();
@@ -862,14 +862,14 @@ export const CakeInquiryForm = (): FunctionComponent => {
 
 						{mutation.isError && (
 							<div
-								className="rounded-xl border border-nb-line bg-nb-pink/10 p-4 flex items-start gap-3"
+								className="rounded-lg border border-raspberry-800/20 bg-raspberry-100/60 p-4 flex items-start gap-3"
 								role="alert"
 							>
 								<ExclamationTriangleIcon
 									aria-hidden="true"
-									className="h-5 w-5 text-nb-black shrink-0 mt-0.5"
+									className="h-5 w-5 text-raspberry-800 shrink-0 mt-0.5"
 								/>
-								<p className="font-mono text-xs font-bold text-nb-black leading-relaxed">
+								<p className="font-sans text-xs font-medium text-chocolate-900 leading-relaxed">
 									{t("order.submitError")}
 								</p>
 							</div>
@@ -877,7 +877,7 @@ export const CakeInquiryForm = (): FunctionComponent => {
 
 						<div className="pt-4 flex justify-between">
 							<button
-								className="nb-btn bg-nb-white text-nb-black text-xs flex items-center gap-2"
+								className="nb-btn nb-btn-outline text-xs flex items-center gap-2"
 								disabled={mutation.isPending}
 								type="button"
 								onClick={previousStep}
@@ -886,7 +886,7 @@ export const CakeInquiryForm = (): FunctionComponent => {
 								{t("common.back")}
 							</button>
 							<button
-								className="nb-btn bg-nb-black text-nb-yellow text-xs"
+								className="nb-btn nb-btn-raspberry text-xs"
 								disabled={mutation.isPending}
 								type="submit"
 							>

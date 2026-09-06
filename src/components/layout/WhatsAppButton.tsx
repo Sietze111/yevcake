@@ -30,7 +30,7 @@ export const WhatsAppButton = (): FunctionComponent => {
 			rel="noreferrer"
 			tabIndex={isVisible ? 0 : -1}
 			target="_blank"
-			className={`fixed left-6 bottom-6 z-50 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border border-nb-line bg-nb-mint text-nb-black shadow-[0_8px_20px_rgba(61,43,31,0.12)] transition-all duration-150 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[0_14px_30px_rgba(61,43,31,0.24)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[0_2px_6px_rgba(61,43,31,0.2)] ${
+			className={`fixed left-6 bottom-6 z-50 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border border-raspberry-800 bg-raspberry-800 text-cream-50 shadow-[0_20px_60px_rgba(50,23,13,0.18)] transition-all duration-300 hover:-translate-y-1 hover:bg-chocolate-950 hover:border-chocolate-950 ${
 				isVisible ? "opacity-100" : "pointer-events-none opacity-0"
 			}`}
 		>

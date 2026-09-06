@@ -13,7 +13,9 @@
 		"privacy": "Datenschutz",
 		"designer": "Torten-Designer",
 		"openMenu": "Menü öffnen",
-		"closeMenu": "Menü schliessen"
+		"closeMenu": "Menü schliessen",
+		"language": "Sprache wechseln",
+		"showcase": "Entdecken"
 	},
 	"hero": {
 		"title": "Süsse Kunstwerke, handgemacht in Bern",
@@ -235,7 +237,10 @@
 		"tagline": "Bespoke Cake Designerin ansässig in Bern.",
 		"address": "Bern, Schweiz",
 		"rights": "Alle Rechte vorbehalten.",
-		"instagram": "Instagram"
+		"instagram": "Instagram",
+		"followUs": "Folge uns",
+		"madeWith": "Mit Liebe",
+		"madeInBern": "in Bern"
 	},
 	"common": {
 		"inquireNow": "Jetzt anfragen",

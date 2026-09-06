@@ -14,7 +14,7 @@ import type { FunctionComponent } from "../common/types";
 
 export const Home = (): FunctionComponent => {
 	return (
-		<div className="bg-nb-cream text-nb-black min-h-screen font-sans overflow-x-hidden">
+		<div className="bg-background text-foreground min-h-screen font-sans overflow-x-hidden">
 			<Navbar />
 
 			<main id="main-content">

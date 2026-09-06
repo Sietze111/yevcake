@@ -19,8 +19,8 @@ import {
 import { CakeVisual } from "./CakeVisual";
 
 const OPTION_BASE_CLASS =
-	"rounded-xl border border-nb-line px-4 text-left transition-all duration-150 cursor-pointer";
-const OPTION_SELECTED_CLASS = "shadow-[0_10px_22px_rgba(61,43,31,0.14)]";
+	"rounded-sm border border-nb-line px-4 text-left transition-all duration-150 cursor-pointer";
+const OPTION_SELECTED_CLASS = "shadow-[0_20px_60px_rgba(50,23,13,0.1)]";
 
 export const CakeConfigurator = (): FunctionComponent => {
 	const { t, i18n } = useTranslation();
@@ -75,7 +75,7 @@ export const CakeConfigurator = (): FunctionComponent => {
 			/>
 
 			<div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-8 items-start">
-				<div className="rounded-3xl border border-nb-line bg-nb-white shadow-[0_12px_26px_rgba(61,43,31,0.14)] p-6 lg:sticky lg:top-24">
+				<div className="rounded-lg border border-nb-line bg-nb-white shadow-[0_20px_60px_rgba(50,23,13,0.08)] p-8 lg:sticky lg:top-28">
 					<CakeVisual
 						flavor={flavorId}
 						frostingColor={FROSTING_SHELL_COLOR}
@@ -94,7 +94,7 @@ export const CakeConfigurator = (): FunctionComponent => {
 								{t("configurator.estimateContext", { servings })}
 							</span>
 						</div>
-						<span className="font-mono text-2xl font-bold">
+						<span className="font-mono text-3xl font-medium">
 							{formattedEstimate}
 						</span>
 					</div>
@@ -105,7 +105,7 @@ export const CakeConfigurator = (): FunctionComponent => {
 						{t("configurator.included")}
 					</p>
 					<a
-						className="nb-btn bg-nb-pink text-nb-cream w-full justify-center mt-4 inline-flex"
+						className="nb-btn nb-btn-raspberry w-full justify-center mt-6 inline-flex"
 						href="#inquiry"
 						onClick={handleSendToInquiry}
 					>
@@ -115,7 +115,7 @@ export const CakeConfigurator = (): FunctionComponent => {
 
 				<div className="space-y-8">
 					<fieldset>
-						<legend className="font-sans text-[10px] font-semibold uppercase tracking-widest text-nb-black/60 mb-2">
+						<legend className="font-sans text-[10px] font-semibold uppercase tracking-[0.18em] text-chocolate-900/60 mb-2">
 							{t("configurator.tierLabel")}
 						</legend>
 						<div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -149,7 +149,7 @@ export const CakeConfigurator = (): FunctionComponent => {
 					</fieldset>
 
 					<fieldset>
-						<legend className="font-sans text-[10px] font-semibold uppercase tracking-widest text-nb-black/60 mb-2">
+						<legend className="font-sans text-[10px] font-semibold uppercase tracking-[0.18em] text-chocolate-900/60 mb-2">
 							{`${t("configurator.servingsLabel")} *`}
 						</legend>
 						<p className="font-sans font-light text-xs text-nb-black/55 mb-3 leading-relaxed">
@@ -175,7 +175,7 @@ export const CakeConfigurator = (): FunctionComponent => {
 					</fieldset>
 
 					<fieldset>
-						<legend className="font-sans text-[10px] font-semibold uppercase tracking-widest text-nb-black/60 mb-2">
+						<legend className="font-sans text-[10px] font-semibold uppercase tracking-[0.18em] text-chocolate-900/60 mb-2">
 							{t("configurator.flavorLabel")}
 						</legend>
 						<div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -202,7 +202,7 @@ export const CakeConfigurator = (): FunctionComponent => {
 					</fieldset>
 
 					<fieldset>
-						<legend className="font-sans text-[10px] font-semibold uppercase tracking-widest text-nb-black/60 mb-2">
+						<legend className="font-sans text-[10px] font-semibold uppercase tracking-[0.18em] text-chocolate-900/60 mb-2">
 							{t("configurator.topperLabel")}
 						</legend>
 						<div className="flex flex-wrap gap-3">

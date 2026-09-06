@@ -69,7 +69,7 @@ export const GallerySection = (): FunctionComponent => {
 		<ContentSection background="bg-nb-blue" id="gallery">
 			<SectionHeading
 				tag={t("gallery.title")}
-				tagClassName="bg-nb-black text-nb-yellow"
+				tagClassName="bg-chocolate-950 text-cream-50"
 				title={t("gallery.subtitle")}
 			/>
 
@@ -80,8 +80,8 @@ export const GallerySection = (): FunctionComponent => {
 						type="button"
 						className={`nb-tag cursor-pointer transition-colors duration-100 ${
 							activeCategory === tab.id
-								? "bg-nb-black text-nb-yellow"
-								: "bg-nb-white text-nb-black hover:bg-nb-yellow"
+								? "bg-chocolate-950 text-cream-50"
+								: "bg-transparent text-chocolate-900 hover:bg-raspberry-100"
 						}`}
 						onClick={() => {
 							setActiveCategory(tab.id);
@@ -110,11 +110,11 @@ export const GallerySection = (): FunctionComponent => {
 									src={item.image}
 								/>
 							</div>
-							<div className="p-5 bg-nb-cream">
-								<h4 className="font-mono text-sm font-semibold text-nb-black">
+							<div className="p-6 bg-background">
+								<h4 className="font-mono text-lg font-medium text-chocolate-900">
 									{item.title}
 								</h4>
-								<p className="font-sans font-light text-xs text-nb-black/60 mt-1 leading-relaxed">
+								<p className="font-sans font-light text-xs text-chocolate-900/60 mt-1 leading-relaxed">
 									{item.desc}
 								</p>
 							</div>
@@ -146,7 +146,7 @@ export const GallerySection = (): FunctionComponent => {
 						leaveTo="opacity-0"
 					>
 						<div
-							className="fixed inset-0 bg-nb-black/80"
+							className="fixed inset-0 bg-chocolate-950/85"
 							onClick={closeLightbox}
 						/>
 					</Transition.Child>
@@ -161,7 +161,7 @@ export const GallerySection = (): FunctionComponent => {
 							leaveFrom="opacity-100 translate-y-0 scale-100"
 							leaveTo="opacity-0 translate-y-4 scale-95"
 						>
-							<DialogPanel className="max-w-3xl w-full rounded-3xl border border-nb-line bg-nb-cream shadow-[0_24px_48px_rgba(61,43,31,0.2)] overflow-hidden">
+							<DialogPanel className="max-w-3xl w-full rounded-lg border border-almond-300 bg-background shadow-[0_20px_60px_rgba(50,23,13,0.2)] overflow-hidden">
 								{selectedItem && (
 									<>
 										<DialogTitle as="h3" className="sr-only">
@@ -174,10 +174,10 @@ export const GallerySection = (): FunctionComponent => {
 										/>
 										<div className="p-6 flex items-start justify-between gap-4">
 											<div>
-												<h4 className="font-mono text-base font-semibold text-nb-black">
+												<h4 className="font-mono text-xl font-medium text-chocolate-900">
 													{selectedItem.title}
 												</h4>
-												<p className="font-sans font-light text-xs text-nb-black/60 mt-1 leading-relaxed">
+												<p className="font-sans font-light text-xs text-chocolate-900/60 mt-1 leading-relaxed">
 													{t("lightbox.counter", {
 														current:
 															galleryItems.findIndex(
@@ -189,7 +189,7 @@ export const GallerySection = (): FunctionComponent => {
 											</div>
 											<button
 												aria-label={t("lightbox.close")}
-												className="rounded-full border border-nb-line bg-nb-pink p-2 cursor-pointer hover:bg-nb-black hover:text-nb-cream transition-colors shrink-0"
+												className="rounded-full bg-raspberry-800 p-2 text-cream-50 cursor-pointer hover:bg-chocolate-900 transition-colors shrink-0"
 												type="button"
 												onClick={closeLightbox}
 											>
@@ -206,7 +206,7 @@ export const GallerySection = (): FunctionComponent => {
 						<div className="pointer-events-none fixed inset-x-0 bottom-6 flex justify-center gap-3">
 							<button
 								aria-label={t("lightbox.prev")}
-								className="pointer-events-auto nb-btn bg-nb-yellow text-nb-black !px-4 !py-2"
+								className="pointer-events-auto nb-btn nb-btn-primary !px-4 !py-2"
 								type="button"
 								onClick={() => {
 									stepLightbox(-1);
@@ -216,7 +216,7 @@ export const GallerySection = (): FunctionComponent => {
 							</button>
 							<button
 								aria-label={t("lightbox.next")}
-								className="pointer-events-auto nb-btn bg-nb-yellow text-nb-black !px-4 !py-2"
+								className="pointer-events-auto nb-btn nb-btn-primary !px-4 !py-2"
 								type="button"
 								onClick={() => {
 									stepLightbox(1);

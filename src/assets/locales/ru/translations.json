@@ -13,7 +13,9 @@
 		"privacy": "Конфиденциальность",
 		"designer": "Конструктор тортов",
 		"openMenu": "Открыть меню",
-		"closeMenu": "Закрыть меню"
+		"closeMenu": "Закрыть меню",
+		"language": "Сменить язык",
+		"showcase": "Каталог"
 	},
 	"hero": {
 		"title": "Искусство тортов на заказ в Берне",
@@ -235,7 +237,10 @@
 		"tagline": "Создание дизайнерских тортов на заказ в Берне.",
 		"address": "Берн, Швейцария",
 		"rights": "Все права защищены.",
-		"instagram": "Instagram"
+		"instagram": "Instagram",
+		"followUs": "Мы в соцсетях",
+		"madeWith": "Сделано с любовью",
+		"madeInBern": "в Берне"
 	},
 	"common": {
 		"inquireNow": "Оставить заявку",

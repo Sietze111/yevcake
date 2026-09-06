@@ -11,7 +11,7 @@ export const OrderSection = (): FunctionComponent => {
 		<ContentSection background="bg-nb-lilac" id="inquiry">
 			<SectionHeading
 				tag={t("order.title")}
-				tagClassName="bg-nb-black text-nb-yellow"
+				tagClassName="bg-chocolate-950 text-cream-50"
 				title={t("order.subtitle")}
 			/>
 			<CakeInquiryForm />

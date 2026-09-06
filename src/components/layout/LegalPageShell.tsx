@@ -22,14 +22,14 @@ export const LegalPageShell = ({
 		>
 			<div className="mx-auto max-w-3xl px-6">
 				<Link
-					className="font-mono text-xs font-bold text-nb-black uppercase tracking-wider inline-flex items-center gap-2 border-b-2 border-nb-black pb-1 hover:bg-nb-yellow transition-colors"
+					className="font-sans text-xs font-medium text-chocolate-900 uppercase tracking-[0.18em] inline-flex items-center gap-2 border-b border-chocolate-900 pb-1 hover:border-raspberry-800 hover:text-raspberry-800 transition-colors"
 					to="/"
 				>
 					<ArrowLeftIcon aria-hidden="true" className="h-4 w-4" />
 					{t("common.backHome")}
 				</Link>
 
-				<h1 className="mt-8 mb-8 font-mono text-4xl font-bold uppercase leading-tight">
+				<h1 className="mt-10 mb-10 font-mono text-5xl font-medium tracking-[-0.02em] uppercase leading-tight">
 					{title}
 				</h1>
 
@@ -51,7 +51,7 @@ export const InfoRow = ({
 	children,
 }: InfoRowProps): FunctionComponent => (
 	<div className="flex flex-col sm:flex-row sm:gap-4 gap-1">
-		<span className="font-mono text-xs font-bold uppercase tracking-wider sm:w-56 shrink-0 pt-0.5">
+		<span className="font-sans text-[11px] font-medium uppercase tracking-[0.18em] sm:w-56 shrink-0 pt-0.5 text-chocolate-900/70">
 			{label}
 		</span>
 		<div>{children}</div>
@@ -65,5 +65,7 @@ interface SectionHeadingProps {
 export const LegalSectionHeading = ({
 	title,
 }: SectionHeadingProps): FunctionComponent => (
-	<h2 className="pt-4 font-mono text-lg font-bold uppercase">{title}</h2>
+	<h2 className="pt-4 font-mono text-2xl font-medium tracking-[-0.02em]">
+		{title}
+	</h2>
 );
