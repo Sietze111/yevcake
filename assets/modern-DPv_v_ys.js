@@ -1,0 +1,1 @@
+import"./index-ugKjas1V.js";var e=function(){return null};export{e as ReactQueryDevtools};
