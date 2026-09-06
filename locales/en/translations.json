@@ -328,7 +328,40 @@
 			"berries": "Fresh Berries"
 		},
 		"estimateContext": "Indicative price for {{servings}} servings",
-		"included": "Consultation and design sketch included."
+		"included": "Consultation and design sketch included.",
+		"layers": {
+			"title": "Build your layers",
+			"label": "Your layers",
+			"add": "Add a layer",
+			"hint": "Drag the layers to reorder – or use the arrows",
+			"modalTitle": "Choose a layer",
+			"close": "Close",
+			"remove": "Remove layer",
+			"up": "Move layer up",
+			"down": "Move layer down",
+			"maxNote": "A cake rarely needs more than {{max}} layers.",
+			"type": {
+				"sponge": "Biscuit",
+				"mousse": "Mousse",
+				"cream": "Creme",
+				"crunch": "Crunch"
+			},
+			"option": {
+				"chocolateSponge": "Chocolate biscuit",
+				"honeySponge": "Honey biscuit",
+				"pistachioSponge": "Pistachio biscuit",
+				"coconutAlmond": "Coconut & almond biscuit",
+				"raspberryMousse": "Raspberry mousse",
+				"pistachioMousse": "Pistachio mousse",
+				"mangoMousse": "Mango mousse",
+				"caramelMousse": "Caramel mousse",
+				"creamCheeseCreme": "Cream-cheese creme",
+				"chocolateCreme": "Chocolate creme",
+				"vanillaCreme": "Vanilla creme",
+				"hazelnutCrunch": "Hazelnut crunch",
+				"kataifiCrunch": "Kataifi crunch"
+			}
+		}
 	},
 	"calendar": {
 		"prevMonth": "Previous month",

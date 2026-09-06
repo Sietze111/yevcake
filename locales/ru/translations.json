@@ -302,7 +302,40 @@
 			"berries": "Свежие ягоды"
 		},
 		"estimateContext": "Ориентировочная цена на {{servings}} порций",
-		"included": "Включая личную консультацию и эскиз дизайна."
+		"included": "Включая личную консультацию и эскиз дизайна.",
+		"layers": {
+			"title": "Шары твоего торта",
+			"label": "Твои слои",
+			"add": "Добавить слой",
+			"hint": "Перетащи слои, чтобы поменять порядок – или используй стрелки",
+			"modalTitle": "Выбери слой",
+			"close": "Закрыть",
+			"remove": "Удалить слой",
+			"up": "Слой выше",
+			"down": "Слой ниже",
+			"maxNote": "Торту обычно не нужно больше {{max}} слоёв.",
+			"type": {
+				"sponge": "Бисквит",
+				"mousse": "Мусс",
+				"cream": "Крем",
+				"crunch": "Хруст"
+			},
+			"option": {
+				"chocolateSponge": "Шоколадный бисквит",
+				"honeySponge": "Медовый бисквит",
+				"pistachioSponge": "Фисташковый бисквит",
+				"coconutAlmond": "Кокосово-миндальный бисквит",
+				"raspberryMousse": "Малиновый мусс",
+				"pistachioMousse": "Фисташковый мусс",
+				"mangoMousse": "Манговый мусс",
+				"caramelMousse": "Карамельный мусс",
+				"creamCheeseCreme": "Крем-чиз",
+				"chocolateCreme": "Шоколадный крем",
+				"vanillaCreme": "Ванильный крем",
+				"hazelnutCrunch": "Ореховый хруст",
+				"kataifiCrunch": "Хруст катаифи"
+			}
+		}
 	},
 	"calendar": {
 		"prevMonth": "Предыдущий месяц",

@@ -328,7 +328,40 @@
 			"berries": "Frische Beeren"
 		},
 		"estimateContext": "Indikativer Preis für {{servings}} Portionen",
-		"included": "Inklusive persönlicher Beratung & Design-Skizze."
+		"included": "Inklusive persönlicher Beratung & Design-Skizze.",
+		"layers": {
+			"title": "Tartenschichten bauen",
+			"label": "Deine Schichten",
+			"add": "Schicht hinzufügen",
+			"hint": "Ziehe die Schichten zum Sortieren – oder nutze die Pfeile",
+			"modalTitle": "Wähle eine Schicht",
+			"close": "Schliessen",
+			"remove": "Schicht entfernen",
+			"up": "Schicht nach oben",
+			"down": "Schicht nach unten",
+			"maxNote": "Mehr als {{max}} Schichten braucht kaum eine Torte.",
+			"type": {
+				"sponge": "Biskuit",
+				"mousse": "Mousse",
+				"cream": "Creme",
+				"crunch": "Crunch"
+			},
+			"option": {
+				"chocolateSponge": "Schokoladen-Biskuit",
+				"honeySponge": "Honig-Biskuit",
+				"pistachioSponge": "Pistazien-Biskuit",
+				"coconutAlmond": "Kokos-Mandel-Biskuit",
+				"raspberryMousse": "Himbeer-Mousse",
+				"pistachioMousse": "Pistazien-Mousse",
+				"mangoMousse": "Mango-Mousse",
+				"caramelMousse": "Karamell-Mousse",
+				"creamCheeseCreme": "Frischkäse-Creme",
+				"chocolateCreme": "Schokoladen-Creme",
+				"vanillaCreme": "Vanille-Creme",
+				"hazelnutCrunch": "Haselnuss-Crunch",
+				"kataifiCrunch": "Kataifi-Crunch"
+			}
+		}
 	},
 	"calendar": {
 		"prevMonth": "Vorheriger Monat",
