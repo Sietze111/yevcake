@@ -47,7 +47,7 @@ export const HeroSection = (): FunctionComponent => {
 								alt="Bespoke handmade cake by Yevheniia in Bern"
 								className="w-full h-full object-cover"
 								fetchPriority="high"
-								src="/cake_mouse.jpg"
+								src={`${import.meta.env.BASE_URL}cake_mouse.jpg`}
 							/>
 						</div>
 						<div className="absolute -bottom-4 -left-4 nb-tag bg-chocolate-950 text-cream-50 border-chocolate-950 shadow-[0_20px_60px_rgba(50,23,13,0.2)]">

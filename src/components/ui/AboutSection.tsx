@@ -24,7 +24,7 @@ export const AboutSection = (): FunctionComponent => {
 						<img
 							alt="Yevheniia - Cake Designer in Bern"
 							className="w-full h-full object-cover"
-							src="/cake_wedding.jpg"
+							src={`${import.meta.env.BASE_URL}yev_baker.jpg`}
 						/>
 					</div>
 					<div className="absolute -top-4 -right-4 nb-tag bg-chocolate-950 text-cream-50 shadow-[0_20px_60px_rgba(50,23,13,0.18)]">
